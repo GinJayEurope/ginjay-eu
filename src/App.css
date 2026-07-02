@@ -3537,3 +3537,117 @@ nav a.active::after {
   opacity: 1;
   transform: translateY(-3px);
 }
+
+/* =========================================================
+   DARK MODE BUTTON COLOR OVERRIDE
+   Ziel: Alle hellen Dark-Mode-Buttons in dunklem Violett
+   wie der aktive Gallery-Filter "Artworks"
+========================================================= */
+.app.dark {
+  --dark-button-bg: #3b2f4d;
+  --dark-button-bg-hover: #493a60;
+  --dark-button-text: #f5efff;
+  --dark-button-border: rgba(255, 255, 255, 0.07);
+  --dark-button-shadow: 0 12px 28px rgba(0, 0, 0, 0.26);
+}
+
+/* Alle CTA-Buttons, Filter, Pills, Lightbox-Buttons und Link-Buttons */
+.app.dark button,
+.app.dark .button,
+.app.dark .primary,
+.app.dark .secondary,
+.app.dark .button.primary,
+.app.dark .button.secondary,
+.app.dark .filter,
+.app.dark .filter.active,
+.app.dark .news-premium-button,
+.app.dark .news-toggle,
+.app.dark .timeline-toggle,
+.app.dark .artist-socials a,
+.app.dark .artist-watch-button,
+.app.dark .hero-socials a,
+.app.dark .gallery-feature-content::after,
+.app.dark .gallery-overlay-button,
+.app.dark .schedule-lightbox-close,
+.app.dark .lightbox-close,
+.app.dark .lightbox-nav,
+.app.dark .menu-button,
+.app.dark .back-to-top {
+  background: var(--dark-button-bg) !important;
+  color: var(--dark-button-text) !important;
+  border: 1px solid var(--dark-button-border) !important;
+  box-shadow: var(--dark-button-shadow) !important;
+}
+
+/* Hover-Zustand */
+.app.dark button:hover,
+.app.dark .button:hover,
+.app.dark .primary:hover,
+.app.dark .secondary:hover,
+.app.dark .button.primary:hover,
+.app.dark .button.secondary:hover,
+.app.dark .filter:hover,
+.app.dark .filter.active:hover,
+.app.dark .news-premium-button:hover,
+.app.dark .news-toggle:hover,
+.app.dark .timeline-toggle:hover,
+.app.dark .artist-socials a:hover,
+.app.dark .artist-watch-button:hover,
+.app.dark .hero-socials a:hover,
+.app.dark .gallery-feature:hover .gallery-feature-content::after,
+.app.dark .gallery-overlay-button:hover,
+.app.dark .schedule-lightbox-close:hover,
+.app.dark .lightbox-close:hover,
+.app.dark .lightbox-nav:hover,
+.app.dark .menu-button:hover,
+.app.dark .back-to-top:hover {
+  background: var(--dark-button-bg-hover) !important;
+  color: var(--dark-button-text) !important;
+  border-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+/* Pfeil-/Span-Texte in Buttons */
+.app.dark .news-premium-button span,
+.app.dark .artist-watch-button span,
+.app.dark .button span {
+  color: var(--dark-button-text) !important;
+}
+
+/* Lightbox Counter soll dunkel bleiben und nicht hell erscheinen */
+.app.dark .lightbox-counter {
+  background: var(--dark-button-bg) !important;
+  color: var(--dark-button-text) !important;
+  border: 1px solid var(--dark-button-border) !important;
+  box-shadow: var(--dark-button-shadow) !important;
+}
+
+/* Badges/Tags bleiben lesbar, aber ebenfalls dunkler und einheitlicher */
+.app.dark .gallery-tag,
+.app.dark .gallery-card-body span,
+.app.dark .gallery-feature-badge,
+.app.dark .card span,
+.app.dark .event-status,
+.app.dark .archive-date,
+.app.dark .archive-coming-soon span,
+.app.dark .archive-lightbox-heading span,
+.app.dark .hero-badge {
+  background: var(--dark-button-bg) !important;
+  color: var(--dark-button-text) !important;
+  border: 1px solid var(--dark-button-border) !important;
+}
+
+/* Spezielle Status-Badges nicht grün/rot/leuchtend im Dark Mode */
+.app.dark .event-status.upcoming,
+.app.dark .event-status.past,
+.app.dark .event-status.live {
+  background: var(--dark-button-bg) !important;
+  color: var(--dark-button-text) !important;
+}
+
+/* Mobile Navigation im Dark Mode */
+@media (max-width: 860px) {
+  .app.dark nav.open {
+    background: rgba(24, 20, 32, 0.98) !important;
+    border: 1px solid var(--color-border);
+  }
+}
