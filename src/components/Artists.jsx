@@ -1,5 +1,5 @@
-import ginnyImage from "../assets/artists/ginny.jpg";
-import jaynaImage from "../assets/artists/jayna.jpg";
+import ginnyImage from "../assets/artists/Ginny.jpg";
+import jaynaImage from "../assets/artists/Jayna.jpg";
 
 export default function Artists() {
   const northStarYoutube = "https://www.youtube.com/@northstar_ent";
