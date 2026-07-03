@@ -9,6 +9,22 @@ import kclAward from "../assets/gallery/poster/kcl-award-2026.png";
 import jaynaAward from "../assets/gallery/poster/jayna-award-2026.jpg";
 import loveGalaxy from "../assets/gallery/poster/love-galaxy.jpg";
 
+import fragrantDate from "../assets/gallery/poster/fragrant-date.jpg";
+import kazzAwardJayna from "../assets/gallery/poster/kazz-award-jayna.jpg";
+import kazzAwardGinny from "../assets/gallery/poster/kazz-award-ginny.jpg";
+import prideMonthIconsiam from "../assets/gallery/poster/pride-month-iconsiam.jpg";
+import dinnerDateGinny from "../assets/gallery/poster/dinner-date-ginny.jpg";
+import teayiiTalk from "../assets/gallery/poster/teayii-talk.jpg";
+import freshMomentsJayna from "../assets/gallery/poster/fresh-moments-jayna.jpg";
+import ginny500kFollowers from "../assets/gallery/poster/ginny-500k-followers.jpg";
+import starfocusSupport from "../assets/gallery/poster/starfocus-support.jpg";
+import lunarSecret1Million from "../assets/gallery/poster/lunar-secret-1million.jpg";
+import chasingCoffeeGinny from "../assets/gallery/poster/chasing-coffee-ginny.jpg";
+import ginnyChloe from "../assets/gallery/poster/ginny-chloe.jpg";
+import heartFluttering521 from "../assets/gallery/poster/heart-fluttering-521.jpg";
+import happyDayJayna from "../assets/gallery/poster/happy-day-jayna.jpg";
+import lunarWhisperDiscount from "../assets/gallery/poster/lunar-whisper-discount.jpg";
+
 export const gallery = [
   {
     id: 1,
@@ -108,5 +124,170 @@ export const gallery = [
     date: "26 June 2026",
     artist: "Klaudia",
     tags: ["Poster", "Love Galaxy", "Pride"],
+  },
+  {
+    id: 10,
+    title: "A Fragrant Date With You",
+    category: "Poster",
+    mediaType: "image",
+    image: fragrantDate,
+    text: "Fanbase poster for the special live stream with Ginny & Jayna.",
+    date: "23 May 2026",
+    artist: "Klaudia",
+    tags: ["Poster", "GinJay", "Live Stream"],
+  },
+  {
+    id: 11,
+    title: "KAZZ Award Jayna",
+    category: "Poster",
+    mediaType: "image",
+    image: kazzAwardJayna,
+    text: "Congratulations poster for Jayna at the KAZZ Awards 2026.",
+    date: "2026",
+    artist: "Klaudia",
+    tags: ["Poster", "Jayna", "Award"],
+  },
+  {
+    id: 12,
+    title: "KAZZ Award Ginny",
+    category: "Poster",
+    mediaType: "image",
+    image: kazzAwardGinny,
+    text: "Congratulations poster for Ginny at the KAZZ Awards 2026.",
+    date: "2026",
+    artist: "Klaudia",
+    tags: ["Poster", "Ginny", "Award"],
+  },
+  {
+    id: 13,
+    title: "Pride Month",
+    category: "Poster",
+    mediaType: "image",
+    image: prideMonthIconsiam,
+    text: "Fanbase poster for the A Fair ICONSIAM Event 2026.",
+    date: "10 June 2026",
+    artist: "Klaudia",
+    tags: ["Poster", "Pride", "Event"],
+  },
+  {
+    id: 14,
+    title: "Dinner Date with Ginny",
+    category: "Poster",
+    mediaType: "image",
+    image: dinnerDateGinny,
+    text: "Fanbase poster for Dinner Date with Ginny.",
+    date: "13 June 2026",
+    artist: "Klaudia",
+    tags: ["Poster", "Ginny", "Dinner Date"],
+  },
+  {
+    id: 15,
+    title: "GinJay x Teayii’s Talk",
+    category: "Poster",
+    mediaType: "image",
+    image: teayiiTalk,
+    text: "Fanbase poster for GinJay x Teayii’s Talk live talk show.",
+    date: "17 June 2026",
+    artist: "Klaudia",
+    tags: ["Poster", "GinJay", "Talk Show"],
+  },
+  {
+    id: 16,
+    title: "Fresh Moments with Jayna",
+    category: "Poster",
+    mediaType: "image",
+    image: freshMomentsJayna,
+    text: "Fanbase poster for Jayna Fresh Moment Trip.",
+    date: "27 June 2026",
+    artist: "Klaudia",
+    tags: ["Poster", "Jayna", "Fresh Moments"],
+  },
+  {
+    id: 17,
+    title: "Ginny 500K Followers",
+    category: "Poster",
+    mediaType: "image",
+    image: ginny500kFollowers,
+    text: "Congratulations poster celebrating Ginny reaching 500K followers.",
+    date: "2026",
+    artist: "Klaudia",
+    tags: ["Poster", "Ginny", "Milestone"],
+  },
+  {
+    id: 18,
+    title: "Alkeys, Let’s Support",
+    category: "Poster",
+    mediaType: "image",
+    image: starfocusSupport,
+    text: "Community support poster for GinJay Europe on StarFocus.",
+    date: "2026",
+    artist: "Klaudia",
+    tags: ["Poster", "Community", "Support"],
+  },
+  {
+    id: 19,
+    title: "Lunar Secret Road to 1 Million",
+    category: "Poster",
+    mediaType: "image",
+    image: lunarSecret1Million,
+    text: "Fanbase support poster for Lunar Secret on the road to 1 million views.",
+    date: "2026",
+    artist: "Klaudia",
+    tags: ["Poster", "Lunar Secret", "Support"],
+  },
+  {
+    id: 20,
+    title: "Chasing Coffee with Ginny",
+    category: "Poster",
+    mediaType: "image",
+    image: chasingCoffeeGinny,
+    text: "Fanbase poster for Chasing Coffee meeting with Ginny.",
+    date: "20 June 2026",
+    artist: "Klaudia",
+    tags: ["Poster", "Ginny", "Coffee"],
+  },
+  {
+    id: 21,
+    title: "Ginny at Chloé",
+    category: "Poster",
+    mediaType: "image",
+    image: ginnyChloe,
+    text: "Fanbase poster for Ginny at Chloé Perfume Store.",
+    date: "13 May 2026",
+    artist: "Klaudia",
+    tags: ["Poster", "Ginny", "Chloé"],
+  },
+  {
+    id: 22,
+    title: "Heart-Fluttering Moments",
+    category: "Poster",
+    mediaType: "image",
+    image: heartFluttering521,
+    text: "Fanbase poster for GinJay heart-fluttering moments.",
+    date: "21 May 2026",
+    artist: "Klaudia",
+    tags: ["Poster", "GinJay", "Event"],
+  },
+  {
+    id: 23,
+    title: "Happy Day with Jayna",
+    category: "Poster",
+    mediaType: "image",
+    image: happyDayJayna,
+    text: "Fanbase poster for Happy Day with Jayna.",
+    date: "10 May 2026",
+    artist: "Klaudia",
+    tags: ["Poster", "Jayna", "Happy Day"],
+  },
+  {
+    id: 24,
+    title: "Lunar Whisper",
+    category: "Poster",
+    mediaType: "image",
+    image: lunarWhisperDiscount,
+    text: "Fanbase magazine-style poster for Lunar Whisper.",
+    date: "2026",
+    artist: "Klaudia",
+    tags: ["Poster", "Lunar Whisper", "Magazine"],
   },
 ];
