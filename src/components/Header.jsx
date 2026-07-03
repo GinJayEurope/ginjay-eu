@@ -8,6 +8,7 @@ const navItems = [
   { label: "Gallery", href: "#gallery", id: "gallery" },
   { label: "Timeline", href: "#timeline", id: "timeline" },
   { label: "Events", href: "#events", id: "events" },
+  { label: "Editorial", href: "#editorial", id: "editorial" },
 ];
 
 export default function Header({ darkMode, setDarkMode }) {

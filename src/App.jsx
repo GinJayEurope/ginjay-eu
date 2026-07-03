@@ -11,6 +11,7 @@ import About from "./components/About";
 import BackToTop from "./components/BackToTop";
 import Reveal from "./components/Reveal";
 import Artists from "./components/Artists";
+import Editorial from "./components/Editorial";
 
 export default function App() {
   const [darkMode, setDarkMode] = useState(false);
@@ -29,6 +30,7 @@ export default function App() {
         <Reveal><Gallery /></Reveal>
         <Reveal><Timeline /></Reveal>
         <Reveal><Events /></Reveal>
+        <Reveal><Editorial /></Reveal>
         <Footer />
       </main>
 
