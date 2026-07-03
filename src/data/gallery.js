@@ -3,12 +3,30 @@ import pool from "../assets/gallery/Pool.png";
 import power from "../assets/gallery/Power.PNG";
 import smile from "../assets/gallery/smilee_happy.png";
 
+import againstTheWall from "../assets/gallery/against-the-wall.jpg";
+import beach from "../assets/gallery/beach.jpg";
+import boss1 from "../assets/gallery/boss-1.png";
+import ginnyTheGoddess from "../assets/gallery/ginny-the-goddess.jpg";
+import happyGirls from "../assets/gallery/happy-girls.png";
+import yeah2 from "../assets/gallery/yeah-2.png";
+import raiseYourGlass from "../assets/gallery/raise-your-glass.jpg";
+import stareToHeaven from "../assets/gallery/stare-to-heaven.png";
+import pilotWallpaper from "../assets/gallery/pilot-wallpaper.png";
+import loveYou from "../assets/gallery/love-you.jpg";
+import kiss from "../assets/gallery/kiss.jpg";
+import jayAgainSig from "../assets/gallery/jay-again-sig.png";
+import poooOwer from "../assets/gallery/poooower.png";
+import oceanEyes from "../assets/gallery/ocean-eyes.jpg";
+import hollywoodJay from "../assets/gallery/hollywood-jay.jpg";
+import finalTalk from "../assets/gallery/final-talk.jpg";
+import dreamy from "../assets/gallery/dreamy.jpg";
+import dressShowOff from "../assets/gallery/dress-show-off.jpg";
+
 import kloseyJayna from "../assets/gallery/poster/klosey-jayna.jpg";
 import kazzMagazine from "../assets/gallery/poster/kazz-magazine.jpg";
 import kclAward from "../assets/gallery/poster/kcl-award-2026.png";
 import jaynaAward from "../assets/gallery/poster/jayna-award-2026.jpg";
 import loveGalaxy from "../assets/gallery/poster/love-galaxy.jpg";
-
 import fragrantDate from "../assets/gallery/poster/fragrant-date.jpg";
 import kazzAwardJayna from "../assets/gallery/poster/kazz-award-jayna.jpg";
 import kazzAwardGinny from "../assets/gallery/poster/kazz-award-ginny.jpg";
@@ -72,6 +90,205 @@ export const gallery = [
   },
   {
     id: 5,
+    title: "Against the Wall",
+    category: "Artworks",
+    mediaType: "image",
+    image: againstTheWall,
+    text: "An intimate poisonous love-inspired watercolor moment captured in a quiet embrace.",
+    date: "2026",
+    artist: "DaniCor",
+    tags: ["GinJay", "Romantic", "Watercolor"],
+  },
+  {
+    id: 6,
+    title: "Beach",
+    category: "Artworks",
+    mediaType: "image",
+    image: beach,
+    text: "A soft seaside poisonous love artwork filled with warmth, light, and closeness.",
+    date: "2026",
+    artist: "DaniCor",
+    tags: ["Beach", "GinJay", "Soft"],
+  },
+  {
+    id: 7,
+    title: "Boss",
+    category: "Artworks",
+    mediaType: "image",
+    image: boss1,
+    text: "A confident portrait artwork with bold watercolor textures and cinematic styling.",
+    date: "2026",
+    artist: "DaniCor",
+    tags: ["Portrait", "Elegant", "Watercolor"],
+  },
+  {
+    id: 8,
+    title: "Ginny the Goddess",
+    category: "Artworks",
+    mediaType: "image",
+    image: ginnyTheGoddess,
+    text: "A graceful full-body portrait artwork with dreamy light and flowing watercolor detail.",
+    date: "2026",
+    artist: "DaniCor",
+    tags: ["Ginny", "Portrait", "Elegant"],
+  },
+  {
+    id: 9,
+    title: "Happy Girls",
+    category: "Artworks",
+    mediaType: "image",
+    image: happyGirls,
+    text: "A joyful GinJay-inspired portrait celebrating love, softness, and summer light.",
+    date: "2026",
+    artist: "DaniCor",
+    tags: ["GinJay", "Happy", "Portrait"],
+  },
+  {
+    id: 10,
+    title: "Yeah",
+    category: "Artworks",
+    mediaType: "image",
+    image: yeah2,
+    text: "A playful portrait artwork with a bright expression and pastel watercolor atmosphere.",
+    date: "2026",
+    artist: "DaniCor",
+    tags: ["Portrait", "Playful", "Pastel"],
+  },
+  {
+    id: 11,
+    title: "Raise Your Glass",
+    category: "Artworks",
+    mediaType: "image",
+    image: raiseYourGlass,
+    text: "A celebratory artwork full of vibrant color, movement, and joyful energy.",
+    date: "2026",
+    artist: "DaniCor",
+    tags: ["Celebration", "Party", "Vibrant"],
+  },
+  {
+    id: 12,
+    title: "Stare to Heaven",
+    category: "Artworks",
+    mediaType: "image",
+    image: stareToHeaven,
+    text: "A gentle portrait artwork with floral foregrounds and a dreamy, luminous atmosphere.",
+    date: "2026",
+    artist: "DaniCor",
+    tags: ["Portrait", "Dreamy", "Floral"],
+  },
+  {
+    id: 13,
+    title: "Pilot Wallpaper",
+    category: "Artworks",
+    mediaType: "image",
+    image: pilotWallpaper,
+    text: "A cinematic Lunar Secret inspired poster-style artwork with dramatic tension and color.",
+    date: "2026",
+    artist: "DaniCor",
+    tags: ["Lunar Secret", "Poster Style", "Drama"],
+  },
+  {
+    id: 14,
+    title: "Love You",
+    category: "Artworks",
+    mediaType: "image",
+    image: loveYou,
+    text: "A warm GinJay portrait artwork with a soft, affectionate and uplifting mood.",
+    date: "2026",
+    artist: "DaniCor",
+    tags: ["GinJay", "Love", "Portrait"],
+  },
+  {
+    id: 15,
+    title: "Kiss",
+    category: "Artworks",
+    mediaType: "image",
+    image: kiss,
+    text: "A dramatic poisonous love-inspired kiss artwork painted with glowing cinematic contrast.",
+    date: "2026",
+    artist: "DaniCor",
+    tags: ["GinJay", "Kiss", "Dramatic"],
+  },
+  {
+    id: 16,
+    title: "Jay Again",
+    category: "Artworks",
+    mediaType: "image",
+    image: jayAgainSig,
+    text: "A bright and elegant portrait artwork with soft watercolor layers and a poised expression.",
+    date: "2026",
+    artist: "DaniCor",
+    tags: ["Jayna", "Portrait", "Elegant"],
+  },
+  {
+    id: 17,
+    title: "PoooOwer",
+    category: "Artworks",
+    mediaType: "image",
+    image: poooOwer,
+    text: "A bold GinJay-inspired artwork centered on chemistry, contrast, and visual intensity.",
+    date: "2026",
+    artist: "DaniCor",
+    tags: ["GinJay", "Power", "Intensity"],
+  },
+  {
+    id: 18,
+    title: "Ocean Eyes",
+    category: "Artworks",
+    mediaType: "image",
+    image: oceanEyes,
+    text: "A close-up artwork with sunlit tones, ocean softness, and delicate warmth.",
+    date: "2026",
+    artist: "DaniCor",
+    tags: ["GinJay", "Ocean", "Portrait"],
+  },
+  {
+    id: 19,
+    title: "Hollywood Jay",
+    category: "Artworks",
+    mediaType: "image",
+    image: hollywoodJay,
+    text: "A glamorous portrait artwork with a confident pose and dreamy pastel watercolor backdrop.",
+    date: "2026",
+    artist: "DaniCor",
+    tags: ["Jayna", "Portrait", "Glamour"],
+  },
+  {
+    id: 20,
+    title: "Final Talk",
+    category: "Artworks",
+    mediaType: "image",
+    image: finalTalk,
+    text: "A soft and intimate GinJay artwork capturing closeness in a calm watercolor scene.",
+    date: "2026",
+    artist: "DaniCor",
+    tags: ["GinJay", "Soft", "Moment"],
+  },
+  {
+    id: 21,
+    title: "Dreamy",
+    category: "Artworks",
+    mediaType: "image",
+    image: dreamy,
+    text: "A pastel GinJay-inspired fantasy artwork with soft light, romance, and dreamlike color.",
+    date: "2026",
+    artist: "DaniCor",
+    tags: ["Dreamy", "GinJay", "Pastel"],
+  },
+  {
+    id: 22,
+    title: "Dress Show Off",
+    category: "Artworks",
+    mediaType: "image",
+    image: dressShowOff,
+    text: "An elegant full-body portrait artwork focused on fashion, grace, and soft watercolor texture.",
+    date: "2026",
+    artist: "DaniCor",
+    tags: ["Fashion", "Elegant", "Portrait"],
+  },
+
+  {
+    id: 23,
     title: "Kloset Academy",
     category: "Poster",
     mediaType: "image",
@@ -82,7 +299,7 @@ export const gallery = [
     tags: ["Poster", "Jayna", "Kloset"],
   },
   {
-    id: 6,
+    id: 24,
     title: "KAZZ Magazine",
     category: "Poster",
     mediaType: "image",
@@ -93,7 +310,7 @@ export const gallery = [
     tags: ["Poster", "Magazine", "GinJay"],
   },
   {
-    id: 7,
+    id: 25,
     title: "KCL Award 2026",
     category: "Poster",
     mediaType: "image",
@@ -104,7 +321,7 @@ export const gallery = [
     tags: ["Poster", "Award", "KCL"],
   },
   {
-    id: 8,
+    id: 26,
     title: "Jayna Award",
     category: "Poster",
     mediaType: "image",
@@ -115,7 +332,7 @@ export const gallery = [
     tags: ["Poster", "Jayna", "Award"],
   },
   {
-    id: 9,
+    id: 27,
     title: "Love Galaxy",
     category: "Poster",
     mediaType: "image",
@@ -126,7 +343,7 @@ export const gallery = [
     tags: ["Poster", "Love Galaxy", "Pride"],
   },
   {
-    id: 10,
+    id: 28,
     title: "A Fragrant Date With You",
     category: "Poster",
     mediaType: "image",
@@ -137,7 +354,7 @@ export const gallery = [
     tags: ["Poster", "GinJay", "Live Stream"],
   },
   {
-    id: 11,
+    id: 29,
     title: "KAZZ Award Jayna",
     category: "Poster",
     mediaType: "image",
@@ -148,7 +365,7 @@ export const gallery = [
     tags: ["Poster", "Jayna", "Award"],
   },
   {
-    id: 12,
+    id: 30,
     title: "KAZZ Award Ginny",
     category: "Poster",
     mediaType: "image",
@@ -159,7 +376,7 @@ export const gallery = [
     tags: ["Poster", "Ginny", "Award"],
   },
   {
-    id: 13,
+    id: 31,
     title: "Pride Month",
     category: "Poster",
     mediaType: "image",
@@ -170,7 +387,7 @@ export const gallery = [
     tags: ["Poster", "Pride", "Event"],
   },
   {
-    id: 14,
+    id: 32,
     title: "Dinner Date with Ginny",
     category: "Poster",
     mediaType: "image",
@@ -181,7 +398,7 @@ export const gallery = [
     tags: ["Poster", "Ginny", "Dinner Date"],
   },
   {
-    id: 15,
+    id: 33,
     title: "GinJay x Teayii’s Talk",
     category: "Poster",
     mediaType: "image",
@@ -192,7 +409,7 @@ export const gallery = [
     tags: ["Poster", "GinJay", "Talk Show"],
   },
   {
-    id: 16,
+    id: 34,
     title: "Fresh Moments with Jayna",
     category: "Poster",
     mediaType: "image",
@@ -203,7 +420,7 @@ export const gallery = [
     tags: ["Poster", "Jayna", "Fresh Moments"],
   },
   {
-    id: 17,
+    id: 35,
     title: "Ginny 500K Followers",
     category: "Poster",
     mediaType: "image",
@@ -214,7 +431,7 @@ export const gallery = [
     tags: ["Poster", "Ginny", "Milestone"],
   },
   {
-    id: 18,
+    id: 36,
     title: "Alkeys, Let’s Support",
     category: "Poster",
     mediaType: "image",
@@ -225,7 +442,7 @@ export const gallery = [
     tags: ["Poster", "Community", "Support"],
   },
   {
-    id: 19,
+    id: 37,
     title: "Lunar Secret Road to 1 Million",
     category: "Poster",
     mediaType: "image",
@@ -236,7 +453,7 @@ export const gallery = [
     tags: ["Poster", "Lunar Secret", "Support"],
   },
   {
-    id: 20,
+    id: 38,
     title: "Chasing Coffee with Ginny",
     category: "Poster",
     mediaType: "image",
@@ -247,7 +464,7 @@ export const gallery = [
     tags: ["Poster", "Ginny", "Coffee"],
   },
   {
-    id: 21,
+    id: 39,
     title: "Ginny at Chloé",
     category: "Poster",
     mediaType: "image",
@@ -258,7 +475,7 @@ export const gallery = [
     tags: ["Poster", "Ginny", "Chloé"],
   },
   {
-    id: 22,
+    id: 40,
     title: "Heart-Fluttering Moments",
     category: "Poster",
     mediaType: "image",
@@ -269,7 +486,7 @@ export const gallery = [
     tags: ["Poster", "GinJay", "Event"],
   },
   {
-    id: 23,
+    id: 41,
     title: "Happy Day with Jayna",
     category: "Poster",
     mediaType: "image",
@@ -280,7 +497,7 @@ export const gallery = [
     tags: ["Poster", "Jayna", "Happy Day"],
   },
   {
-    id: 24,
+    id: 42,
     title: "Lunar Whisper",
     category: "Poster",
     mediaType: "image",
