@@ -3733,3 +3733,66 @@ nav a.active::after {
     grid-template-columns: 1fr;
   }
 }
+/* =========================
+   GALLERY GIF DOWNLOADS
+========================= */
+
+.gif-card {
+  position: relative;
+}
+
+.gif-badge {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  z-index: 3;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.45rem 0.8rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.92);
+  color: var(--color-primary);
+  font-size: 0.78rem;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  box-shadow: var(--shadow-soft);
+}
+
+.gif-download-button {
+  margin-top: 1.2rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: fit-content;
+  padding: 0.8rem 1.15rem;
+  border-radius: 999px;
+  text-decoration: none;
+  background: var(--color-primary);
+  color: white;
+  font-weight: 900;
+  box-shadow: var(--shadow-soft);
+  transition: 0.25s ease;
+}
+
+.gif-download-button:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-hover);
+  color: white;
+}
+
+.lightbox-download {
+  margin: 1.4rem auto 0;
+}
+
+.app.dark .gif-badge,
+.app.dark .gif-download-button {
+  background: var(--dark-button-bg) !important;
+  color: var(--dark-button-text) !important;
+  border: 1px solid var(--dark-button-border) !important;
+  box-shadow: var(--dark-button-shadow) !important;
+}
+
+.app.dark .gif-download-button:hover {
+  background: var(--dark-button-bg-hover) !important;
+}
