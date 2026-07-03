@@ -1,7 +1,10 @@
+import { useState } from "react";
 import ginnyImage from "../assets/artists/Ginny.jpg";
 import jaynaImage from "../assets/artists/Jayna.jpg";
 
 export default function Artists() {
+  const [openArtistId, setOpenArtistId] = useState(null);
+
   const northStarYoutube = "https://www.youtube.com/@northstar_ent";
 
   const artists = [
@@ -19,6 +22,17 @@ export default function Artists() {
       character: "Prem",
       image: ginnyImage,
       bio: "Known for her role as Prem in Poisonous Love, Ginny is one half of the GinJay pairing and is signed under North Star Entertainment.",
+      extraInfo: [
+        ["Favorite Color", "Pastel purple"],
+        ["Favorite Item Colors", "White, black, beige, earth tones"],
+        ["Favorite Food", "Egg dishes"],
+        ["Favorite Animals", "Dogs, cats"],
+        ["Favorite Pet", "Alpaca"],
+        ["Favorite Flower", "White rose"],
+        ["Favorite Fruit", "Strawberry"],
+        ["Allergic To", "Shrimp"],
+        ["Freetime", "Gym, reading, boxing"],
+      ],
       socials: {
         x: "https://x.com/ginnynatnicha",
         instagram: "https://www.instagram.com/ginnynatnicha/",
@@ -40,6 +54,17 @@ export default function Artists() {
       character: "Pat",
       image: jaynaImage,
       bio: "Known for her role as Pat in Poisonous Love, Jayna is one half of the GinJay pairing and is signed under North Star Entertainment.",
+      extraInfo: [
+        ["Favorite Color", "Yellow"],
+        ["Favorite Item Colors", "White, black, grey"],
+        ["Favorite Food", "Somtam"],
+        ["Favorite Animals", "Dogs"],
+        ["Favorite Pet", "Monkey"],
+        ["Favorite Flower", "Pastel colored flowers"],
+        ["Favorite Fruit", "Pear, mango, cantaloupe, rose apple"],
+        ["Allergic To", "None"],
+        ["Freetime", "Sleeping"],
+      ],
       socials: {
         x: "https://x.com/j_jayyna",
         instagram: "https://www.instagram.com/aangelinaa.ss/",
@@ -63,108 +88,121 @@ export default function Artists() {
       </div>
 
       <div className="artists-grid">
-        {artists.map((artist) => (
-          <article className="artist-card" key={artist.id}>
-            <img
-              src={artist.image}
-              alt={artist.stageName}
-              className="artist-image"
-            />
+        {artists.map((artist) => {
+          const isOpen = openArtistId === artist.id;
 
-            <div className="artist-content">
-              <span className="artist-role">Actress</span>
+          return (
+            <article className="artist-card" key={artist.id}>
+              <img
+                src={artist.image}
+                alt={artist.stageName}
+                className="artist-image"
+              />
 
-              <h3>{artist.stageName}</h3>
-              <p className="artist-fullname">{artist.fullName}</p>
+              <div className="artist-content">
+                <span className="artist-role">Actress</span>
 
-              <p className="artist-bio">{artist.bio}</p>
+                <h3>{artist.stageName}</h3>
+                <p className="artist-fullname">{artist.fullName}</p>
 
-              <div className="artist-info-grid">
-                <div>
-                  <strong>Native Name</strong>
-                  <span>{artist.nativeName}</span>
-                </div>
+                <p className="artist-bio">{artist.bio}</p>
 
-                <div>
-                  <strong>Nationality</strong>
-                  <span>{artist.nationality}</span>
-                </div>
-
-                <div>
-                  <strong>Born</strong>
-                  <span>{artist.born}</span>
-                </div>
-
-                <div>
-                  <strong>Age</strong>
-                  <span>{artist.age}</span>
-                </div>
-
-                <div>
-                  <strong>Height</strong>
-                  <span>{artist.height}</span>
-                </div>
-
-                <div>
-                  <strong>Agency</strong>
-                  <span>{artist.agency}</span>
-                </div>
-
-                <div>
-                  <strong>Known For</strong>
-                  <span>{artist.knownFor}</span>
-                </div>
-
-                <div>
-                  <strong>Character</strong>
-                  <span>{artist.character}</span>
-                </div>
-
-                {artist.alsoKnownAs && (
+                <div className="artist-info-grid">
                   <div>
-                    <strong>Also Known As</strong>
-                    <span>{artist.alsoKnownAs}</span>
+                    <strong>Native Name</strong>
+                    <span>{artist.nativeName}</span>
                   </div>
-                )}
-              </div>
 
-              <div className="artist-socials">
-                <a href={artist.socials.x} target="_blank" rel="noreferrer">
-                  X
-                </a>
+                  <div>
+                    <strong>Nationality</strong>
+                    <span>{artist.nationality}</span>
+                  </div>
+
+                  <div>
+                    <strong>Born</strong>
+                    <span>{artist.born}</span>
+                  </div>
+
+                  <div>
+                    <strong>Age</strong>
+                    <span>{artist.age}</span>
+                  </div>
+
+                  <div>
+                    <strong>Height</strong>
+                    <span>{artist.height}</span>
+                  </div>
+
+                  <div>
+                    <strong>Agency</strong>
+                    <span>{artist.agency}</span>
+                  </div>
+
+                  <div>
+                    <strong>Known For</strong>
+                    <span>{artist.knownFor}</span>
+                  </div>
+
+                  <div>
+                    <strong>Character</strong>
+                    <span>{artist.character}</span>
+                  </div>
+
+                  {isOpen &&
+                    artist.extraInfo.map(([label, value]) => (
+                      <div key={label}>
+                        <strong>{label}</strong>
+                        <span>{value}</span>
+                      </div>
+                    ))}
+                </div>
+
+                <button
+                  type="button"
+                  className="artist-read-more-button"
+                  onClick={() => setOpenArtistId(isOpen ? null : artist.id)}
+                >
+                  {isOpen ? "Show less" : "Read more"}
+                </button>
+
+                <div className="artist-socials">
+                  <a href={artist.socials.x} target="_blank" rel="noreferrer">
+                    X
+                  </a>
+
+                  <a
+                    href={artist.socials.instagram}
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    Instagram
+                  </a>
+
+                  <a
+                    href={artist.socials.tiktok}
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    TikTok
+                  </a>
+
+                  <a href={artist.socials.weibo} target="_blank" rel="noreferrer">
+                    Weibo
+                  </a>
+                </div>
 
                 <a
-                  href={artist.socials.instagram}
+                  href={northStarYoutube}
                   target="_blank"
                   rel="noreferrer"
+                  className="artist-watch-button"
                 >
-                  Instagram
-                </a>
-
-                <a
-                  href={artist.socials.tiktok}
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  TikTok
-                </a>
-
-                <a href={artist.socials.weibo} target="_blank" rel="noreferrer">
-                  Weibo
+                  Watch Poisonous Love on North Star →
                 </a>
               </div>
-
-              <a
-                href={northStarYoutube}
-                target="_blank"
-                rel="noreferrer"
-                className="artist-watch-button"
-              >
-                Watch Poisonous Love on North Star →
-              </a>
-            </div>
-          </article>
-        ))}
+            </article>
+          );
+        })}
       </div>
     </section>
   );

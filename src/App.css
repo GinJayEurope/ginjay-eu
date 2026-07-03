@@ -3651,3 +3651,7 @@ nav a.active::after {
     border: 1px solid var(--color-border);
   }
 }
+.artist-read-more-button {
+  margin: 1.2rem auto 0;
+  display: inline-flex;
+}
