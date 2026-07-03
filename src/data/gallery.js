@@ -610,7 +610,7 @@ export const gallery = [
     text: "Let's flirt with the camera.",
     date: "2026",
     artist: "Juste",
-    tags: ["Gif", "Jayna", "Soft"],
+    tags: ["Gif", "Ginny", "Soft"],
   },
   {
     id: 50,
@@ -694,7 +694,7 @@ export const gallery = [
     text: "Pat the danger herself.",
     date: "2026",
     artist: "Juste",
-    tags: ["Gif", "Lunar Secret", "Drama"],
+    tags: ["Gif", "Poisonous Love", "Drama"],
   },
   {
     id: 57,
@@ -706,7 +706,7 @@ export const gallery = [
     text: "the spark is there.",
     date: "2026",
     artist: "Juste",
-    tags: ["Gif", "Lunar Secret", "Romantic"],
+    tags: ["Gif", "Poisonous Love", "Romantic"],
   },
   {
     id: 58,
@@ -718,7 +718,7 @@ export const gallery = [
     text: "Pat the great protector!",
     date: "2026",
     artist: "Juste",
-    tags: ["Gif", "Romantic", "Detail"],
+    tags: ["Gif", "Poisonous Love", "Detail"],
   },
   {
     id: 59,
@@ -730,7 +730,7 @@ export const gallery = [
     text: "even hands can have chemistry.",
     date: "2026",
     artist: "Juste",
-    tags: ["Gif", "Soft", "Detail"],
+    tags: ["Gif", "Poisonous Love", "Detail"],
   },
   {
     id: 60,
@@ -742,7 +742,7 @@ export const gallery = [
     text: "the wall kiss.",
     date: "2026",
     artist: "Juste",
-    tags: ["Gif", "GinJay", "Kiss"],
+    tags: ["Gif", "Poisonous Love", "Kiss"],
   },
   {
     id: 61,
@@ -754,7 +754,7 @@ export const gallery = [
     text: "... can make you mine.",
     date: "2026",
     artist: "Juste",
-    tags: ["Gif", "Stage", "Chemistry"],
+    tags: ["Gif", "Poisonous Love", "Chemistry"],
   },
   {
     id: 62,
@@ -766,6 +766,6 @@ export const gallery = [
     text: "Prem finally knows her heart.",
     date: "2026",
     artist: "Juste",
-    tags: ["Gif", "Romantic", "Scene"],
+    tags: ["Gif", "Poisonous Love", "Scene"],
   },
   ];
