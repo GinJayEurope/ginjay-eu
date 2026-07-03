@@ -8,7 +8,10 @@ export default function Gallery() {
   const [visibleCount, setVisibleCount] = useState(6);
 
   const categories = ["All", "Poster", "Artworks", "Fanedits", "Gifs"];
-  const featuredArtwork = gallery[0];
+  const FEATURED_ARTWORK_ID = 13;
+
+const featuredArtwork =
+  gallery.find((item) => Number(item.id) === FEATURED_ARTWORK_ID) || gallery[0];
 
   const filteredGallery = gallery.filter((item) => {
     const search = searchTerm.toLowerCase();
