@@ -3,9 +3,17 @@ import ginnyImage from "../assets/artists/Ginny.jpg";
 import jaynaImage from "../assets/artists/Jayna.jpg";
 
 export default function Artists() {
-  const [openArtistId, setOpenArtistId] = useState(null);
+  const [openArtistIds, setOpenArtistIds] = useState([]);
 
   const northStarYoutube = "https://www.youtube.com/@northstar_ent";
+
+  function toggleArtist(artistId) {
+    setOpenArtistIds((currentOpenIds) =>
+      currentOpenIds.includes(artistId)
+        ? currentOpenIds.filter((id) => id !== artistId)
+        : [...currentOpenIds, artistId]
+    );
+  }
 
   const artists = [
     {
@@ -89,7 +97,7 @@ export default function Artists() {
 
       <div className="artists-grid">
         {artists.map((artist) => {
-          const isOpen = openArtistId === artist.id;
+          const isOpen = openArtistIds.includes(artist.id);
 
           return (
             <article className="artist-card" key={artist.id}>
@@ -160,7 +168,7 @@ export default function Artists() {
                 <button
                   type="button"
                   className="artist-read-more-button"
-                  onClick={() => setOpenArtistId(isOpen ? null : artist.id)}
+                  onClick={() => toggleArtist(artist.id)}
                 >
                   {isOpen ? "Show less" : "Read more"}
                 </button>
