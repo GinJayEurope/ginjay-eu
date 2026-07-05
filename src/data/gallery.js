@@ -64,6 +64,17 @@ import gifUntitled72 from "../assets/gallery/gifs/Untitled-72.gif";
 import gifUntitled92 from "../assets/gallery/gifs/Untitled-92.gif";
 import gifUntitled93 from "../assets/gallery/gifs/Untitled-93.gif";
 
+import breeMinions from "../assets/gallery/bree/Picsart_26-04-21_08-09-29-095.png";
+import breeCubeGinny from "../assets/gallery/bree/Picsart_26-05-06_18-29-54-513.jpg";
+import breeCubeJayna from "../assets/gallery/bree/Picsart_26-05-07_09-16-45-647.jpg";
+import breeCityJayna from "../assets/gallery/bree/Picsart_26-05-11_06-10-25-327.jpg";
+import breePurpleGinny from "../assets/gallery/bree/Picsart_26-05-25_12-19-00-465.png";
+import breeGinJayPolaroid from "../assets/gallery/bree/Picsart_26-06-12_07-57-55-734.jpg";
+import breeUrbanGinny from "../assets/gallery/bree/Picsart_26-06-13_14-28-00-037.jpg";
+import breeOrangeJayna from "../assets/gallery/bree/Picsart_26-06-13_14-30-28-431.jpg";
+import breeHighNote from "../assets/gallery/bree/Picsart_26-06-13_14-44-29-451.jpg";
+import breeThePassJayna from "../assets/gallery/bree/Picsart_26-06-20_00-21-19-195.png";
+
 export const gallery = [
   {
     id: 1,
@@ -767,5 +778,115 @@ export const gallery = [
     date: "2026",
     artist: "Juste",
     tags: ["Gif", "Poisonous Love", "Scene"],
+  },
+    {
+    id: 63,
+    title: "Minions Adventure",
+    category: "Artworks",
+    mediaType: "image",
+    image: breeMinions,
+    text: "A waterpark GinJay edit with Minions-inspired theme.",
+    date: "2026",
+    artist: "BreE",
+    tags: ["GinJay", "Fun", "Edit"],
+  },
+  {
+    id: 64,
+    title: "Blue Cube Ginny",
+    category: "Artworks",
+    mediaType: "image",
+    image: breeCubeGinny,
+    text: "A stylish Ginny artwork with a blue cube projection aesthetic.",
+    date: "2026",
+    artist: "BreE",
+    tags: ["Ginny", "Blue", "Portrait"],
+  },
+  {
+    id: 65,
+    title: "Blue Cube Jayna",
+    category: "Artworks",
+    mediaType: "image",
+    image: breeCubeJayna,
+    text: "A stylish Jayna artwork with a blue cube projection aesthetic.",
+    date: "2026",
+    artist: "BreE",
+    tags: ["Jayna", "Blue", "Portrait"],
+  },
+  {
+    id: 66,
+    title: "City Reflection",
+    category: "Artworks",
+    mediaType: "image",
+    image: breeCityJayna,
+    text: "A cyberpunk city lights, shadows and reflective mood cool Ginny.",
+    date: "2026",
+    artist: "BreE",
+    tags: ["Ginny", "City", "Dramatic"],
+  },
+  {
+    id: 67,
+    title: "Purple Ginny",
+    category: "Artworks",
+    mediaType: "image",
+    image: breePurpleGinny,
+    text: "A soft purple Ginny artwork with dreamy textures and delicate details.",
+    date: "2026",
+    artist: "BreE",
+    tags: ["Ginny", "Purple", "Soft"],
+  },
+  {
+    id: 68,
+    title: "GinJay Polaroid",
+    category: "Artworks",
+    mediaType: "image",
+    image: breeGinJayPolaroid,
+    text: "A sweet GinJay polaroid-style artwork with soft white brush textures.",
+    date: "2026",
+    artist: "BreE",
+    tags: ["GinJay", "Polaroid", "Soft"],
+  },
+  {
+    id: 69,
+    title: "Urban Ginny",
+    category: "Artworks",
+    mediaType: "image",
+    image: breeUrbanGinny,
+    text: "A bold urban Ginny artwork with strong blue and pink poster styling.",
+    date: "2026",
+    artist: "BreE",
+    tags: ["Ginny", "Urban", "Poster Style"],
+  },
+  {
+    id: 70,
+    title: "Orange Summer Jayna",
+    category: "Artworks",
+    mediaType: "image",
+    image: breeOrangeJayna,
+    text: "A sunny Jayna artwork with oranges, palms and a bright summer feeling.",
+    date: "2026",
+    artist: "BreE",
+    tags: ["Jayna", "Summer", "Orange"],
+  },
+  {
+    id: 71,
+    title: "High Note",
+    category: "Artworks",
+    mediaType: "image",
+    image: breeHighNote,
+    text: "A soft GinJay artwork with warm tones, notes and a close shared moment.",
+    date: "2026",
+    artist: "BreE",
+    tags: ["GinJay", "Soft", "Moment"],
+  },
+  {
+    id: 72,
+    title: "The Pass",
+    category: "Artworks",
+    mediaType: "image",
+    image: breeThePassJayna,
+    text: "A playful Jayna pass-card artwork with a clean editorial layout.",
+    date: "2026",
+    artist: "BreE",
+    tags: ["Jayna", "Edit", "Playful"],
   },
   ];
