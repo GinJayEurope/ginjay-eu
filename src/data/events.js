@@ -31,12 +31,25 @@ export const monthlyEvents = {
     },
     {
       id: 3,
+      date: "21 July",
+      title: "A Summer Evening at DG Caffè Bangkok",
+      artist: "Ginny",
+      type: "Private event",
+      location: "DG Caffè Bangkok, Floor 1, Siam Paragon",
+      time: "13:00 CEST",
+      details: [
+        "Registered attendees only",
+        "No public cheering area announced",
+      ],
+    },
+    {
+      id: 4,
       date: "23 July",
       title: "Thailand Y Content Awards 2025",
       artist: "Ginny & Jayna",
       type: "Public event",
       location: "MCC Hall, The Mall Lifestore Bangkapi",
-      time: "TBC",
+      time: "12:00 CEST",
       details: [
         "Fans may cheer throughout the event",
         "Limited space",
@@ -44,7 +57,7 @@ export const monthlyEvents = {
       ],
     },
     {
-      id: 4,
+      id: 5,
       date: "26 July",
       title: "Royal Scoop with Jayna",
       artist: "Jayna",
