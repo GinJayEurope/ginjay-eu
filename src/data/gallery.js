@@ -42,6 +42,9 @@ import ginnyChloe from "../assets/gallery/poster/ginny-chloe.jpg";
 import heartFluttering521 from "../assets/gallery/poster/heart-fluttering-521.jpg";
 import happyDayJayna from "../assets/gallery/poster/happy-day-jayna.jpg";
 import lunarWhisperDiscount from "../assets/gallery/poster/lunar-whisper-discount.jpg";
+import ginnyRoadTo500k from "../assets/gallery/poster/ginny-road-to-500k.jpg";
+import jaynaRoadTo400k from "../assets/gallery/poster/jayna-road-to-400k.jpg";
+import starfocusFollow from "../assets/gallery/poster/starfocus-support-follow.jpg";
 
 import gif1 from "../assets/gallery/gifs/1.gif";
 import gif2 from "../assets/gallery/gifs/2.gif";
@@ -889,4 +892,37 @@ export const gallery = [
     artist: "BreE",
     tags: ["Jayna", "Edit", "Playful"],
   },
-  ];
+  {
+  id: 73,
+  title: "Ginny 500K Followers",
+  category: "Poster",
+  mediaType: "image",
+  image: ginnyRoadTo500k,
+  text: "Road to 500K Instagram followers. Every follow helps Ginny reach this milestone.",
+  date: "July 2026",
+  artist: "Klaudia",
+  tags: ["Poster", "Ginny", "Instagram", "500K"],
+},
+{
+  id: 74,
+  title: "Jayna 400K Followers",
+  category: "Poster",
+  mediaType: "image",
+  image: jaynaRoadTo400k,
+  text: "Road to 400K Instagram followers. Every follow helps Jayna reach this milestone.",
+  date: "July 2026",
+  artist: "Klaudia",
+  tags: ["Poster", "Jayna", "Instagram", "400K"],
+},
+{
+  id: 75,
+  title: "StarFocus Fan Choice Award",
+  category: "Poster",
+  mediaType: "image",
+  image: starfocusFollow,
+  text: "Support Ginny & Jayna in the StarFocus Fan Choice Couple Award 2026.",
+  date: "July 2026",
+  artist: "Klaudia",
+  tags: ["Poster", "StarFocus", "Award", "Voting"],
+},
+];
