@@ -45,6 +45,9 @@ import lunarWhisperDiscount from "../assets/gallery/poster/lunar-whisper-discoun
 import ginnyRoadTo500k from "../assets/gallery/poster/ginny-road-to-500k.jpg";
 import jaynaRoadTo400k from "../assets/gallery/poster/jayna-road-to-400k.jpg";
 import starfocusFollow from "../assets/gallery/poster/starfocus-support-follow.jpg";
+import ginjayYawards from "../assets/gallery/poster/ginjay-yawards.jpg";
+import ginnySummerCoffee from "../assets/gallery/poster/ginny-summer-coffee.jpg";
+import jaynaIcecream from "../assets/gallery/poster/jayna-icecream.jpg";
 
 import gif1 from "../assets/gallery/gifs/1.gif";
 import gif2 from "../assets/gallery/gifs/2.gif";
@@ -77,6 +80,22 @@ import breeUrbanGinny from "../assets/gallery/bree/Picsart_26-06-13_14-28-00-037
 import breeOrangeJayna from "../assets/gallery/bree/Picsart_26-06-13_14-30-28-431.jpg";
 import breeHighNote from "../assets/gallery/bree/Picsart_26-06-13_14-44-29-451.jpg";
 import breeThePassJayna from "../assets/gallery/bree/Picsart_26-06-20_00-21-19-195.png";
+import breeHeartRainySeason from "../assets/gallery/bree/heart-in-rainy-season.jpg";
+import breeGinnyQueen from "../assets/gallery/bree/ginny-queen.jpg";
+import daniGinnyIdol3 from "../assets/gallery/ginny-idol-3.png";
+import daniLookAtGinny from "../assets/gallery/look-at-ginny.png";
+import daniPoisonousLoveKiss from "../assets/gallery/poisonous-love-kiss.png";
+import daniPoisonousLovePool from "../assets/gallery/poisonous-love-pool.png";
+import daniPoisonousLoveSit from "../assets/gallery/poisonous-love-sit.png";
+import daniJaynaLookOver from "../assets/gallery/jayna-look-over.jpg";
+import daniLoveShouldBeFun from "../assets/gallery/love-should-be-fun.png";
+import daniLunarKissEnd from "../assets/gallery/lunar-kiss-end.png";
+import daniPawida from "../assets/gallery/pawida.png";
+import daniRachel from "../assets/gallery/rachel.png";
+import daniStare from "../assets/gallery/stare.png";
+import daniStunning from "../assets/gallery/stunning.jpg";
+import daniTheDress from "../assets/gallery/the-dress.jpg";
+import daniGinnyIdol1 from "../assets/gallery/ginny-idol-1.png";
 
 export const gallery = [
   {
@@ -925,4 +944,214 @@ export const gallery = [
   artist: "Klaudia",
   tags: ["Poster", "StarFocus", "Award", "Voting"],
 },
+
+  {
+    id: 76,
+    title: "Ginny & Jayna Y Content Awards 2025",
+    category: "Poster",
+    mediaType: "image",
+    image: ginjayYawards,
+    text: "GinJay Europe event poster for Ginny and Jayna at the Y Content Awards 2025.",
+    date: "23 July 2026",
+    artist: "Klaudia",
+    tags: ["Poster", "GinJay", "Y Content Awards", "Event"],
+  },
+  {
+    id: 77,
+    title: "A Summer Evening at DG Caffè",
+    category: "Poster",
+    mediaType: "image",
+    image: ginnySummerCoffee,
+    text: "GinJay Europe event poster for Ginny at DG Caffè Bangkok.",
+    date: "21 July 2026",
+    artist: "Klaudia",
+    tags: ["Poster", "Ginny", "DG Caffè", "Event"],
+  },
+  {
+    id: 78,
+    title: "Royal Scoop Ice Cream",
+    category: "Poster",
+    mediaType: "image",
+    image: jaynaIcecream,
+    text: "GinJay Europe event poster for Jayna and Scoopyfly.",
+    date: "26 July 2026",
+    artist: "Klaudia",
+    tags: ["Poster", "Jayna", "Scoopyfly", "Event"],
+  },
+  {
+    id: 79,
+    title: "Heart in Rainy Season",
+    category: "Artworks",
+    mediaType: "image",
+    image: breeHeartRainySeason,
+    text: "A dreamy collage artwork with floral details, ocean textures and a stormy atmosphere.",
+    date: "2026",
+    artist: "BreE",
+    tags: ["Jayna", "Collage", "Rainy Season"],
+  },
+  {
+    id: 80,
+    title: "Ginny Queen",
+    category: "Artworks",
+    mediaType: "image",
+    image: breeGinnyQueen,
+    text: "A layered portrait collage with warm rose tones and a regal visual mood.",
+    date: "2026",
+    artist: "BreE",
+    tags: ["Ginny", "Collage", "Portrait"],
+  },
+  {
+    id: 81,
+    title: "Ginny Idol Portrait",
+    category: "Artworks",
+    mediaType: "image",
+    image: daniGinnyIdol3,
+    text: "A painterly Ginny portrait with warm light, deep navy tones and expressive brushwork.",
+    date: "2026",
+    artist: "DaniCor",
+    tags: ["Ginny", "Portrait", "Painterly"],
+  },
+  {
+    id: 82,
+    title: "Look at Ginny",
+    category: "Artworks",
+    mediaType: "image",
+    image: daniLookAtGinny,
+    text: "A soft watercolor portrait celebrating Jayna’s bright and elegant expression.",
+    date: "2026",
+    artist: "DaniCor",
+    tags: ["Jayna", "Portrait", "Watercolor"],
+  },
+  {
+    id: 83,
+    title: "Poisonous Love Kiss",
+    category: "Artworks",
+    mediaType: "image",
+    image: daniPoisonousLoveKiss,
+    text: "A close and romantic Poisonous Love-inspired kiss captured in vivid painterly color.",
+    date: "2026",
+    artist: "DaniCor",
+    tags: ["Poisonous Love", "Kiss", "GinJay"],
+  },
+  {
+    id: 84,
+    title: "Poisonous Love Pool",
+    category: "Artworks",
+    mediaType: "image",
+    image: daniPoisonousLovePool,
+    text: "A warm watercolor pool scene inspired by the closeness and chemistry of Poisonous Love.",
+    date: "2026",
+    artist: "DaniCor",
+    tags: ["Poisonous Love", "Pool", "GinJay"],
+  },
+  {
+    id: 85,
+    title: "Poisonous Love Sit",
+    category: "Artworks",
+    mediaType: "image",
+    image: daniPoisonousLoveSit,
+    text: "An intimate seated portrait with dramatic contrast and painterly textures.",
+    date: "2026",
+    artist: "DaniCor",
+    tags: ["Poisonous Love", "Romantic", "Painterly"],
+  },
+  {
+    id: 86,
+    title: "Jayna Look Over",
+    category: "Artworks",
+    mediaType: "image",
+    image: daniJaynaLookOver,
+    text: "A warm watercolor portrait of Jayna turning back with a soft smile.",
+    date: "2026",
+    artist: "DaniCor",
+    tags: ["Jayna", "Portrait", "Watercolor"],
+  },
+  {
+    id: 87,
+    title: "Love Should Be Fun",
+    category: "Artworks",
+    mediaType: "image",
+    image: daniLoveShouldBeFun,
+    text: "A joyful award-night moment celebrating Ginny and Jayna laughing together.",
+    date: "2026",
+    artist: "DaniCor",
+    tags: ["GinJay", "Award", "Happy"],
+  },
+  {
+    id: 88,
+    title: "Lunar Kiss End",
+    category: "Artworks",
+    mediaType: "image",
+    image: daniLunarKissEnd,
+    text: "A cinematic moonlit pool scene inspired by a tender Lunar Secret moment.",
+    date: "2026",
+    artist: "DaniCor",
+    tags: ["Lunar Secret", "Pool", "Cinematic"],
+  },
+  {
+    id: 89,
+    title: "Pawida",
+    category: "Artworks",
+    mediaType: "image",
+    image: daniPawida,
+    text: "A confident watercolor fashion portrait in deep blue and violet tones.",
+    date: "2026",
+    artist: "DaniCor",
+    tags: ["Portrait", "Fashion", "Watercolor"],
+  },
+  {
+    id: 90,
+    title: "Rachel",
+    category: "Artworks",
+    mediaType: "image",
+    image: daniRachel,
+    text: "A warm watercolor Pawida portrait with a confident over-the-shoulder pose.",
+    date: "2026",
+    artist: "DaniCor",
+    tags: ["Portrait", "Cowgirl", "Watercolor"],
+  },
+  {
+    id: 91,
+    title: "Stare",
+    category: "Artworks",
+    mediaType: "image",
+    image: daniStare,
+    text: "A thoughtful watercolor portrait with soft pastel splashes and a quiet expression.",
+    date: "2026",
+    artist: "DaniCor",
+    tags: ["Portrait", "Pastel", "Watercolor"],
+  },
+  {
+    id: 92,
+    title: "Stunning",
+    category: "Artworks",
+    mediaType: "image",
+    image: daniStunning,
+    text: "A bright stage portrait with a microphone, delicate pastels and expressive watercolor detail.",
+    date: "2026",
+    artist: "DaniCor",
+    tags: ["Portrait", "Stage", "Watercolor"],
+  },
+  {
+    id: 93,
+    title: "The Dress",
+    category: "Artworks",
+    mediaType: "image",
+    image: daniTheDress,
+    text: "An elegant full-body fashion portrait in warm coral and soft watercolor tones.",
+    date: "2026",
+    artist: "DaniCor",
+    tags: ["Fashion", "Portrait", "Elegant"],
+  },
+  {
+    id: 94,
+    title: "Ginny Idol",
+    category: "Artworks",
+    mediaType: "image",
+    image: daniGinnyIdol1,
+    text: "A painterly full-body Ginny portrait with a navy blazer and warm studio light.",
+    date: "2026",
+    artist: "DaniCor",
+    tags: ["Ginny", "Portrait", "Painterly"],
+  },
 ];
