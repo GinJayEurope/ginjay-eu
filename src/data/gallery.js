@@ -96,6 +96,7 @@ import daniStare from "../assets/gallery/stare.png";
 import daniStunning from "../assets/gallery/stunning.jpg";
 import daniTheDress from "../assets/gallery/the-dress.jpg";
 import daniGinnyIdol1 from "../assets/gallery/ginny-idol-1.png";
+import breeJaynaQueen from "../assets/gallery/bree/jayna-queen.jpg";
 
 export const gallery = [
   {
@@ -1153,5 +1154,16 @@ export const gallery = [
     date: "2026",
     artist: "DaniCor",
     tags: ["Ginny", "Portrait", "Painterly"],
+  },
+    {
+    id: 95,
+    title: "Jayna Queen",
+    category: "Artworks",
+    mediaType: "image",
+    image: breeJaynaQueen,
+    text: "Digital artwork by BreE.",
+    date: "2026",
+    artist: "BreE",
+    tags: ["Artwork", "Jayna", "BreE"],
   },
 ];
