@@ -8,7 +8,7 @@ export default function Gallery() {
   const [visibleCount, setVisibleCount] = useState(6);
 
   const categories = ["All", "Poster", "Artworks", "Fanedits", "Gifs"];
-  const FEATURED_ARTWORK_ID = 13;
+  const FEATURED_ARTWORK_ID = 95;
 
   const featuredArtwork =
     gallery.find((item) => Number(item.id) === FEATURED_ARTWORK_ID) || gallery[0];
