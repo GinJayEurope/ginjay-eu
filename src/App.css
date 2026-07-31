@@ -594,6 +594,38 @@ nav a.active::after {
   box-shadow: var(--shadow-hover);
 }
 
+.gif-collection-notice {
+  width: 100%;
+  margin: 0;
+  color: var(--color-muted);
+  font-size: 0.98rem;
+  line-height: 1.6;
+  text-align: center;
+}
+
+.gif-collection-notice a {
+  color: var(--color-primary);
+  font-weight: 700;
+  text-decoration: underline;
+  text-decoration-color: var(--color-gold);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 4px;
+  transition:
+    color 0.2s ease,
+    text-decoration-color 0.2s ease;
+}
+
+.gif-collection-notice a:hover {
+  color: var(--color-gold);
+  text-decoration-color: var(--color-primary);
+}
+
+.gif-collection-notice a:focus-visible {
+  outline: 3px solid var(--color-primary-soft);
+  outline-offset: 4px;
+  border-radius: 3px;
+}
+
 .filter-buttons {
   display: flex;
   justify-content: center;

@@ -148,6 +148,18 @@ export default function Gallery() {
             }}
           />
 
+          <p className="gif-collection-notice">
+            You can find and download our complete GIF collection{" "}
+            <a
+              href="https://ginjayeu.tumblr.com"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              here
+            </a>
+            .
+          </p>
+
           <div className="filter-buttons">
             {categories.map((category) => (
               <button
