@@ -3828,3 +3828,138 @@ nav a.active::after {
 .app.dark .gif-download-button:hover {
   background: var(--dark-button-bg-hover) !important;
 }
+/* =========================================
+   GINJAY GIF SET
+========================================= */
+
+.gifset {
+  width: min(100% - 32px, 920px);
+  margin: 40px auto;
+  text-align: center;
+}
+
+.gifset-heading {
+  max-width: 620px;
+  margin: 0 auto 24px;
+}
+
+.gifset-eyebrow {
+  margin: 0 0 6px;
+  color: #8b5cf6;
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+}
+
+.gifset-heading h3 {
+  margin: 0;
+  color: #222;
+  font-size: clamp(1.7rem, 4vw, 2.4rem);
+  line-height: 1.15;
+}
+
+.gifset-heading p:not(.gifset-eyebrow) {
+  margin: 10px 0 0;
+  color: #666;
+  line-height: 1.6;
+}
+
+.gifset-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+  width: 100%;
+}
+
+.gifset-item {
+  overflow: hidden;
+  aspect-ratio: 1 / 1;
+  border-radius: 10px;
+  background: #eee;
+}
+
+.gifset-item img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.gifset-more-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 22px;
+  padding: 11px 20px;
+  color: #fff;
+  background: #222;
+  border-radius: 999px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  text-decoration: none;
+  transition:
+    transform 0.2s ease,
+    background-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.gifset-more-btn:hover {
+  color: #fff;
+  background: #8b5cf6;
+  box-shadow: 0 8px 20px rgba(139, 92, 246, 0.25);
+  transform: translateY(-2px);
+}
+
+.gifset-more-btn:focus-visible {
+  outline: 3px solid #b78cff;
+  outline-offset: 3px;
+}
+
+/* Dark Mode */
+
+.app.dark .gifset-heading h3 {
+  color: #fff;
+}
+
+.app.dark .gifset-heading p:not(.gifset-eyebrow) {
+  color: #c8c8c8;
+}
+
+.app.dark .gifset-more-btn {
+  color: #222;
+  background: #fff;
+}
+
+.app.dark .gifset-more-btn:hover {
+  color: #fff;
+  background: #8b5cf6;
+}
+
+/* Tablet */
+
+@media (max-width: 700px) {
+  .gifset-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* Smartphone */
+
+@media (max-width: 430px) {
+  .gifset {
+    width: min(100% - 24px, 920px);
+    margin: 32px auto;
+  }
+
+  .gifset-grid {
+    gap: 6px;
+  }
+
+  .gifset-item {
+    border-radius: 7px;
+  }
+
+  .gifset-more-btn {
+    width: 100%;
+  }
+}
