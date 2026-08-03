@@ -39,15 +39,13 @@ export default function GifSet() {
   ];
 
   return (
-    <section className="gifset" aria-labelledby="ginjay-racing-title">
+    <section className="gifset" aria-labelledby="ginny-racing-title">
       <div className="gifset-heading">
         <p className="gifset-eyebrow">GIF COLLECTION</p>
 
-        <h3 id="ginjay-racing-title">GinJay Racing</h3>
+        <h3 id="ginny-racing-title">Ginny Racing</h3>
 
-        <p>
-          Relive some of our favorite GinJay racing moments.
-        </p>
+        <p>Relive some of our favorite Ginny racing moments.</p>
       </div>
 
       <div className="gifset-grid">
