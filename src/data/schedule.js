@@ -7,7 +7,7 @@ export const currentSchedule = {
   events: [
     {
       id: 1,
-      date: "7 August",
+      date: "1 August",
       title: "One Day Trip: Just Us with GinJay",
       artist: "Ginny & Jayna",
       type: "Private event",
