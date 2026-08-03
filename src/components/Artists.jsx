@@ -105,6 +105,8 @@ export default function Artists() {
                 src={artist.image}
                 alt={artist.stageName}
                 className="artist-image"
+                loading="lazy"
+                decoding="async"
               />
 
               <div className="artist-content">

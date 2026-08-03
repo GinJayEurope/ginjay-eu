@@ -16,6 +16,8 @@ export default function Footer() {
             src={watermark}
             alt="GinJay Europe watermark"
             className="footer-watermark"
+            loading="lazy"
+            decoding="async"
           />
         </div>
 

@@ -1,9 +1,31 @@
-import { useState } from "react";
-import { monthlyEvents, pastEvents } from "../data/events";
+import { useEffect, useState } from "react";
+import { pastEvents } from "../data/events";
+import { currentSchedule } from "../data/schedule";
 
 export default function Events() {
   const [selectedPoster, setSelectedPoster] = useState(null);
   const [selectedArchive, setSelectedArchive] = useState(null);
+  const hasOpenLightbox = Boolean(selectedPoster || selectedArchive);
+
+  useEffect(() => {
+    if (!hasOpenLightbox) return;
+
+    const previousOverflow = document.body.style.overflow;
+
+    function handleKeyDown(event) {
+      if (event.key !== "Escape") return;
+      setSelectedPoster(null);
+      setSelectedArchive(null);
+    }
+
+    document.addEventListener("keydown", handleKeyDown);
+    document.body.style.overflow = "hidden";
+
+    return () => {
+      document.removeEventListener("keydown", handleKeyDown);
+      document.body.style.overflow = previousOverflow;
+    };
+  }, [hasOpenLightbox]);
 
   return (
     <>
@@ -22,7 +44,9 @@ export default function Events() {
         <div className="events-month-card">
           <div className="events-month-card-header">
             <div>
-              <span className="event-status upcoming">{monthlyEvents.month}</span>
+              <span className="event-status upcoming">
+                {currentSchedule.month}
+              </span>
               <h3>Monthly Schedule</h3>
               <p>
                 All confirmed GinJay activities for this month in one place.
@@ -32,14 +56,14 @@ export default function Events() {
             <button
               type="button"
               className="button primary"
-              onClick={() => setSelectedPoster(monthlyEvents.poster)}
+              onClick={() => setSelectedPoster(currentSchedule.poster)}
             >
               View full schedule
             </button>
           </div>
 
           <div className="events-month-list">
-            {monthlyEvents.events.map((event) => (
+            {currentSchedule.events.map((event) => (
               <article className="events-month-item" key={event.id}>
                 <div className="events-month-date">{event.date}</div>
 
@@ -52,7 +76,9 @@ export default function Events() {
                   <h4>{event.title}</h4>
 
                   <p className="events-month-artist">{event.artist}</p>
-                  <p className="events-month-location">{event.location}</p>
+                  {event.location && (
+                    <p className="events-month-location">{event.location}</p>
+                  )}
 
                   {event.details?.length > 0 && (
                     <ul className="events-month-details">
@@ -66,7 +92,7 @@ export default function Events() {
             ))}
           </div>
 
-          <p className="monthly-events-note">{monthlyEvents.note}</p>
+          <p className="monthly-events-note">{currentSchedule.note}</p>
         </div>
 
         <div className="events-archive">
@@ -88,6 +114,8 @@ export default function Events() {
                       src={event.cover}
                       alt={event.title}
                       className="archive-image"
+                      loading="lazy"
+                      decoding="async"
                     />
 
                     <div className="archive-overlay">
@@ -128,6 +156,9 @@ export default function Events() {
       {selectedPoster && (
         <div
           className="schedule-lightbox"
+          role="dialog"
+          aria-modal="true"
+          aria-label="Monthly schedule"
           onClick={() => setSelectedPoster(null)}
         >
           <div
@@ -137,6 +168,7 @@ export default function Events() {
             <button
               type="button"
               className="schedule-lightbox-close"
+              aria-label="Close schedule"
               onClick={() => setSelectedPoster(null)}
             >
               ×
@@ -154,6 +186,9 @@ export default function Events() {
       {selectedArchive && (
         <div
           className="schedule-lightbox"
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="archive-lightbox-title"
           onClick={() => setSelectedArchive(null)}
         >
           <div
@@ -163,6 +198,7 @@ export default function Events() {
             <button
               type="button"
               className="schedule-lightbox-close"
+              aria-label="Close event memories"
               onClick={() => setSelectedArchive(null)}
             >
               ×
@@ -170,7 +206,7 @@ export default function Events() {
 
             <div className="archive-lightbox-heading">
               <span>{selectedArchive.date}</span>
-              <h3>{selectedArchive.title}</h3>
+              <h3 id="archive-lightbox-title">{selectedArchive.title}</h3>
               <p>{selectedArchive.location}</p>
             </div>
 
@@ -181,6 +217,8 @@ export default function Events() {
                   src={image}
                   alt={selectedArchive.title}
                   className="archive-lightbox-image"
+                  loading="lazy"
+                  decoding="async"
                 />
               ))}
             </div>

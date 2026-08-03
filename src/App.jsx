@@ -22,17 +22,33 @@ export default function App() {
       <Header darkMode={darkMode} setDarkMode={setDarkMode} />
 
       <main>
-        <Reveal><Hero /></Reveal>
-        <Reveal><About /></Reveal>
-        <Reveal><NewsSection /></Reveal>
         <Reveal>
-  <Artists />
-</Reveal>
-        <Reveal><Gallery /></Reveal>
-        <Reveal><GifSet /></Reveal>
-        <Reveal><Timeline /></Reveal>
-        <Reveal><Events /></Reveal>
-        <Reveal><Editorial /></Reveal>
+          <Hero />
+        </Reveal>
+        <Reveal>
+          <About />
+        </Reveal>
+        <Reveal>
+          <NewsSection />
+        </Reveal>
+        <Reveal>
+          <Artists />
+        </Reveal>
+        <Reveal>
+          <Gallery />
+        </Reveal>
+        <Reveal>
+          <GifSet />
+        </Reveal>
+        <Reveal>
+          <Timeline />
+        </Reveal>
+        <Reveal>
+          <Events />
+        </Reveal>
+        <Reveal>
+          <Editorial />
+        </Reveal>
         <Footer />
       </main>
 

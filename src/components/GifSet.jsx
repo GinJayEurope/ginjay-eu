@@ -53,7 +53,12 @@ export default function GifSet() {
       <div className="gifset-grid">
         {gifs.map((gif) => (
           <div className="gifset-item" key={gif.src}>
-            <img src={gif.src} alt={gif.alt} loading="lazy" />
+            <img
+              src={gif.src}
+              alt={gif.alt}
+              loading="lazy"
+              decoding="async"
+            />
           </div>
         ))}
       </div>

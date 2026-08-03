@@ -1,5 +1,8 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import { gallery } from "../data/gallery";
+
+const CATEGORIES = ["All", "Poster", "Artworks", "Fanedits", "Gifs"];
+const FEATURED_ARTWORK_ID = 95;
 
 export default function Gallery() {
   const [selectedImage, setSelectedImage] = useState(null);
@@ -7,28 +10,27 @@ export default function Gallery() {
   const [searchTerm, setSearchTerm] = useState("");
   const [visibleCount, setVisibleCount] = useState(6);
 
-  const categories = ["All", "Poster", "Artworks", "Fanedits", "Gifs"];
-  const FEATURED_ARTWORK_ID = 95;
-
   const featuredArtwork =
     gallery.find((item) => Number(item.id) === FEATURED_ARTWORK_ID) || gallery[0];
 
-  const filteredGallery = gallery.filter((item) => {
-    const search = searchTerm.toLowerCase();
+  const filteredGallery = useMemo(() => {
+    const search = searchTerm.trim().toLowerCase();
 
-    const matchesCategory =
-      activeCategory === "All" || item.category === activeCategory;
+    return gallery.filter((item) => {
+      const matchesCategory =
+        activeCategory === "All" || item.category === activeCategory;
 
-    const matchesSearch =
-      item.title?.toLowerCase().includes(search) ||
-      item.text?.toLowerCase().includes(search) ||
-      item.category?.toLowerCase().includes(search) ||
-      item.artist?.toLowerCase().includes(search) ||
-      item.date?.toLowerCase().includes(search) ||
-      item.tags?.some((tag) => tag.toLowerCase().includes(search));
+      const matchesSearch =
+        item.title?.toLowerCase().includes(search) ||
+        item.text?.toLowerCase().includes(search) ||
+        item.category?.toLowerCase().includes(search) ||
+        item.artist?.toLowerCase().includes(search) ||
+        item.date?.toLowerCase().includes(search) ||
+        item.tags?.some((tag) => tag.toLowerCase().includes(search));
 
-    return matchesCategory && matchesSearch;
-  });
+      return matchesCategory && matchesSearch;
+    });
+  }, [activeCategory, searchTerm]);
 
   const visibleGallery = filteredGallery.slice(0, visibleCount);
 
@@ -40,22 +42,28 @@ export default function Gallery() {
     setSelectedImage(item);
   }
 
-  function closeArtwork() {
+  const closeArtwork = useCallback(() => {
     setSelectedImage(null);
-  }
+  }, []);
 
-  function showPrevious() {
+  const showPrevious = useCallback(() => {
     if (!filteredGallery.length || selectedIndex === -1) return;
     const previousIndex =
       selectedIndex === 0 ? filteredGallery.length - 1 : selectedIndex - 1;
     setSelectedImage(filteredGallery[previousIndex]);
-  }
+  }, [filteredGallery, selectedIndex]);
 
-  function showNext() {
+  const showNext = useCallback(() => {
     if (!filteredGallery.length || selectedIndex === -1) return;
     const nextIndex =
       selectedIndex === filteredGallery.length - 1 ? 0 : selectedIndex + 1;
     setSelectedImage(filteredGallery[nextIndex]);
+  }, [filteredGallery, selectedIndex]);
+
+  function handleArtworkKeyDown(event, item) {
+    if (event.key !== "Enter" && event.key !== " ") return;
+    event.preventDefault();
+    openArtwork(item);
   }
 
   function getViewLabel(item) {
@@ -73,14 +81,16 @@ export default function Gallery() {
       if (event.key === "ArrowRight") showNext();
     }
 
+    const previousOverflow = document.body.style.overflow;
+
     document.addEventListener("keydown", handleKeyDown);
     document.body.style.overflow = "hidden";
 
     return () => {
       document.removeEventListener("keydown", handleKeyDown);
-      document.body.style.overflow = "";
+      document.body.style.overflow = previousOverflow;
     };
-  }, [selectedImage, selectedIndex, filteredGallery]);
+  }, [closeArtwork, selectedImage, showNext, showPrevious]);
 
   return (
     <>
@@ -100,14 +110,19 @@ export default function Gallery() {
           <div
             className="gallery-feature"
             role="button"
-            tabIndex="0"
+            tabIndex={0}
+            aria-label={`View featured artwork: ${featuredArtwork.title}`}
             onClick={() => openArtwork(featuredArtwork)}
+            onKeyDown={(event) =>
+              handleArtworkKeyDown(event, featuredArtwork)
+            }
           >
             <div className="gallery-feature-image-wrap">
               <img
                 src={featuredArtwork.image}
                 alt={featuredArtwork.title}
                 className="gallery-feature-image"
+                decoding="async"
               />
             </div>
 
@@ -141,6 +156,7 @@ export default function Gallery() {
             type="text"
             className="gallery-search"
             placeholder="Search gallery..."
+            aria-label="Search gallery"
             value={searchTerm}
             onChange={(event) => {
               setSearchTerm(event.target.value);
@@ -161,11 +177,12 @@ export default function Gallery() {
           </p>
 
           <div className="filter-buttons">
-            {categories.map((category) => (
+            {CATEGORIES.map((category) => (
               <button
                 type="button"
                 key={category}
                 className={activeCategory === category ? "filter active" : "filter"}
+                aria-pressed={activeCategory === category}
                 onClick={() => {
                   setActiveCategory(category);
                   setVisibleCount(6);
@@ -186,8 +203,10 @@ export default function Gallery() {
                 }`}
                 key={item.id}
                 role="button"
-                tabIndex="0"
+                tabIndex={0}
+                aria-label={`${getViewLabel(item)}: ${item.title}`}
                 onClick={() => openArtwork(item)}
+                onKeyDown={(event) => handleArtworkKeyDown(event, item)}
               >
                 <div className="gallery-image-wrap">
                   <img
@@ -195,6 +214,7 @@ export default function Gallery() {
                     alt={item.title}
                     className="gallery-image"
                     loading="lazy"
+                    decoding="async"
                   />
 
                   {item.mediaType === "gif" && (
@@ -258,7 +278,13 @@ export default function Gallery() {
       </section>
 
       {selectedImage && (
-        <div className="lightbox" onClick={closeArtwork}>
+        <div
+          className="lightbox"
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="gallery-lightbox-title"
+          onClick={closeArtwork}
+        >
           <div
             className="lightbox-card"
             onClick={(event) => event.stopPropagation()}
@@ -266,6 +292,7 @@ export default function Gallery() {
             <button
               type="button"
               className="lightbox-close"
+              aria-label="Close artwork"
               onClick={closeArtwork}
             >
               ×
@@ -280,6 +307,7 @@ export default function Gallery() {
                 <button
                   type="button"
                   className="lightbox-nav lightbox-prev"
+                  aria-label="Previous artwork"
                   onClick={showPrevious}
                 >
                   ‹
@@ -288,6 +316,7 @@ export default function Gallery() {
                 <button
                   type="button"
                   className="lightbox-nav lightbox-next"
+                  aria-label="Next artwork"
                   onClick={showNext}
                 >
                   ›
@@ -314,7 +343,7 @@ export default function Gallery() {
             <div className="lightbox-info">
               <span>{selectedImage.category}</span>
 
-              <h3>{selectedImage.title}</h3>
+              <h3 id="gallery-lightbox-title">{selectedImage.title}</h3>
 
               <p>{selectedImage.text}</p>
 

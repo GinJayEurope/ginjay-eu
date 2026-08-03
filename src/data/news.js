@@ -1,4 +1,4 @@
-import scheduleAugust from "../assets/schedule/august-2026.jpg";
+import { currentSchedule } from "./schedule";
 
 export const news = [
   {
@@ -6,7 +6,7 @@ export const news = [
     type: "Schedule",
     title: "Monthly Schedule",
     text: "Find the latest GinJay schedule poster created by our fanbase.",
-    image: scheduleAugust,
+    image: currentSchedule.poster,
     button: "View full schedule",
   },
   {

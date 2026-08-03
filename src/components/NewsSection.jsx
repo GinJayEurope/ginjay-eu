@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { news } from "../data/news";
 
 export default function NewsSection() {
@@ -6,6 +6,24 @@ export default function NewsSection() {
 
   const scheduleItem = news.find((item) => item.type === "Schedule");
   const otherNews = news.filter((item) => item.type !== "Schedule");
+
+  useEffect(() => {
+    if (!selectedSchedule) return;
+
+    const previousOverflow = document.body.style.overflow;
+
+    function handleKeyDown(event) {
+      if (event.key === "Escape") setSelectedSchedule(null);
+    }
+
+    document.addEventListener("keydown", handleKeyDown);
+    document.body.style.overflow = "hidden";
+
+    return () => {
+      document.removeEventListener("keydown", handleKeyDown);
+      document.body.style.overflow = previousOverflow;
+    };
+  }, [selectedSchedule]);
 
   return (
     <>
@@ -31,6 +49,8 @@ export default function NewsSection() {
                   src={scheduleItem.image}
                   alt={scheduleItem.title}
                   className="schedule-feature-image"
+                  loading="lazy"
+                  decoding="async"
                 />
               </div>
 
@@ -53,37 +73,44 @@ export default function NewsSection() {
           )}
 
           <div className="news-side-cards">
-  {otherNews.map((item) => (
-    <article className="news-premium-card" key={item.id}>
-      <span className="news-badge">{item.type}</span>
+            {otherNews.map((item) => (
+              <article className="news-premium-card" key={item.id}>
+                <span className="news-badge">{item.type}</span>
 
-      <h3>{item.title}</h3>
+                <h3>{item.title}</h3>
 
-      <p>{item.text}</p>
+                <p>{item.text}</p>
 
-      {item.link ? (
-        <a
-          href={item.link}
-          target="_blank"
-          rel="noreferrer"
-          className="news-premium-button"
-        >
-          {item.button} <span>→</span>
-        </a>
-      ) : (
-        <button type="button" className="news-premium-button">
-          {item.button}
-        </button>
-      )}
-    </article>
-  ))}
-</div>
+                {item.link ? (
+                  <a
+                    href={item.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="news-premium-button"
+                  >
+                    {item.button} <span>→</span>
+                  </a>
+                ) : (
+                  <button
+                    type="button"
+                    className="news-premium-button"
+                    disabled
+                  >
+                    {item.button}
+                  </button>
+                )}
+              </article>
+            ))}
+          </div>
         </div>
       </section>
 
       {selectedSchedule && (
         <div
           className="schedule-lightbox"
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="schedule-lightbox-title"
           onClick={() => setSelectedSchedule(null)}
         >
           <div
@@ -93,6 +120,7 @@ export default function NewsSection() {
             <button
               type="button"
               className="schedule-lightbox-close"
+              aria-label="Close schedule"
               onClick={() => setSelectedSchedule(null)}
             >
               ×
@@ -107,7 +135,7 @@ export default function NewsSection() {
             <div className="schedule-lightbox-info">
               <span className="news-badge">{selectedSchedule.type}</span>
 
-              <h3>{selectedSchedule.title}</h3>
+              <h3 id="schedule-lightbox-title">{selectedSchedule.title}</h3>
 
               <p>{selectedSchedule.text}</p>
             </div>

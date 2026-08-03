@@ -57,23 +57,28 @@ export default function Header({ darkMode, setDarkMode }) {
 
       <div className="header-actions">
         <button
+          type="button"
           className="theme-toggle"
           onClick={() => setDarkMode(!darkMode)}
           aria-label="Toggle dark mode"
+          aria-pressed={darkMode}
         >
           {darkMode ? "☀️" : "🌙"}
         </button>
 
         <button
+          type="button"
           className="menu-button"
           onClick={() => setMenuOpen(!menuOpen)}
           aria-label="Toggle menu"
+          aria-expanded={menuOpen}
+          aria-controls="main-navigation"
         >
           ☰
         </button>
       </div>
 
-      <nav className={menuOpen ? "open" : ""}>
+      <nav id="main-navigation" className={menuOpen ? "open" : ""}>
         {navItems.map((item) => (
           <a
             key={item.id}
