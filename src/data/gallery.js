@@ -97,6 +97,7 @@ import daniStunning from "../assets/gallery/stunning.jpg";
 import daniTheDress from "../assets/gallery/the-dress.jpg";
 import daniGinnyIdol1 from "../assets/gallery/ginny-idol-1.png";
 import breeJaynaQueen from "../assets/gallery/bree/jayna-queen.jpg";
+import july2026Schedule from "../assets/gallery/poster/juli-2026.jpg";
 
 export const gallery = [
   {
@@ -1165,5 +1166,16 @@ export const gallery = [
     date: "2026",
     artist: "BreE",
     tags: ["Artwork", "Jayna", "BreE"],
+  },
+    {
+    id: 96,
+    title: "GinJay July 2026 Schedule",
+    category: "Poster",
+    mediaType: "image",
+    image: july2026Schedule,
+    text: "GinJay schedule for July 2026.",
+    date: "July 2026",
+    artist: "Klaudia",
+    tags: ["Poster", "GinJay", "Schedule", "July 2026"],
   },
 ];
