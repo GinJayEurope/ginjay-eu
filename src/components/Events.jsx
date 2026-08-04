@@ -1,23 +1,21 @@
 import { useEffect, useState } from "react";
-import { pastEvents } from "../data/events";
 import { currentSchedule } from "../data/schedule";
 import eventsCardArtwork from "../assets/events/jump.png";
 
+const EVENT_ARCHIVE_INVITE = "https://discord.gg/ZcddvCNctn";
+
 export default function Events() {
   const [selectedPoster, setSelectedPoster] = useState(null);
-  const [selectedArchive, setSelectedArchive] = useState(null);
-  const hasOpenLightbox = Boolean(selectedPoster || selectedArchive);
 
   useEffect(() => {
-    if (!hasOpenLightbox) return;
+    if (!selectedPoster) return;
 
     const previousOverflow = document.body.style.overflow;
 
     function handleKeyDown(event) {
-      if (event.key !== "Escape") return;
-
-      setSelectedPoster(null);
-      setSelectedArchive(null);
+      if (event.key === "Escape") {
+        setSelectedPoster(null);
+      }
     }
 
     document.addEventListener("keydown", handleKeyDown);
@@ -27,7 +25,7 @@ export default function Events() {
       document.removeEventListener("keydown", handleKeyDown);
       document.body.style.overflow = previousOverflow;
     };
-  }, [hasOpenLightbox]);
+  }, [selectedPoster]);
 
   return (
     <>
@@ -112,60 +110,67 @@ export default function Events() {
             <h2>Past Events</h2>
 
             <p>
-              Photos and memories from past GinJay events will be collected here
-              step by step.
+              Relive GinJay events through our growing community collection.
             </p>
           </div>
 
-          {pastEvents.length > 0 ? (
-            <div className="archive-grid">
-              {pastEvents.map((event) => (
-                <article className="archive-card" key={event.id}>
-                  <div className="archive-image-wrap">
-                    <img
-                      src={event.cover}
-                      alt={event.title}
-                      className="archive-image"
-                      loading="lazy"
-                      decoding="async"
-                    />
+          <div className="discord-archive-card">
+            <div
+              className="discord-archive-glow discord-archive-glow-one"
+              aria-hidden="true"
+            ></div>
 
-                    <div className="archive-overlay">
-                      <span>{event.type}</span>
-                    </div>
-                  </div>
+            <div
+              className="discord-archive-glow discord-archive-glow-two"
+              aria-hidden="true"
+            ></div>
 
-                  <div className="archive-content">
-                    <span className="archive-date">{event.date}</span>
+            <div className="discord-archive-content">
+              <span className="discord-archive-label">
+                COMMUNITY EVENT ARCHIVE
+              </span>
 
-                    <h3>{event.title}</h3>
+              <h3>Every GinJay memory in one place</h3>
 
-                    <p>{event.location}</p>
-                    <p>{event.text}</p>
+              <p className="discord-archive-description">
+                Join our Discord event archive and explore a large, growing
+                collection of GinJay event photos and clips shared by our
+                community. New memories are usually added as early as the day
+                after each event.
+              </p>
 
-                    <button
-                      type="button"
-                      className="button primary"
-                      onClick={() => setSelectedArchive(event)}
-                    >
-                      View memories
-                    </button>
-                  </div>
-                </article>
-              ))}
-            </div>
-          ) : (
-            <div className="archive-coming-soon">
-              <span>Archive</span>
+              <div className="discord-channel-preview">
+                <span className="discord-channel-symbol" aria-hidden="true">
+                  #
+                </span>
 
-              <h3>Event memories coming soon.</h3>
+                <div>
+                  <span>Our dedicated Discord channel</span>
+                  <strong>ginjay-events📸</strong>
+                </div>
+              </div>
 
-              <p>
-                Once past event photos and highlights are collected, they will
-                appear here as a memory gallery.
+              <div className="discord-archive-features">
+                <span>Event photos</span>
+                <span>Video clips</span>
+                <span>Regular updates</span>
+              </div>
+
+              <a
+                href={EVENT_ARCHIVE_INVITE}
+                target="_blank"
+                rel="noreferrer"
+                className="button primary discord-archive-button"
+              >
+                Explore our Event Archive
+                <span aria-hidden="true">→</span>
+              </a>
+
+              <p className="discord-archive-note">
+                The invitation opens our GinJay Europe community on Discord.
               </p>
             </div>
-          )}
+          </div>
         </div>
       </section>
 
@@ -195,53 +200,6 @@ export default function Events() {
               alt="Full monthly schedule"
               className="schedule-lightbox-image"
             />
-          </div>
-        </div>
-      )}
-
-      {selectedArchive && (
-        <div
-          className="schedule-lightbox"
-          role="dialog"
-          aria-modal="true"
-          aria-labelledby="archive-lightbox-title"
-          onClick={() => setSelectedArchive(null)}
-        >
-          <div
-            className="archive-lightbox-card"
-            onClick={(event) => event.stopPropagation()}
-          >
-            <button
-              type="button"
-              className="schedule-lightbox-close"
-              aria-label="Close event memories"
-              onClick={() => setSelectedArchive(null)}
-            >
-              ×
-            </button>
-
-            <div className="archive-lightbox-heading">
-              <span>{selectedArchive.date}</span>
-
-              <h3 id="archive-lightbox-title">
-                {selectedArchive.title}
-              </h3>
-
-              <p>{selectedArchive.location}</p>
-            </div>
-
-            <div className="archive-lightbox-grid">
-              {selectedArchive.images.map((image) => (
-                <img
-                  key={image}
-                  src={image}
-                  alt={selectedArchive.title}
-                  className="archive-lightbox-image"
-                  loading="lazy"
-                  decoding="async"
-                />
-              ))}
-            </div>
           </div>
         </div>
       )}
