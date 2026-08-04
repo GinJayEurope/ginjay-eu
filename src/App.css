@@ -3502,3 +3502,11 @@ nav a.active::after {
     width: 100%;
   }
 }
+/* Events-Bereich im Dark Mode einheitlich dunkel */
+.app.dark .events-section {
+  background: #17141d;
+}
+
+.app.dark .events-section::before {
+  background: none;
+}
