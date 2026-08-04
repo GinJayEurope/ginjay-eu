@@ -3510,3 +3510,19 @@ nav a.active::after {
 .app.dark .events-section::before {
   background: none;
 }
+/* Abstand zwischen Social Links und animiertem Hero-Rahmen */
+.hero-image {
+  margin-top: 4rem;
+}
+
+.hero-socials {
+  position: relative;
+  z-index: 2;
+}
+
+/* Etwas kompakter auf kleinen Bildschirmen */
+@media (max-width: 768px) {
+  .hero-image {
+    margin-top: 3rem;
+  }
+}
