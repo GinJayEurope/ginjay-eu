@@ -2738,6 +2738,28 @@ nav a.active::after {
   position: relative;
   overflow: hidden;
 }
+.events-month-card.events-month-card--artwork,
+.app.dark .events-month-card.events-month-card--artwork {
+  background:
+    linear-gradient(
+      180deg,
+      rgba(28, 20, 36, 0.46) 0%,
+      rgba(28, 20, 36, 0.7) 48%,
+      rgba(28, 20, 36, 0.9) 100%
+    ),
+    var(--events-card-artwork) center 48% / cover no-repeat;
+  border-color: rgba(255, 255, 255, 0.22);
+  box-shadow:
+    0 24px 60px rgba(33, 22, 42, 0.28),
+    inset 0 1px 0 rgba(255, 255, 255, 0.16);
+}
+
+.events-month-card--artwork .events-month-card-header h3,
+.events-month-card--artwork .events-month-card-header p,
+.events-month-card--artwork .monthly-events-note {
+  color: #ffffff;
+  text-shadow: 0 2px 12px rgba(22, 14, 29, 0.7);
+}
 
 .events-month-card::before {
   content: "";

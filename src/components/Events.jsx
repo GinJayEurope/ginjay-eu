@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { pastEvents } from "../data/events";
 import { currentSchedule } from "../data/schedule";
+import eventsCardArtwork from "../assets/events/jump.png";
 
 export default function Events() {
   const [selectedPoster, setSelectedPoster] = useState(null);
@@ -14,6 +15,7 @@ export default function Events() {
 
     function handleKeyDown(event) {
       if (event.key !== "Escape") return;
+
       setSelectedPoster(null);
       setSelectedArchive(null);
     }
@@ -41,13 +43,20 @@ export default function Events() {
           </p>
         </div>
 
-        <div className="events-month-card">
+        <div
+          className="events-month-card events-month-card--artwork"
+          style={{
+            "--events-card-artwork": `url("${eventsCardArtwork}")`,
+          }}
+        >
           <div className="events-month-card-header">
             <div>
               <span className="event-status upcoming">
                 {currentSchedule.month}
               </span>
+
               <h3>Monthly Schedule</h3>
+
               <p>
                 All confirmed GinJay activities for this month in one place.
               </p>
@@ -76,6 +85,7 @@ export default function Events() {
                   <h4>{event.title}</h4>
 
                   <p className="events-month-artist">{event.artist}</p>
+
                   {event.location && (
                     <p className="events-month-location">{event.location}</p>
                   )}
@@ -98,10 +108,12 @@ export default function Events() {
         <div className="events-archive">
           <div className="section-heading archive-heading">
             <span className="subtitle">ARCHIVE</span>
+
             <h2>Past Events</h2>
+
             <p>
-              Photos and memories from past GinJay events will be
-              collected here step by step.
+              Photos and memories from past GinJay events will be collected here
+              step by step.
             </p>
           </div>
 
@@ -125,7 +137,9 @@ export default function Events() {
 
                   <div className="archive-content">
                     <span className="archive-date">{event.date}</span>
+
                     <h3>{event.title}</h3>
+
                     <p>{event.location}</p>
                     <p>{event.text}</p>
 
@@ -143,10 +157,12 @@ export default function Events() {
           ) : (
             <div className="archive-coming-soon">
               <span>Archive</span>
+
               <h3>Event memories coming soon.</h3>
+
               <p>
-                Once past event photos and highlights are collected,
-                they will appear here as a memory gallery.
+                Once past event photos and highlights are collected, they will
+                appear here as a memory gallery.
               </p>
             </div>
           )}
@@ -206,7 +222,11 @@ export default function Events() {
 
             <div className="archive-lightbox-heading">
               <span>{selectedArchive.date}</span>
-              <h3 id="archive-lightbox-title">{selectedArchive.title}</h3>
+
+              <h3 id="archive-lightbox-title">
+                {selectedArchive.title}
+              </h3>
+
               <p>{selectedArchive.location}</p>
             </div>
 
