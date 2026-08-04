@@ -16,6 +16,15 @@ export const currentSchedule = {
     },
     {
       id: 2,
+      date: "6 August",
+      title: "The Boy in Soi Party – Men’s Folio",
+      artist: "Ginny & Jayna",
+      type: "Closed event",
+      time: "13:00 CEST",
+      details: ["Only for invited guests"],
+    },
+    {
+      id: 3,
       date: "9 August",
       title: "The Nakharat Awards 2026",
       artist: "Ginny & Jayna",
@@ -24,7 +33,7 @@ export const currentSchedule = {
       details: [],
     },
     {
-      id: 3,
+      id: 4,
       date: "15 August",
       title: "L’Oréal Paris",
       artist: "Ginny & Jayna",
