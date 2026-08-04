@@ -378,7 +378,7 @@ nav a.active::after {
   padding: 3rem;
   display: flex;
   align-items: flex-end;
-  justify-content: flex-start;
+  justify-content: center;
   text-align: left;
   background:
     linear-gradient(135deg, rgba(255, 255, 255, 0.58), rgba(255, 255, 255, 0.18)),
