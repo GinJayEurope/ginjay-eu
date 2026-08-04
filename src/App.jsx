@@ -15,14 +15,25 @@ import Editorial from "./components/Editorial";
 import GifSet from "./components/GifSet";
 
 export default function App() {
-  const [darkMode, setDarkMode] = useState(false);
+  const [darkMode, setDarkMode] = useState(() => {
+    const savedTheme = localStorage.getItem("ginjay-theme");
+
+    if (savedTheme) {
+      return savedTheme === "dark";
+    }
+
+    return (
+      window.matchMedia?.("(prefers-color-scheme: dark)").matches ?? false
+    );
+  });
 
   useEffect(() => {
     document.documentElement.classList.toggle("dark-mode", darkMode);
 
-    return () => {
-      document.documentElement.classList.remove("dark-mode");
-    };
+    localStorage.setItem(
+      "ginjay-theme",
+      darkMode ? "dark" : "light"
+    );
   }, [darkMode]);
 
   return (
