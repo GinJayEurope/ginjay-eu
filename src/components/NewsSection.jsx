@@ -73,34 +73,56 @@ export default function NewsSection() {
           )}
 
           <div className="news-side-cards">
-            {otherNews.map((item) => (
-              <article className="news-premium-card" key={item.id}>
-                <span className="news-badge">{item.type}</span>
+            {otherNews.map((item) => {
+              const hasArtwork = Boolean(item.image);
 
-                <h3>{item.title}</h3>
+              return (
+                <article
+                  className={`news-premium-card${
+                    hasArtwork ? " news-premium-card--artwork" : ""
+                  }`}
+                  key={item.id}
+                >
+                  {hasArtwork && (
+                    <img
+                      src={item.image}
+                      alt=""
+                      className="news-premium-card-image"
+                      loading="lazy"
+                      decoding="async"
+                      aria-hidden="true"
+                    />
+                  )}
 
-                <p>{item.text}</p>
+                  <div className="news-premium-card-content">
+                    <span className="news-badge">{item.type}</span>
 
-                {item.link ? (
-                  <a
-                    href={item.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="news-premium-button"
-                  >
-                    {item.button} <span>→</span>
-                  </a>
-                ) : (
-                  <button
-                    type="button"
-                    className="news-premium-button"
-                    disabled
-                  >
-                    {item.button}
-                  </button>
-                )}
-              </article>
-            ))}
+                    <h3>{item.title}</h3>
+
+                    <p>{item.text}</p>
+
+                    {item.link ? (
+                      <a
+                        href={item.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="news-premium-button"
+                      >
+                        {item.button} <span>→</span>
+                      </a>
+                    ) : (
+                      <button
+                        type="button"
+                        className="news-premium-button"
+                        disabled
+                      >
+                        {item.button}
+                      </button>
+                    )}
+                  </div>
+                </article>
+              );
+            })}
           </div>
         </div>
       </section>

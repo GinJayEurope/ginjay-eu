@@ -1,3 +1,4 @@
+import trailerArtwork from "../assets/news/pilot-wallpaper-2.PNG";
 import { currentSchedule } from "./schedule";
 
 export const news = [
@@ -14,6 +15,7 @@ export const news = [
     type: "Spotlight",
     title: "New Series Trailer",
     text: "Watch the trailer for the upcoming series starring Ginny & Jayna and show your support by streaming and sharing it with fellow fans.",
+    image: trailerArtwork,
     button: "Watch trailer",
     link: "https://www.youtube.com/watch?v=TDY-ZwAtCPI",
   },
