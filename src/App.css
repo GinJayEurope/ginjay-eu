@@ -23,17 +23,41 @@
 }
 
 html {
+  min-height: 100%;
   scroll-behavior: smooth;
+  background: #fff9f6;
 }
 
 body {
+  min-height: 100vh;
   margin: 0;
   font-family: Inter, system-ui, sans-serif;
   color: var(--color-text);
   background:
-    radial-gradient(circle at 15% 20%, rgba(245, 215, 199, 0.8), transparent 28rem),
-    radial-gradient(circle at 85% 25%, rgba(217, 194, 243, 0.75), transparent 26rem),
+    radial-gradient(
+      circle at 15% 20%,
+      rgba(245, 215, 199, 0.8),
+      transparent 28rem
+    ),
+    radial-gradient(
+      circle at 85% 25%,
+      rgba(217, 194, 243, 0.75),
+      transparent 26rem
+    ),
     var(--color-bg);
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
+}
+
+html.dark-mode {
+  background: #17141d;
+  color-scheme: dark;
+}
+
+html.dark-mode body {
+  color: #f5efff;
+  background: #17141d;
 }
 
 .app {

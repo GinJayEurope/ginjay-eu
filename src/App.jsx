@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./App.css";
 import Hero from "./components/Hero";
 import NewsSection from "./components/NewsSection";
@@ -17,6 +17,14 @@ import GifSet from "./components/GifSet";
 export default function App() {
   const [darkMode, setDarkMode] = useState(false);
 
+  useEffect(() => {
+    document.documentElement.classList.toggle("dark-mode", darkMode);
+
+    return () => {
+      document.documentElement.classList.remove("dark-mode");
+    };
+  }, [darkMode]);
+
   return (
     <div className={darkMode ? "app dark" : "app"}>
       <Header darkMode={darkMode} setDarkMode={setDarkMode} />
@@ -25,30 +33,39 @@ export default function App() {
         <Reveal>
           <Hero />
         </Reveal>
+
         <Reveal>
           <About />
         </Reveal>
+
         <Reveal>
           <NewsSection />
         </Reveal>
+
         <Reveal>
           <Artists />
         </Reveal>
+
         <Reveal>
           <Gallery />
         </Reveal>
+
         <Reveal>
           <GifSet />
         </Reveal>
+
         <Reveal>
           <Timeline />
         </Reveal>
+
         <Reveal>
           <Events />
         </Reveal>
+
         <Reveal>
           <Editorial />
         </Reveal>
+
         <Footer />
       </main>
 
