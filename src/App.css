@@ -4001,24 +4001,17 @@ nav a.active::after {
 ========================= */
 
 .hero-showcase {
-  --showcase-padding: clamp(28px, 4.5vw, 54px);
-  --showcase-logo-size: clamp(155px, 17vw, 205px);
-  --showcase-logo-overlap: 10px;
+  --showcase-padding-x: clamp(28px, 4.5vw, 52px);
+  --showcase-padding-y: clamp(30px, 4vw, 46px);
+  --showcase-logo-size: clamp(165px, 18vw, 210px);
+  --showcase-logo-overlap: 8px;
 
   position: relative;
   isolation: isolate;
   box-sizing: border-box;
-
-  display: grid;
-  grid-template-columns:
-    minmax(0, 1fr)
-    calc(var(--showcase-logo-size) - var(--showcase-logo-overlap));
-  grid-template-rows: minmax(390px, auto);
-  align-items: stretch;
-
   width: 100%;
   min-height: 500px;
-  padding: var(--showcase-padding);
+  padding: 0;
 }
 
 /* Orbs bleiben im Hintergrund */
@@ -4027,40 +4020,42 @@ nav a.active::after {
   z-index: 0;
 }
 
-/* Innere Kachel vollständig sichtbar */
+/* Breite, rechteckige Textkachel */
 
 .hero-showcase .hero-card-content {
-  position: relative;
-  top: auto;
-  left: auto;
+  position: absolute;
+  top: var(--showcase-padding-y);
+  left: var(--showcase-padding-x);
+  right: auto;
+  bottom: auto;
   z-index: 2;
 
-  grid-column: 1;
-  grid-row: 1;
-  align-self: start;
-
   box-sizing: border-box;
-  width: 100%;
+  width: calc(
+    100% - var(--showcase-padding-x) - var(--showcase-padding-x) -
+      var(--showcase-logo-size) + var(--showcase-logo-overlap)
+  );
   max-width: none;
   min-width: 0;
+  min-height: 360px;
+  height: auto;
   margin: 0;
   padding: clamp(1.8rem, 3vw, 2.7rem);
 
   overflow: visible;
 }
 
-/* Überschrift vollständig und gut lesbar */
+/* Überschrift vollständig lesbar */
 
 .hero-showcase .hero-card-content h3 {
   max-width: 100%;
   margin: 1.2rem 0 1rem;
 
   color: var(--color-primary);
-  font-size: clamp(2rem, 3.5vw, 2.9rem);
+  font-size: clamp(2rem, 3.5vw, 3rem);
   line-height: 1.12;
-  text-wrap: balance;
-  overflow-wrap: normal;
   word-break: normal;
+  overflow-wrap: normal;
 }
 
 /* Beschreibung vollständig sichtbar */
@@ -4076,23 +4071,18 @@ nav a.active::after {
   overflow-wrap: break-word;
 }
 
-/* Icon rechts unten – nur 10 px Überlappung */
+/* Logo rechts unten – nur 8 px überlappend */
 
 .hero-showcase-logo {
-  position: relative;
-  right: auto;
-  bottom: auto;
+  position: absolute;
+  right: var(--showcase-padding-x);
+  bottom: var(--showcase-padding-y);
   z-index: 3;
 
-  grid-column: 2;
-  grid-row: 1;
-  align-self: end;
-  justify-self: start;
-
   display: block;
+  box-sizing: border-box;
   width: var(--showcase-logo-size);
   height: var(--showcase-logo-size);
-  margin: 0 0 0 calc(-1 * var(--showcase-logo-overlap));
 
   object-fit: cover;
   border: 5px solid rgba(255, 255, 255, 0.62);
@@ -4132,39 +4122,44 @@ nav a.active::after {
 
 /* Tablet */
 
-@media (max-width: 860px) {
+@media (max-width: 900px) {
   .hero-showcase {
-    --showcase-padding: 28px;
-    --showcase-logo-size: 155px;
-    --showcase-logo-overlap: 8px;
+    --showcase-padding-x: 28px;
+    --showcase-padding-y: 28px;
+    --showcase-logo-size: 165px;
+    --showcase-logo-overlap: 7px;
 
-    grid-template-rows: minmax(360px, auto);
-    min-height: 430px;
+    min-height: 470px;
   }
 
   .hero-showcase .hero-card-content {
+    min-height: 340px;
     padding: 1.8rem;
   }
 
   .hero-showcase .hero-card-content h3 {
-    font-size: clamp(1.8rem, 4.7vw, 2.5rem);
+    font-size: clamp(1.85rem, 4.8vw, 2.6rem);
   }
 }
 
 /* Smartphone */
 
-@media (max-width: 600px) {
+@media (max-width: 640px) {
   .hero-showcase {
     display: flex;
     flex-direction: column;
     align-items: stretch;
-
     min-height: 0;
     padding: 18px;
   }
 
   .hero-showcase .hero-card-content {
+    position: relative;
+    top: auto;
+    left: auto;
+
     width: 100%;
+    min-height: 0;
     padding: 1.5rem;
   }
 
@@ -4180,11 +4175,14 @@ nav a.active::after {
   }
 
   .hero-showcase-logo {
+    position: relative;
+    right: auto;
+    bottom: auto;
     align-self: flex-end;
 
     width: 128px;
     height: 128px;
-    margin: -8px 6px 0 0;
+    margin: -6px 6px 0 0;
     border-width: 4px;
   }
 }
@@ -4215,5 +4213,105 @@ nav a.active::after {
 @media (prefers-reduced-motion: reduce) {
   .hero-showcase-logo {
     animation: none;
+  }
+}/* =========================
+   HERO TEXTKACHEL – ORIGINALFORM
+========================= */
+
+.hero-showcase .hero-card-content {
+  position: absolute;
+  top: auto;
+  right: auto;
+  bottom: clamp(36px, 4vw, 52px);
+  left: 50%;
+  z-index: 2;
+
+  box-sizing: border-box;
+  width: min(520px, calc(100% - 6rem));
+  max-width: 520px;
+  min-width: 0;
+  min-height: 0;
+  height: auto;
+  margin: 0;
+  padding: 2rem;
+
+  transform: translateX(-50%);
+
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  border-radius: 28px;
+  background: rgba(255, 255, 255, 0.34);
+  box-shadow: 0 18px 40px rgba(91, 59, 122, 0.12);
+  backdrop-filter: blur(18px);
+  overflow: visible;
+}
+
+.hero-showcase .hero-card-content h3 {
+  max-width: 100%;
+  margin: 0.9rem 0 0.8rem;
+  color: var(--color-primary);
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+  line-height: 1.12;
+  word-break: normal;
+  overflow-wrap: normal;
+}
+
+.hero-showcase .hero-card-content p {
+  max-width: 46ch;
+  margin: 0;
+  color: var(--color-muted);
+  font-size: 1rem;
+  line-height: 1.8;
+  text-align: left;
+}
+
+.hero-showcase:hover .hero-card-content {
+  transform: translateX(-50%) translateY(-4px);
+}
+
+/* Dark Mode */
+
+.app.dark .hero-showcase .hero-card-content {
+  border-color: rgba(240, 230, 255, 0.08);
+  background: rgba(28, 24, 36, 0.52);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.25);
+}
+
+/* Smartphone */
+
+@media (max-width: 640px) {
+  .hero-showcase .hero-card-content {
+    position: relative;
+    top: auto;
+    right: auto;
+    bottom: auto;
+    left: auto;
+
+    width: 100%;
+    max-width: 520px;
+    padding: 1.5rem;
+
+    transform: none;
+  }
+
+  .hero-showcase:hover .hero-card-content {
+    transform: translateY(-4px);
+  }
+
+  .hero-showcase .hero-card-content h3 {
+    font-size: clamp(1.7rem, 8vw, 2.2rem);
+    line-height: 1.15;
+  }
+}
+/* Textkachel weiter nach links und oben verschieben */
+@media (min-width: 641px) {
+  .hero-showcase .hero-card-content {
+    left: calc(50% - clamp(55px, 5vw, 85px));
+    bottom: clamp(90px, 7vw, 115px);
+  }
+}/* Textkachel weiter nach links und oben verschieben */
+@media (min-width: 641px) {
+  .hero-showcase .hero-card-content {
+    left: calc(50% - clamp(55px, 5vw, 85px));
+    bottom: clamp(90px, 7vw, 115px);
   }
 }
