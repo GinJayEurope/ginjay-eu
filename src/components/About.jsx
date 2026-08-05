@@ -38,9 +38,20 @@ export default function About() {
           <h3>🎨 Creativity</h3>
 
           <p>
-            A place to awaken hidden talents through fanart, edits, and
-            creative projects — let’s grow, create, and shine together.
+            A place to awaken hidden talents through fanart, edits, and creative
+            projects — let’s grow, create, and shine together.
           </p>
+        </div>
+
+        <div className="about-card about-team-card">
+          <h3>👥 GinJay Europe Team</h3>
+
+          <div className="about-team-members">
+            <span>BreE</span>
+            <span>DaniCor</span>
+            <span>Juste</span>
+            <span>Klaudia</span>
+          </div>
         </div>
       </div>
     </section>
