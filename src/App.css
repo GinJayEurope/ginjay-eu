@@ -3759,3 +3759,37 @@ nav a.active::after {
   width: min(100%, 440px);
   text-align: center;
 }
+/* Animated Footer Logo */
+
+.footer-animated-logo {
+  display: block;
+  width: clamp(170px, 18vw, 230px);
+  aspect-ratio: 1;
+  margin: 2rem auto 0;
+  object-fit: cover;
+  border-radius: 50%;
+  box-shadow:
+    0 18px 45px rgba(116, 82, 180, 0.3),
+    0 0 30px rgba(232, 180, 255, 0.15);
+  animation: footer-logo-float 4.5s ease-in-out infinite;
+  transform-origin: center;
+  will-change: transform;
+}
+
+@keyframes footer-logo-float {
+  0%,
+  100% {
+    transform: translateY(0) rotate(-1deg);
+  }
+
+  50% {
+    transform: translateY(-10px) rotate(1deg);
+  }
+}
+
+/* Bewegung für Nutzer mit entsprechender Systemeinstellung deaktivieren */
+@media (prefers-reduced-motion: reduce) {
+  .footer-animated-logo {
+    animation: none;
+  }
+}

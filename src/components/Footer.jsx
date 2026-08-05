@@ -1,4 +1,4 @@
-import watermark from "../assets/brand/ginjay-europe-watermark.jpg";
+import animatedLogo from "../assets/brand/ginjay-europe-logo.gif";
 
 export default function Footer() {
   return (
@@ -13,9 +13,9 @@ export default function Footer() {
           </p>
 
           <img
-            src={watermark}
-            alt="GinJay Europe watermark"
-            className="footer-watermark"
+            src={animatedLogo}
+            alt="Animated GinJay Europe logo"
+            className="footer-animated-logo"
             loading="lazy"
             decoding="async"
           />
