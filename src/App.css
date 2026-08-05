@@ -4001,15 +4001,24 @@ nav a.active::after {
 ========================= */
 
 .hero-showcase {
-  --showcase-space-x: clamp(24px, 5vw, 60px);
-  --showcase-space-y: clamp(28px, 4vw, 52px);
-  --showcase-logo-size: clamp(160px, 19vw, 220px);
-  --showcase-overlap: clamp(18px, 2vw, 28px);
+  --showcase-padding: clamp(28px, 4.5vw, 54px);
+  --showcase-logo-size: clamp(155px, 17vw, 205px);
+  --showcase-logo-overlap: 10px;
 
   position: relative;
   isolation: isolate;
-  min-height: 460px;
-  padding: 0;
+  box-sizing: border-box;
+
+  display: grid;
+  grid-template-columns:
+    minmax(0, 1fr)
+    calc(var(--showcase-logo-size) - var(--showcase-logo-overlap));
+  grid-template-rows: minmax(390px, auto);
+  align-items: stretch;
+
+  width: 100%;
+  min-height: 500px;
+  padding: var(--showcase-padding);
 }
 
 /* Orbs bleiben im Hintergrund */
@@ -4018,61 +4027,77 @@ nav a.active::after {
   z-index: 0;
 }
 
-/* Innere Textkachel oben links */
+/* Innere Kachel vollständig sichtbar */
 
 .hero-showcase .hero-card-content {
-  position: absolute;
-  top: var(--showcase-space-y);
-  left: var(--showcase-space-x);
+  position: relative;
+  top: auto;
+  left: auto;
   z-index: 2;
 
-  box-sizing: border-box;
-  width: calc(
-    100% - var(--showcase-space-x) - var(--showcase-space-x) -
-      var(--showcase-logo-size) + var(--showcase-overlap)
-  );
-  max-width: 760px;
-  min-width: 0;
+  grid-column: 1;
+  grid-row: 1;
+  align-self: start;
 
-  padding: clamp(1.7rem, 3vw, 2.7rem);
-  padding-right: calc(
-    clamp(1.7rem, 3vw, 2.7rem) + var(--showcase-overlap)
-  );
+  box-sizing: border-box;
+  width: 100%;
+  max-width: none;
+  min-width: 0;
+  margin: 0;
+  padding: clamp(1.8rem, 3vw, 2.7rem);
+
+  overflow: visible;
 }
 
-/* Textabstände und Zeilenhöhe korrigieren */
+/* Überschrift vollständig und gut lesbar */
 
 .hero-showcase .hero-card-content h3 {
   max-width: 100%;
-  margin: 1.25rem 0 1rem;
-  font-size: clamp(2rem, 4vw, 3.4rem);
+  margin: 1.2rem 0 1rem;
+
+  color: var(--color-primary);
+  font-size: clamp(2rem, 3.5vw, 2.9rem);
   line-height: 1.12;
-  overflow-wrap: break-word;
+  text-wrap: balance;
+  overflow-wrap: normal;
+  word-break: normal;
 }
+
+/* Beschreibung vollständig sichtbar */
 
 .hero-showcase .hero-card-content p {
   max-width: 100%;
   margin: 0;
-  font-size: clamp(1rem, 1.8vw, 1.25rem);
+
+  color: var(--color-muted);
+  font-size: clamp(1rem, 1.6vw, 1.2rem);
   line-height: 1.65;
+  text-align: left;
   overflow-wrap: break-word;
 }
 
-/* Logo rechts unten mit kleiner Überlappung */
+/* Icon rechts unten – nur 10 px Überlappung */
 
 .hero-showcase-logo {
-  position: absolute;
-  right: var(--showcase-space-x);
-  bottom: var(--showcase-space-y);
+  position: relative;
+  right: auto;
+  bottom: auto;
   z-index: 3;
+
+  grid-column: 2;
+  grid-row: 1;
+  align-self: end;
+  justify-self: start;
 
   display: block;
   width: var(--showcase-logo-size);
   height: var(--showcase-logo-size);
-  object-fit: cover;
+  margin: 0 0 0 calc(-1 * var(--showcase-logo-overlap));
 
+  object-fit: cover;
   border: 5px solid rgba(255, 255, 255, 0.62);
   border-radius: 50%;
+
   box-shadow:
     0 22px 55px rgba(91, 59, 122, 0.28),
     0 0 32px rgba(232, 180, 255, 0.2);
@@ -4091,7 +4116,7 @@ nav a.active::after {
   }
 
   50% {
-    transform: translateY(-8px) rotate(1deg);
+    transform: translateY(-7px) rotate(1deg);
   }
 }
 
@@ -4099,6 +4124,7 @@ nav a.active::after {
 
 .app.dark .hero-showcase-logo {
   border-color: rgba(240, 230, 255, 0.18);
+
   box-shadow:
     0 22px 55px rgba(0, 0, 0, 0.4),
     0 0 32px rgba(205, 182, 243, 0.14);
@@ -4108,50 +4134,44 @@ nav a.active::after {
 
 @media (max-width: 860px) {
   .hero-showcase {
-    --showcase-space-x: 28px;
-    --showcase-space-y: 28px;
-    --showcase-logo-size: 165px;
-    --showcase-overlap: 20px;
+    --showcase-padding: 28px;
+    --showcase-logo-size: 155px;
+    --showcase-logo-overlap: 8px;
 
-    min-height: 440px;
+    grid-template-rows: minmax(360px, auto);
+    min-height: 430px;
   }
 
   .hero-showcase .hero-card-content {
-    max-width: none;
+    padding: 1.8rem;
   }
 
   .hero-showcase .hero-card-content h3 {
-    font-size: clamp(1.9rem, 5vw, 2.8rem);
+    font-size: clamp(1.8rem, 4.7vw, 2.5rem);
   }
 }
 
-/* Smartphone: Textkachel und Logo getrennt anordnen */
+/* Smartphone */
 
 @media (max-width: 600px) {
   .hero-showcase {
     display: flex;
     flex-direction: column;
-    align-items: flex-end;
-    gap: 1.25rem;
+    align-items: stretch;
 
     min-height: 0;
     padding: 18px;
   }
 
   .hero-showcase .hero-card-content {
-    position: relative;
-    top: auto;
-    left: auto;
-
     width: 100%;
-    max-width: none;
     padding: 1.5rem;
   }
 
   .hero-showcase .hero-card-content h3 {
     margin-top: 1rem;
-    font-size: clamp(1.85rem, 9vw, 2.5rem);
-    line-height: 1.14;
+    font-size: clamp(1.75rem, 8vw, 2.25rem);
+    line-height: 1.15;
   }
 
   .hero-showcase .hero-card-content p {
@@ -4160,13 +4180,11 @@ nav a.active::after {
   }
 
   .hero-showcase-logo {
-    position: relative;
-    right: auto;
-    bottom: auto;
+    align-self: flex-end;
 
-    width: 132px;
-    height: 132px;
-    margin: 0 4px 4px 0;
+    width: 128px;
+    height: 128px;
+    margin: -8px 6px 0 0;
     border-width: 4px;
   }
 }
@@ -4183,12 +4201,12 @@ nav a.active::after {
   }
 
   .hero-showcase .hero-card-content h3 {
-    font-size: 1.8rem;
+    font-size: 1.7rem;
   }
 
   .hero-showcase-logo {
-    width: 118px;
-    height: 118px;
+    width: 112px;
+    height: 112px;
   }
 }
 
