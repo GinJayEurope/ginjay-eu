@@ -3733,3 +3733,29 @@ nav a.active::after {
     width: 100%;
   }
 }
+/* Artist-Link-Buttons mittig und gleichmäßig anordnen */
+.artist-socials {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.8rem;
+  width: min(100%, 370px);
+  margin: 2rem auto 1.5rem;
+}
+
+.artist-socials a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 54px;
+  padding: 0.75rem 1rem;
+  text-align: center;
+  white-space: nowrap;
+}
+
+/* Unteren North-Star-Link ebenfalls mittig halten */
+.artist-watch-button {
+  align-self: center;
+  width: min(100%, 440px);
+  text-align: center;
+}
