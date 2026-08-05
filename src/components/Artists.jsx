@@ -70,7 +70,7 @@ export default function Artists() {
         ["Favorite Pet", "Dog"],
         ["Favorite Flower", "Pastel colored flowers"],
         ["Favorite Fruit", "Pear, mango, cantaloupe, rose apple"],
-        ["Allergic To", "None"],
+        ["Allergic To", "breakup rumors"],
         ["Freetime", "Sleeping"],
       ],
       socials: {
