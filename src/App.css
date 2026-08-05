@@ -4001,13 +4001,18 @@ nav a.active::after {
 ========================= */
 
 .hero-showcase {
+  --showcase-space-x: clamp(24px, 5vw, 60px);
+  --showcase-space-y: clamp(28px, 4vw, 52px);
+  --showcase-logo-size: clamp(160px, 19vw, 220px);
+  --showcase-overlap: clamp(18px, 2vw, 28px);
+
   position: relative;
   isolation: isolate;
   min-height: 460px;
   padding: 0;
 }
 
-/* Orbs bleiben hinter Text und Logo */
+/* Orbs bleiben im Hintergrund */
 
 .hero-showcase .orb {
   z-index: 0;
@@ -4017,24 +4022,53 @@ nav a.active::after {
 
 .hero-showcase .hero-card-content {
   position: absolute;
-  top: clamp(30px, 5vw, 58px);
-  left: clamp(24px, 5vw, 60px);
+  top: var(--showcase-space-y);
+  left: var(--showcase-space-x);
   z-index: 2;
-  width: min(72%, 760px);
+
+  box-sizing: border-box;
+  width: calc(
+    100% - var(--showcase-space-x) - var(--showcase-space-x) -
+      var(--showcase-logo-size) + var(--showcase-overlap)
+  );
   max-width: 760px;
+  min-width: 0;
+
+  padding: clamp(1.7rem, 3vw, 2.7rem);
+  padding-right: calc(
+    clamp(1.7rem, 3vw, 2.7rem) + var(--showcase-overlap)
+  );
 }
 
-/* Bewegliches Logo rechts unten */
+/* Textabstände und Zeilenhöhe korrigieren */
+
+.hero-showcase .hero-card-content h3 {
+  max-width: 100%;
+  margin: 1.25rem 0 1rem;
+  font-size: clamp(2rem, 4vw, 3.4rem);
+  line-height: 1.12;
+  overflow-wrap: break-word;
+}
+
+.hero-showcase .hero-card-content p {
+  max-width: 100%;
+  margin: 0;
+  font-size: clamp(1rem, 1.8vw, 1.25rem);
+  line-height: 1.65;
+  overflow-wrap: break-word;
+}
+
+/* Logo rechts unten mit kleiner Überlappung */
 
 .hero-showcase-logo {
   position: absolute;
-  right: clamp(28px, 7vw, 82px);
-  bottom: clamp(24px, 4vw, 46px);
+  right: var(--showcase-space-x);
+  bottom: var(--showcase-space-y);
   z-index: 3;
 
   display: block;
-  width: clamp(160px, 20vw, 225px);
-  aspect-ratio: 1;
+  width: var(--showcase-logo-size);
+  height: var(--showcase-logo-size);
   object-fit: cover;
 
   border: 5px solid rgba(255, 255, 255, 0.62);
@@ -4074,43 +4108,65 @@ nav a.active::after {
 
 @media (max-width: 860px) {
   .hero-showcase {
+    --showcase-space-x: 28px;
+    --showcase-space-y: 28px;
+    --showcase-logo-size: 165px;
+    --showcase-overlap: 20px;
+
     min-height: 440px;
-    padding: 0;
   }
 
   .hero-showcase .hero-card-content {
-    top: 28px;
-    left: 28px;
-    width: 74%;
-    max-width: 600px;
+    max-width: none;
   }
 
-  .hero-showcase-logo {
-    right: 28px;
-    bottom: 24px;
-    width: clamp(145px, 22vw, 175px);
+  .hero-showcase .hero-card-content h3 {
+    font-size: clamp(1.9rem, 5vw, 2.8rem);
   }
 }
 
-/* Smartphone */
+/* Smartphone: Textkachel und Logo getrennt anordnen */
 
 @media (max-width: 600px) {
   .hero-showcase {
-    min-height: 510px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 1.25rem;
+
+    min-height: 0;
+    padding: 18px;
   }
 
   .hero-showcase .hero-card-content {
-    top: 18px;
-    left: 18px;
-    width: calc(100% - 36px);
+    position: relative;
+    top: auto;
+    left: auto;
+
+    width: 100%;
     max-width: none;
-    padding: 1.4rem;
+    padding: 1.5rem;
+  }
+
+  .hero-showcase .hero-card-content h3 {
+    margin-top: 1rem;
+    font-size: clamp(1.85rem, 9vw, 2.5rem);
+    line-height: 1.14;
+  }
+
+  .hero-showcase .hero-card-content p {
+    font-size: 1rem;
+    line-height: 1.6;
   }
 
   .hero-showcase-logo {
-    right: 18px;
-    bottom: 18px;
+    position: relative;
+    right: auto;
+    bottom: auto;
+
     width: 132px;
+    height: 132px;
+    margin: 0 4px 4px 0;
     border-width: 4px;
   }
 }
@@ -4119,15 +4175,24 @@ nav a.active::after {
 
 @media (max-width: 400px) {
   .hero-showcase {
-    min-height: 540px;
+    padding: 14px;
+  }
+
+  .hero-showcase .hero-card-content {
+    padding: 1.3rem;
+  }
+
+  .hero-showcase .hero-card-content h3 {
+    font-size: 1.8rem;
   }
 
   .hero-showcase-logo {
     width: 118px;
+    height: 118px;
   }
 }
 
-/* Systemeinstellung für reduzierte Bewegungen beachten */
+/* Reduzierte Bewegung berücksichtigen */
 
 @media (prefers-reduced-motion: reduce) {
   .hero-showcase-logo {
