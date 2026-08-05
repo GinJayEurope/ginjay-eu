@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import animatedLogo from "../assets/brand/ginjay-europe-logo.gif";
 
 export default function Hero() {
   const [offset, setOffset] = useState(0);
@@ -60,7 +61,7 @@ export default function Hero() {
         </div>
 
         <div className="hero-image">
-          <div className="artwork-placeholder premium-artwork">
+          <div className="artwork-placeholder premium-artwork hero-showcase">
             <div
               className="orb orb-one"
               style={{ transform: `translateY(${offset}px)` }}
@@ -77,15 +78,23 @@ export default function Hero() {
             ></div>
 
             <div className="hero-card-content">
-  <span className="hero-badge">Europe Alkeys Fanbase</span>
+              <span className="hero-badge">Europe Alkeys Fanbase</span>
 
-  <h3>Updates, memories, fanart and community</h3>
+              <h3>Updates, memories, fanart and community</h3>
 
-  <p>
-    A digital home for everyone supporting Ginny and Jayna with kindness,
-    love and creativity.
-  </p>
-</div>
+              <p>
+                A digital home for everyone supporting Ginny and Jayna with
+                kindness, love and creativity.
+              </p>
+            </div>
+
+            <img
+              src={animatedLogo}
+              alt="GinJay Europe logo"
+              className="hero-showcase-logo"
+              loading="eager"
+              decoding="async"
+            />
           </div>
         </div>
       </div>
