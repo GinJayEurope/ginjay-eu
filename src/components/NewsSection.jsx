@@ -1,11 +1,79 @@
 import { useEffect, useState } from "react";
 import { news } from "../data/news";
 
+function NewsCard({ item }) {
+  const hasArtwork = Boolean(item.image);
+  const hasVideo = Boolean(item.video);
+  const typeClass = item.type.toLowerCase();
+
+  return (
+    <article
+      className={`news-premium-card news-premium-card--${typeClass}${
+        hasArtwork ? " news-premium-card--artwork" : ""
+      }${hasVideo ? " news-premium-card--video" : ""}`}
+    >
+      {hasVideo && (
+        <div className="news-premium-card-video-wrap">
+          <video
+            className="news-premium-card-video"
+            controls
+            muted
+            playsInline
+            preload="metadata"
+            poster={item.poster}
+            aria-label={`${item.title} — GinJay Europe celebration edit`}
+          >
+            <source src={item.video} type="video/mp4" />
+            Your browser does not support embedded videos.
+          </video>
+        </div>
+      )}
+
+      {hasArtwork && (
+        <img
+          src={item.image}
+          alt=""
+          className="news-premium-card-image"
+          loading="lazy"
+          decoding="async"
+          aria-hidden="true"
+        />
+      )}
+
+      <div className="news-premium-card-content">
+        <span className="news-badge">{item.type}</span>
+
+        <h3>{item.title}</h3>
+
+        <p>{item.text}</p>
+
+        {item.link ? (
+          <a
+            href={item.link}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="news-premium-button"
+          >
+            {item.button} <span>→</span>
+          </a>
+        ) : item.button ? (
+          <button type="button" className="news-premium-button" disabled>
+            {item.button}
+          </button>
+        ) : null}
+      </div>
+    </article>
+  );
+}
+
 export default function NewsSection() {
   const [selectedSchedule, setSelectedSchedule] = useState(null);
 
   const scheduleItem = news.find((item) => item.type === "Schedule");
-  const otherNews = news.filter((item) => item.type !== "Schedule");
+  const communityItem = news.find((item) => item.type === "Community");
+  const rightColumnNews = news.filter(
+    (item) => item.type === "Milestone" || item.type === "Spotlight",
+  );
 
   useEffect(() => {
     if (!selectedSchedule) return;
@@ -42,111 +110,44 @@ export default function NewsSection() {
         </div>
 
         <div className="news-showcase">
-          {scheduleItem && (
-            <article className="schedule-feature-card">
-              <div className="schedule-feature-image-wrap">
-                <img
-                  src={scheduleItem.image}
-                  alt={scheduleItem.title}
-                  className="schedule-feature-image"
-                  loading="lazy"
-                  decoding="async"
-                />
-              </div>
+          <div className="news-column news-column--left">
+            {scheduleItem && (
+              <article className="schedule-feature-card">
+                <div className="schedule-feature-image-wrap">
+                  <img
+                    src={scheduleItem.image}
+                    alt={scheduleItem.title}
+                    className="schedule-feature-image"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </div>
 
-              <div className="schedule-feature-content">
-                <span className="news-badge">{scheduleItem.type}</span>
+                <div className="schedule-feature-content">
+                  <span className="news-badge">{scheduleItem.type}</span>
 
-                <h3>{scheduleItem.title}</h3>
+                  <h3>{scheduleItem.title}</h3>
 
-                <p>{scheduleItem.text}</p>
+                  <p>{scheduleItem.text}</p>
 
-                <button
-                  type="button"
-                  className="news-premium-button"
-                  onClick={() => setSelectedSchedule(scheduleItem)}
-                >
-                  {scheduleItem.button} <span>→</span>
-                </button>
-              </div>
-            </article>
-          )}
+                  <button
+                    type="button"
+                    className="news-premium-button"
+                    onClick={() => setSelectedSchedule(scheduleItem)}
+                  >
+                    {scheduleItem.button} <span>→</span>
+                  </button>
+                </div>
+              </article>
+            )}
 
-          <div className="news-side-cards">
-            {otherNews.map((item) => {
-              const hasArtwork = Boolean(item.image);
-              const hasVideo = Boolean(item.video);
+            {communityItem && <NewsCard item={communityItem} />}
+          </div>
 
-              return (
-                <article
-                  className={`news-premium-card${
-                    hasArtwork ? " news-premium-card--artwork" : ""
-                  }${hasVideo ? " news-premium-card--video" : ""}`}
-                  key={item.id}
-                >
-                  {hasVideo && (
-                    <div className="news-premium-card-video-wrap">
-                      <video
-                        className="news-premium-card-video"
-                        controls
-                        muted
-                        playsInline
-                        preload="metadata"
-                        poster={item.poster}
-                        aria-label={`${item.title} — GinJay Europe celebration edit`}
-                      >
-                        <source src={item.video} type="video/mp4" />
-                        Your browser does not support embedded videos.
-                      </video>
-                    </div>
-                  )}
-                  {hasArtwork && (
-                    <img
-                      src={item.image}
-                      alt=""
-                      className="news-premium-card-image"
-                      loading="lazy"
-                      decoding="async"
-                      aria-hidden="true"
-                    />
-                  )}
-
-                  <div className="news-premium-card-content">
-                    <span className="news-badge">{item.type}</span>
-
-                    <h3>{item.title}</h3>
-
-                    <p>{item.text}</p>
-
-                    {hasVideo && (
-                      <p className="news-video-sound-hint">
-                        Sound is off by default — use the video controls to turn
-                        it on.
-                      </p>
-                    )}
-
-                    {item.link ? (
-                      <a
-                        href={item.link}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="news-premium-button"
-                      >
-                        {item.button} <span>→</span>
-                      </a>
-                    ) : item.button ? (
-                      <button
-                        type="button"
-                        className="news-premium-button"
-                        disabled
-                      >
-                        {item.button}
-                      </button>
-                    ) : null}
-                  </div>
-                </article>
-              );
-            })}
+          <div className="news-column news-column--right">
+            {rightColumnNews.map((item) => (
+              <NewsCard item={item} key={item.id} />
+            ))}
           </div>
         </div>
       </section>
