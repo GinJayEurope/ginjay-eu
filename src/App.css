@@ -4569,3 +4569,516 @@ nav a.active::after {
     height: 36px;
   }
 }
+
+/* =========================================================
+   GINJAY EUROPE — SIGNATURE VEIL DESIGN SYSTEM
+   Continuous light/dark atmosphere with the refined header
+========================================================= */
+
+html,
+body {
+  background: #faf3ee;
+}
+
+html.dark-mode,
+html.dark-mode body {
+  background: #17131f;
+}
+
+.app {
+  --color-bg: #faf3ee;
+  --color-primary: #3e2858;
+  --color-primary-soft: #8e5fc4;
+  --color-text: #3b2b4c;
+  --color-muted: #6c5b75;
+  --color-gold: #ad7a27;
+  --color-card: rgba(255, 252, 249, 0.76);
+  --color-card-solid: #fffaf7;
+  --color-badge: rgba(232, 216, 245, 0.86);
+  --color-border: rgba(91, 59, 122, 0.14);
+  --shadow-soft:
+    0 18px 48px rgba(73, 45, 93, 0.1),
+    0 1px 0 rgba(255, 255, 255, 0.72) inset;
+  --shadow-hover:
+    0 28px 64px rgba(73, 45, 93, 0.16),
+    0 1px 0 rgba(255, 255, 255, 0.82) inset;
+  --veil-surface: linear-gradient(
+    145deg,
+    rgba(255, 253, 251, 0.82),
+    rgba(247, 238, 246, 0.68)
+  );
+  --veil-inner-surface: rgba(255, 252, 249, 0.62);
+
+  position: relative;
+  isolation: isolate;
+  min-height: 100vh;
+  overflow: clip;
+  color: var(--color-text);
+  background: var(--color-bg);
+  transition:
+    color 0.5s ease,
+    background-color 0.5s ease;
+}
+
+.app.dark {
+  --color-bg: #17131f;
+  --color-primary: #f7f1fb;
+  --color-primary-soft: #c8a3ef;
+  --color-text: #f7f2fa;
+  --color-muted: #c9bed2;
+  --color-gold: #edc773;
+  --color-card: rgba(42, 33, 54, 0.78);
+  --color-card-solid: #261f30;
+  --color-badge: rgba(77, 57, 96, 0.9);
+  --color-border: rgba(245, 237, 252, 0.11);
+  --shadow-soft:
+    0 20px 52px rgba(5, 3, 9, 0.3),
+    0 1px 0 rgba(255, 255, 255, 0.045) inset;
+  --shadow-hover:
+    0 30px 72px rgba(5, 3, 9, 0.42),
+    0 1px 0 rgba(255, 255, 255, 0.07) inset;
+  --veil-surface: linear-gradient(
+    145deg,
+    rgba(51, 40, 65, 0.84),
+    rgba(26, 21, 34, 0.78)
+  );
+  --veil-inner-surface: rgba(29, 23, 38, 0.58);
+
+  background: var(--color-bg);
+}
+
+.app::before,
+.app::after {
+  content: "";
+  position: fixed;
+  inset: -2.5vmax;
+  z-index: 0;
+  pointer-events: none;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  transition: opacity 0.65s ease;
+  animation: signatureVeilBreath 24s ease-in-out infinite alternate;
+}
+
+.app::before {
+  opacity: 1;
+  background-image:
+    linear-gradient(rgba(250, 243, 238, 0.05), rgba(250, 243, 238, 0.16)),
+    url("./assets/backgrounds/signature-veil-light.webp");
+}
+
+.app::after {
+  opacity: 0;
+  background-image:
+    linear-gradient(rgba(15, 11, 21, 0.08), rgba(15, 11, 21, 0.18)),
+    url("./assets/backgrounds/signature-veil-dark.webp");
+}
+
+.app.dark::before {
+  opacity: 0;
+}
+
+.app.dark::after {
+  opacity: 1;
+}
+
+.app main {
+  position: relative;
+  z-index: 1;
+}
+
+@keyframes signatureVeilBreath {
+  from {
+    transform: scale(1.015) translate3d(0, 0, 0);
+  }
+
+  to {
+    transform: scale(1.035) translate3d(0, -0.45%, 0);
+  }
+}
+
+/* Refined navigation retained from the previous redesign */
+
+.header {
+  background: rgba(252, 247, 243, 0.68);
+  border: 0;
+  box-shadow: 0 12px 36px rgba(69, 41, 87, 0.05);
+  backdrop-filter: blur(24px) saturate(130%);
+}
+
+.header.scrolled {
+  background: rgba(252, 247, 243, 0.9);
+  box-shadow: 0 14px 42px rgba(69, 41, 87, 0.09);
+}
+
+.app.dark .header {
+  background: rgba(28, 23, 37, 0.72);
+  box-shadow: 0 12px 38px rgba(4, 2, 8, 0.16);
+}
+
+.app.dark .header.scrolled {
+  background: rgba(25, 20, 33, 0.91);
+  box-shadow: 0 16px 46px rgba(4, 2, 8, 0.3);
+}
+
+.header-brand-mark {
+  box-shadow:
+    0 9px 25px rgba(80, 49, 102, 0.17),
+    0 0 0 1px rgba(112, 76, 143, 0.12);
+}
+
+.header-brand-name {
+  letter-spacing: 0.025em;
+}
+
+.theme-toggle {
+  background: rgba(255, 252, 249, 0.66);
+  border-color: rgba(91, 59, 122, 0.13);
+  box-shadow: 0 10px 28px rgba(73, 45, 93, 0.11);
+}
+
+.theme-option.active {
+  background: linear-gradient(145deg, #f4d786, #dfa94e);
+  box-shadow:
+    0 5px 14px rgba(172, 116, 30, 0.23),
+    0 0 0 1px rgba(255, 248, 211, 0.7) inset;
+}
+
+/* Seamless hero and editorial typography */
+
+.hero {
+  min-height: max(780px, calc(100svh - 84px));
+  padding-top: clamp(5.5rem, 9vw, 8rem);
+  padding-bottom: clamp(6rem, 10vw, 9rem);
+  background: transparent;
+}
+
+.hero-content {
+  max-width: 1180px;
+}
+
+.hero-content > h1 {
+  max-width: 8.4ch;
+  margin: clamp(1.1rem, 2vw, 1.6rem) auto;
+  color: var(--color-primary);
+  font-size: clamp(4.2rem, 8.6vw, 8.6rem);
+  font-weight: 500;
+  letter-spacing: -0.055em;
+  line-height: 0.84;
+  text-wrap: balance;
+  text-shadow: 0 12px 42px rgba(77, 43, 99, 0.08);
+}
+
+.hero-content > h1 span {
+  color: #8757ba;
+  background: linear-gradient(135deg, #5d347f 8%, #9a68cd 88%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.app.dark .hero-content > h1 {
+  text-shadow: 0 16px 48px rgba(0, 0, 0, 0.26);
+}
+
+.app.dark .hero-content > h1 span {
+  background: linear-gradient(135deg, #d8bcf7 8%, #ad7ce1 88%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.hero p {
+  max-width: 730px;
+  color: var(--color-muted);
+  font-size: clamp(1rem, 1.35vw, 1.15rem);
+  line-height: 1.85;
+}
+
+.hero-socials {
+  margin-top: 1.8rem;
+}
+
+.hero-socials a {
+  min-height: 42px;
+  padding: 0.65rem 1.15rem;
+  color: #4a2f63;
+  background: rgba(239, 225, 248, 0.78);
+  border-color: rgba(103, 68, 132, 0.11);
+  box-shadow:
+    0 12px 28px rgba(75, 45, 96, 0.12),
+    0 1px 0 rgba(255, 255, 255, 0.76) inset;
+}
+
+.app.dark .hero-socials a,
+.app.dark .hero-socials a:hover {
+  color: #f8f2fc !important;
+  background: rgba(67, 50, 84, 0.84) !important;
+  border-color: rgba(245, 237, 252, 0.1) !important;
+  box-shadow: 0 14px 32px rgba(4, 2, 8, 0.25) !important;
+}
+
+.hero-image {
+  margin-top: clamp(4.5rem, 8vw, 7.5rem);
+}
+
+.premium-artwork {
+  background:
+    radial-gradient(circle at 15% 12%, rgba(217, 184, 240, 0.43), transparent 30%),
+    radial-gradient(circle at 84% 18%, rgba(247, 207, 183, 0.4), transparent 31%),
+    linear-gradient(145deg, rgba(255, 252, 250, 0.74), rgba(241, 229, 244, 0.56));
+  border-color: rgba(112, 76, 143, 0.16);
+  box-shadow:
+    0 36px 90px rgba(67, 40, 84, 0.17),
+    0 1px 0 rgba(255, 255, 255, 0.82) inset;
+  backdrop-filter: blur(18px);
+}
+
+.app.dark .premium-artwork {
+  background:
+    radial-gradient(circle at 15% 12%, rgba(171, 115, 215, 0.22), transparent 30%),
+    radial-gradient(circle at 84% 18%, rgba(232, 161, 133, 0.15), transparent 31%),
+    linear-gradient(145deg, rgba(54, 42, 68, 0.78), rgba(25, 20, 33, 0.73));
+  border-color: rgba(245, 237, 252, 0.11);
+  box-shadow:
+    0 38px 94px rgba(3, 2, 7, 0.42),
+    0 1px 0 rgba(255, 255, 255, 0.055) inset;
+}
+
+/* One continuous backdrop — no section bands or rails */
+
+.section,
+.events-section,
+.app.dark .events-section,
+.artists-section,
+.editorial-section,
+.gifset {
+  background: transparent !important;
+}
+
+.events-section::before {
+  opacity: 0.34;
+  background:
+    radial-gradient(circle at 12% 18%, rgba(143, 94, 188, 0.13), transparent 24rem),
+    radial-gradient(circle at 88% 78%, rgba(218, 164, 85, 0.1), transparent 25rem);
+}
+
+.section {
+  position: relative;
+  padding-top: clamp(6rem, 9vw, 8.5rem);
+  padding-bottom: clamp(6rem, 9vw, 8.5rem);
+}
+
+.section-heading {
+  max-width: 800px;
+}
+
+.section h2,
+.footer-column h2 {
+  font-family: Georgia, serif;
+  font-weight: 500;
+  letter-spacing: -0.035em;
+}
+
+.section-heading p {
+  font-size: 1.03rem;
+  line-height: 1.9;
+}
+
+/* Pearl/midnight gallery surfaces around existing special content */
+
+.about-card,
+.schedule-feature-card,
+.news-premium-card:not(.news-premium-card--artwork),
+.artist-card,
+.timeline-content,
+.events-month-card:not(.events-month-card--artwork),
+.events-month-item,
+.monthly-events-note,
+.archive-card,
+.archive-coming-soon,
+.editorial-card,
+.empty-state,
+.gallery-feature,
+.discord-archive-card {
+  background: var(--veil-surface);
+  border-color: var(--color-border);
+  box-shadow: var(--shadow-soft);
+  backdrop-filter: blur(17px) saturate(112%);
+}
+
+.about-card:hover,
+.schedule-feature-card:hover,
+.news-premium-card:hover,
+.artist-card:hover,
+.timeline-content:hover,
+.events-month-item:hover,
+.archive-card:hover,
+.editorial-card:hover,
+.gallery-feature:hover {
+  box-shadow: var(--shadow-hover);
+}
+
+.artist-info-grid div,
+.timeline-details,
+.events-month-item,
+.monthly-events-note,
+.gallery-meta-card {
+  background: var(--veil-inner-surface);
+  border-color: var(--color-border);
+}
+
+.app.dark .timeline-details,
+.app.dark .events-month-item,
+.app.dark .monthly-events-note {
+  background: rgba(255, 255, 255, 0.035);
+}
+
+.schedule-feature-image-wrap {
+  background: rgba(255, 255, 255, 0.48);
+  border: 1px solid rgba(113, 78, 141, 0.08);
+}
+
+.app.dark .schedule-feature-image-wrap {
+  background: rgba(255, 255, 255, 0.055);
+  border-color: rgba(245, 237, 252, 0.07);
+}
+
+.news-premium-card--video {
+  background: var(--veil-surface) !important;
+}
+
+.filter,
+.news-premium-button,
+.artist-socials a,
+.artist-watch-button,
+.gif-download-button,
+.gifset-more-btn,
+.timeline-toggle,
+.back-to-top {
+  box-shadow: var(--shadow-soft);
+}
+
+.filter {
+  background: rgba(255, 252, 249, 0.68);
+  border: 1px solid var(--color-border);
+}
+
+.filter.active {
+  color: #fff;
+  background: linear-gradient(135deg, #55346e, #8053aa);
+}
+
+.timeline-list::before {
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    rgba(130, 84, 166, 0.4) 12%,
+    rgba(184, 135, 68, 0.35) 88%,
+    transparent
+  );
+}
+
+.footer,
+.app.dark .footer {
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    color-mix(in srgb, var(--color-bg) 84%, transparent) 38%,
+    color-mix(in srgb, var(--color-bg) 96%, transparent)
+  );
+  border: 0;
+  box-shadow: none;
+}
+
+.footer::before,
+.footer::after {
+  opacity: 0.48;
+}
+
+/* Theme-specific final button polish without changing their functions */
+
+.app.dark .theme-toggle,
+.app.dark .theme-toggle:hover {
+  background: rgba(57, 44, 72, 0.72) !important;
+  border-color: rgba(245, 237, 252, 0.1) !important;
+  box-shadow: 0 12px 30px rgba(3, 2, 7, 0.28) !important;
+}
+
+.app.dark .theme-option.active {
+  color: #33233f !important;
+  background: linear-gradient(145deg, #f4d887, #dda94c) !important;
+  box-shadow:
+    0 6px 15px rgba(0, 0, 0, 0.24),
+    0 0 0 1px rgba(255, 247, 207, 0.45) inset !important;
+}
+
+@media (max-width: 860px) {
+  .app::before,
+  .app::after {
+    inset: 0;
+    background-size: 100% 100%;
+    animation: none;
+  }
+
+  .header {
+    background: rgba(252, 247, 243, 0.88);
+  }
+
+  .app.dark .header {
+    background: rgba(25, 20, 33, 0.9);
+  }
+
+  .hero {
+    min-height: calc(100svh - 72px);
+    padding-top: 5.5rem;
+  }
+
+  .hero-content > h1 {
+    max-width: 8.6ch;
+    font-size: clamp(3.9rem, 16vw, 6.6rem);
+  }
+}
+
+@media (max-width: 520px) {
+  .section {
+    padding-top: 5.25rem;
+    padding-bottom: 5.25rem;
+  }
+
+  .hero {
+    padding-inline: 1.15rem;
+    padding-top: 4.75rem;
+  }
+
+  .hero-content > h1 {
+    font-size: clamp(3.35rem, 18vw, 5.25rem);
+    line-height: 0.88;
+  }
+
+  .hero p {
+    font-size: 0.98rem;
+    line-height: 1.75;
+  }
+
+  .about-card,
+  .schedule-feature-card,
+  .news-premium-card,
+  .artist-card,
+  .timeline-content,
+  .events-month-card,
+  .archive-card,
+  .editorial-card,
+  .gallery-feature {
+    backdrop-filter: blur(12px) saturate(108%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .app::before,
+  .app::after {
+    animation: none;
+    transition: none;
+  }
+}
