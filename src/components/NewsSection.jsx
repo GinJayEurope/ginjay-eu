@@ -75,14 +75,31 @@ export default function NewsSection() {
           <div className="news-side-cards">
             {otherNews.map((item) => {
               const hasArtwork = Boolean(item.image);
+              const hasVideo = Boolean(item.video);
 
               return (
                 <article
                   className={`news-premium-card${
                     hasArtwork ? " news-premium-card--artwork" : ""
-                  }`}
+                  }${hasVideo ? " news-premium-card--video" : ""}`}
                   key={item.id}
                 >
+                  {hasVideo && (
+                    <div className="news-premium-card-video-wrap">
+                      <video
+                        className="news-premium-card-video"
+                        controls
+                        muted
+                        playsInline
+                        preload="metadata"
+                        poster={item.poster}
+                        aria-label={`${item.title} — GinJay Europe celebration edit`}
+                      >
+                        <source src={item.video} type="video/mp4" />
+                        Your browser does not support embedded videos.
+                      </video>
+                    </div>
+                  )}
                   {hasArtwork && (
                     <img
                       src={item.image}
@@ -101,6 +118,13 @@ export default function NewsSection() {
 
                     <p>{item.text}</p>
 
+                    {hasVideo && (
+                      <p className="news-video-sound-hint">
+                        Sound is off by default — use the video controls to turn
+                        it on.
+                      </p>
+                    )}
+
                     {item.link ? (
                       <a
                         href={item.link}
@@ -110,7 +134,7 @@ export default function NewsSection() {
                       >
                         {item.button} <span>→</span>
                       </a>
-                    ) : (
+                    ) : item.button ? (
                       <button
                         type="button"
                         className="news-premium-button"
@@ -118,7 +142,7 @@ export default function NewsSection() {
                       >
                         {item.button}
                       </button>
-                    )}
+                    ) : null}
                   </div>
                 </article>
               );
