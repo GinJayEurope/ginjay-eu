@@ -5082,3 +5082,304 @@ html.dark-mode body {
     transition: none;
   }
 }
+
+/* =========================================================
+   SIGNATURE VEIL — SUBTLE INTERACTIVE MOTION
+========================================================= */
+
+.app {
+  --veil-pointer-x: 0px;
+  --veil-pointer-y: 0px;
+  --veil-scroll-y: 0px;
+  --veil-particle-drift: 0px;
+}
+
+.app::before,
+.app::after {
+  animation: signatureVeilParallax 24s ease-in-out infinite alternate;
+}
+
+@keyframes signatureVeilParallax {
+  from {
+    transform: translate3d(
+        var(--veil-pointer-x),
+        calc(var(--veil-pointer-y) + var(--veil-scroll-y)),
+        0
+      )
+      scale(1.02);
+  }
+
+  to {
+    transform: translate3d(
+        var(--veil-pointer-x),
+        calc(var(--veil-pointer-y) + var(--veil-scroll-y) - 0.45vh),
+        0
+      )
+      scale(1.04);
+  }
+}
+
+.signature-motion {
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.app main {
+  z-index: 2;
+}
+
+.signature-motion__depth,
+.signature-motion__accent,
+.signature-motion__particles {
+  position: absolute;
+  pointer-events: none;
+}
+
+.signature-motion__depth {
+  inset: -9%;
+  opacity: 0.5;
+  background:
+    radial-gradient(
+      circle at 8% 54%,
+      rgba(139, 89, 177, 0.14),
+      transparent 24%
+    ),
+    radial-gradient(
+      circle at 92% 58%,
+      rgba(216, 151, 82, 0.12),
+      transparent 25%
+    );
+  transform: translate3d(
+      var(--veil-pointer-x),
+      calc(var(--veil-pointer-y) + var(--veil-scroll-y)),
+      0
+    )
+    scale(1.04);
+  transition: opacity 0.7s ease;
+}
+
+.app.dark .signature-motion__depth {
+  opacity: 0.68;
+  background:
+    radial-gradient(
+      circle at 8% 54%,
+      rgba(139, 89, 177, 0.2),
+      transparent 25%
+    ),
+    radial-gradient(
+      circle at 92% 58%,
+      rgba(216, 151, 82, 0.16),
+      transparent 26%
+    );
+}
+
+.signature-motion__accent {
+  inset: -12%;
+  opacity: 0;
+  transform: translate3d(
+      var(--veil-pointer-x),
+      calc(var(--veil-pointer-y) + var(--veil-scroll-y)),
+      0
+    )
+    scale(1.035);
+  transition: opacity 1.45s ease;
+  will-change: opacity, transform;
+}
+
+.signature-motion__accent--home {
+  background:
+    radial-gradient(circle at 12% 28%, rgba(160, 104, 201, 0.18), transparent 26%),
+    radial-gradient(circle at 88% 75%, rgba(226, 167, 86, 0.16), transparent 27%);
+}
+
+.signature-motion__accent--about {
+  background:
+    radial-gradient(circle at 14% 68%, rgba(198, 132, 178, 0.16), transparent 27%),
+    radial-gradient(circle at 86% 26%, rgba(155, 112, 194, 0.14), transparent 25%);
+}
+
+.signature-motion__accent--news {
+  background:
+    radial-gradient(circle at 10% 36%, rgba(203, 132, 167, 0.18), transparent 26%),
+    radial-gradient(circle at 91% 64%, rgba(230, 171, 90, 0.18), transparent 28%);
+}
+
+.signature-motion__accent--artists {
+  background:
+    radial-gradient(circle at 9% 72%, rgba(121, 78, 160, 0.17), transparent 25%),
+    radial-gradient(circle at 90% 22%, rgba(194, 137, 178, 0.14), transparent 24%);
+}
+
+.signature-motion__accent--gallery {
+  background:
+    radial-gradient(circle at 9% 42%, rgba(127, 78, 178, 0.22), transparent 28%),
+    radial-gradient(circle at 91% 58%, rgba(179, 119, 207, 0.17), transparent 27%);
+}
+
+.signature-motion__accent--timeline {
+  background:
+    radial-gradient(circle at 12% 63%, rgba(146, 98, 188, 0.16), transparent 26%),
+    radial-gradient(circle at 88% 34%, rgba(216, 157, 69, 0.2), transparent 28%);
+}
+
+.signature-motion__accent--events {
+  background:
+    radial-gradient(circle at 12% 31%, rgba(205, 135, 166, 0.16), transparent 25%),
+    radial-gradient(circle at 90% 70%, rgba(229, 164, 70, 0.22), transparent 28%);
+}
+
+.signature-motion__accent--editorial {
+  background:
+    radial-gradient(circle at 11% 57%, rgba(166, 116, 194, 0.14), transparent 26%),
+    radial-gradient(circle at 89% 41%, rgba(208, 150, 124, 0.13), transparent 26%);
+}
+
+.app.dark .signature-motion__accent--home {
+  background:
+    radial-gradient(circle at 12% 28%, rgba(160, 104, 201, 0.25), transparent 27%),
+    radial-gradient(circle at 88% 75%, rgba(226, 167, 86, 0.19), transparent 28%);
+}
+
+.app.dark .signature-motion__accent--about {
+  background:
+    radial-gradient(circle at 14% 68%, rgba(198, 132, 178, 0.21), transparent 28%),
+    radial-gradient(circle at 86% 26%, rgba(155, 112, 194, 0.2), transparent 26%);
+}
+
+.app.dark .signature-motion__accent--news {
+  background:
+    radial-gradient(circle at 10% 36%, rgba(203, 132, 167, 0.22), transparent 27%),
+    radial-gradient(circle at 91% 64%, rgba(230, 171, 90, 0.2), transparent 29%);
+}
+
+.app.dark .signature-motion__accent--artists {
+  background:
+    radial-gradient(circle at 9% 72%, rgba(121, 78, 160, 0.24), transparent 26%),
+    radial-gradient(circle at 90% 22%, rgba(194, 137, 178, 0.19), transparent 25%);
+}
+
+.app.dark .signature-motion__accent--gallery {
+  background:
+    radial-gradient(circle at 9% 42%, rgba(127, 78, 178, 0.29), transparent 29%),
+    radial-gradient(circle at 91% 58%, rgba(179, 119, 207, 0.22), transparent 28%);
+}
+
+.app.dark .signature-motion__accent--timeline {
+  background:
+    radial-gradient(circle at 12% 63%, rgba(146, 98, 188, 0.22), transparent 27%),
+    radial-gradient(circle at 88% 34%, rgba(216, 157, 69, 0.23), transparent 29%);
+}
+
+.app.dark .signature-motion__accent--events {
+  background:
+    radial-gradient(circle at 12% 31%, rgba(205, 135, 166, 0.21), transparent 26%),
+    radial-gradient(circle at 90% 70%, rgba(229, 164, 70, 0.25), transparent 29%);
+}
+
+.app.dark .signature-motion__accent--editorial {
+  background:
+    radial-gradient(circle at 11% 57%, rgba(166, 116, 194, 0.2), transparent 27%),
+    radial-gradient(circle at 89% 41%, rgba(208, 150, 124, 0.17), transparent 27%);
+}
+
+.app[data-veil-section="home"] .signature-motion__accent--home,
+.app[data-veil-section="about"] .signature-motion__accent--about,
+.app[data-veil-section="news"] .signature-motion__accent--news,
+.app[data-veil-section="artists"] .signature-motion__accent--artists,
+.app[data-veil-section="gallery"] .signature-motion__accent--gallery,
+.app[data-veil-section="timeline"] .signature-motion__accent--timeline,
+.app[data-veil-section="events"] .signature-motion__accent--events,
+.app[data-veil-section="editorial"] .signature-motion__accent--editorial {
+  opacity: 1;
+}
+
+.signature-motion__particles {
+  inset: 0;
+  transform: translate3d(0, var(--veil-particle-drift), 0);
+}
+
+.signature-motion__particles span {
+  position: absolute;
+  top: var(--particle-y);
+  left: var(--particle-x);
+  width: var(--particle-size);
+  height: var(--particle-size);
+  border-radius: 50%;
+  opacity: 0;
+  background: #d7a64c;
+  box-shadow:
+    0 0 7px rgba(218, 167, 74, 0.6),
+    0 0 17px rgba(218, 167, 74, 0.22);
+  animation: signatureParticleFloat var(--particle-duration) ease-in-out
+    var(--particle-delay) infinite;
+}
+
+.app.dark .signature-motion__particles span {
+  background: #efc86e;
+  box-shadow:
+    0 0 8px rgba(239, 200, 110, 0.72),
+    0 0 20px rgba(239, 200, 110, 0.27);
+}
+
+@keyframes signatureParticleFloat {
+  0%,
+  100% {
+    opacity: 0;
+    transform: translate3d(0, 20px, 0) scale(0.72);
+  }
+
+  18% {
+    opacity: 0.22;
+  }
+
+  52% {
+    opacity: 0.48;
+    transform: translate3d(7px, -10px, 0) scale(1);
+  }
+
+  82% {
+    opacity: 0.16;
+  }
+
+  100% {
+    opacity: 0;
+    transform: translate3d(-5px, -42px, 0) scale(0.76);
+  }
+}
+
+@media (max-width: 860px) {
+  .app::before,
+  .app::after {
+    transform: translate3d(0, var(--veil-scroll-y), 0);
+  }
+
+  .signature-motion__depth,
+  .signature-motion__accent {
+    transform: translate3d(0, var(--veil-scroll-y), 0) scale(1.04);
+  }
+
+  .signature-motion__particles span:nth-child(n + 9) {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .app::before,
+  .app::after,
+  .signature-motion__depth,
+  .signature-motion__accent,
+  .signature-motion__particles,
+  .signature-motion__particles span {
+    animation: none !important;
+    transform: none !important;
+    transition: none !important;
+  }
+
+  .signature-motion__accent,
+  .signature-motion__particles {
+    display: none;
+  }
+}

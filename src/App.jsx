@@ -13,6 +13,7 @@ import Reveal from "./components/Reveal";
 import Artists from "./components/Artists";
 import Editorial from "./components/Editorial";
 import GifSet from "./components/GifSet";
+import SignatureVeil from "./components/SignatureVeil";
 
 export default function App() {
   const [darkMode, setDarkMode] = useState(() => {
@@ -38,6 +39,8 @@ export default function App() {
 
   return (
     <div className={darkMode ? "app dark" : "app"}>
+      <SignatureVeil />
+
       <Header darkMode={darkMode} setDarkMode={setDarkMode} />
 
       <main>
