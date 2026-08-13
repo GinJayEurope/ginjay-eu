@@ -98,6 +98,12 @@ import daniTheDress from "../assets/gallery/the-dress.jpg";
 import daniGinnyIdol1 from "../assets/gallery/ginny-idol-1.png";
 import breeJaynaQueen from "../assets/gallery/bree/jayna-queen.jpg";
 import july2026Schedule from "../assets/gallery/poster/juli-2026.jpg";
+import oneMillionViewsVideo from "../assets/news/lunar-secret-1m-views.mp4";
+import oneMillionViewsPoster from "../assets/news/lunar-secret-1m-views-poster.jpg";
+import ginJayMomentsVideo from "../assets/gallery/fanedits/gin-jay-moments-bree.mp4";
+import ginJayMomentsPoster from "../assets/gallery/fanedits/gin-jay-moments-bree-poster.jpg";
+import lunarSecretEditVideo from "../assets/gallery/fanedits/lunar-secret-edit-juste.mp4";
+import lunarSecretEditPoster from "../assets/gallery/fanedits/lunar-secret-edit-juste-poster.jpg";
 
 export const gallery = [
   {
@@ -1167,7 +1173,7 @@ export const gallery = [
     artist: "BreE",
     tags: ["Artwork", "Jayna", "BreE"],
   },
-    {
+  {
     id: 96,
     title: "GinJay July 2026 Schedule",
     category: "Poster",
@@ -1177,5 +1183,41 @@ export const gallery = [
     date: "July 2026",
     artist: "Klaudia",
     tags: ["Poster", "GinJay", "Schedule", "July 2026"],
+  },
+  {
+    id: 97,
+    title: "1 Million Views Celebration",
+    category: "Fanedits",
+    mediaType: "video",
+    image: oneMillionViewsPoster,
+    video: oneMillionViewsVideo,
+    text: "A celebratory GinJay Europe fanedit for the Lunar Secret pilot reaching 1 million views.",
+    date: "August 2026",
+    artist: "juste",
+    tags: ["Fanedit", "Lunar Secret", "Milestone", "1 Million Views"],
+  },
+  {
+    id: 98,
+    title: "GinJay Moments",
+    category: "Fanedits",
+    mediaType: "video",
+    image: ginJayMomentsPoster,
+    video: ginJayMomentsVideo,
+    text: "A fanedit collecting memorable Ginny and Jayna moments.",
+    date: "August 2026",
+    artist: "BreE",
+    tags: ["Fanedit", "GinJay", "Moments", "Memories"],
+  },
+  {
+    id: 99,
+    title: "Lunar Secret Edit",
+    category: "Fanedits",
+    mediaType: "video",
+    image: lunarSecretEditPoster,
+    video: lunarSecretEditVideo,
+    text: "A cinematic fanedit inspired by Ginny and Jayna in Lunar Secret.",
+    date: "August 2026",
+    artist: "juste",
+    tags: ["Fanedit", "Lunar Secret", "GinJay", "Cinematic"],
   },
 ];

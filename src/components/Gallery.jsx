@@ -326,11 +326,13 @@ export default function Gallery() {
 
             {selectedImage.mediaType === "video" ? (
               <video
+                key={selectedImage.id}
                 src={selectedImage.video}
                 poster={selectedImage.image}
                 className="lightbox-image"
                 controls
                 autoPlay
+                playsInline
               />
             ) : (
               <img
