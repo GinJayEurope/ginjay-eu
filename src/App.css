@@ -5408,27 +5408,27 @@ html.dark-mode body {
 
 @keyframes signatureSparkGlow {
   0%,
-  64%,
+  60%,
   100% {
     opacity: 0;
     transform: translate(-50%, -50%) scale(0.28) rotate(0deg);
   }
 
-  69% {
-    opacity: 0.12;
+  64% {
+    opacity: 0.18;
   }
 
-  73% {
-    opacity: 0.74;
+  68% {
+    opacity: 0.88;
     transform: translate(-50%, -50%) scale(1) rotate(8deg);
   }
 
-  76% {
-    opacity: 0.32;
+  72% {
+    opacity: 0.38;
     transform: translate(-50%, -50%) scale(0.72) rotate(14deg);
   }
 
-  81% {
+  77% {
     opacity: 0;
     transform: translate(-50%, -50%) scale(0.38) rotate(20deg);
   }
