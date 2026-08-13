@@ -26,6 +26,21 @@ const particles = [
   { x: "78%", y: "31%", size: "2px", delay: "-13s", duration: "25s" },
 ];
 
+const sparks = [
+  { x: "5%", y: "12%", size: "10px", delay: "-2.7s", duration: "11.8s" },
+  { x: "14%", y: "24%", size: "7px", delay: "-8.4s", duration: "14.3s" },
+  { x: "21%", y: "42%", size: "9px", delay: "-5.1s", duration: "12.7s" },
+  { x: "8%", y: "58%", size: "6px", delay: "-11.2s", duration: "15.1s" },
+  { x: "17%", y: "76%", size: "11px", delay: "-6.8s", duration: "13.9s" },
+  { x: "3%", y: "89%", size: "7px", delay: "-13.5s", duration: "16.4s" },
+  { x: "95%", y: "16%", size: "8px", delay: "-9.6s", duration: "13.2s" },
+  { x: "86%", y: "29%", size: "11px", delay: "-4.2s", duration: "15.7s" },
+  { x: "78%", y: "48%", size: "7px", delay: "-12.8s", duration: "14.8s" },
+  { x: "92%", y: "63%", size: "9px", delay: "-7.3s", duration: "12.1s" },
+  { x: "83%", y: "81%", size: "6px", delay: "-1.4s", duration: "16.1s" },
+  { x: "97%", y: "92%", size: "10px", delay: "-10.7s", duration: "14.1s" },
+];
+
 export default function SignatureVeil() {
   const veilRef = useRef(null);
 
@@ -154,6 +169,21 @@ export default function SignatureVeil() {
               "--particle-delay": particle.delay,
               "--particle-duration": particle.duration,
               "--particle-index": index,
+            }}
+          />
+        ))}
+      </div>
+
+      <div className="signature-motion__sparks">
+        {sparks.map((spark) => (
+          <span
+            key={`${spark.x}-${spark.y}`}
+            style={{
+              "--spark-x": spark.x,
+              "--spark-y": spark.y,
+              "--spark-size": spark.size,
+              "--spark-delay": spark.delay,
+              "--spark-duration": spark.duration,
             }}
           />
         ))}
