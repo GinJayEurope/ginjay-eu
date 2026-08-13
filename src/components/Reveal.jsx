@@ -5,13 +5,22 @@ export default function Reveal({ children }) {
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
+    if (!("IntersectionObserver" in window)) {
+      setVisible(true);
+      return undefined;
+    }
+
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
           setVisible(true);
+          observer.unobserve(entry.target);
         }
       },
-      { threshold: 0.15 }
+      {
+        threshold: 0,
+        rootMargin: "0px 0px -5% 0px",
+      },
     );
 
     if (ref.current) {
