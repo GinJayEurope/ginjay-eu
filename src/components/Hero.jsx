@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import animatedLogo from "../assets/brand/ginjay-europe-logo.gif";
+import animatedLogo from "../assets/brand/ginjay-europe-logo.webp";
 
 const socialLinks = [
   {
@@ -62,14 +62,37 @@ export default function Hero() {
   const [offset, setOffset] = useState(0);
 
   useEffect(() => {
+    const compactViewport = window.matchMedia("(max-width: 860px)");
+    let frameId = 0;
+
     function handleScroll() {
-      setOffset(window.scrollY * 0.08);
+      if (compactViewport.matches || frameId) return;
+
+      frameId = window.requestAnimationFrame(() => {
+        frameId = 0;
+        setOffset(window.scrollY * 0.08);
+      });
     }
 
-    window.addEventListener("scroll", handleScroll);
-    handleScroll();
+    function handleViewportChange() {
+      if (compactViewport.matches) {
+        if (frameId) window.cancelAnimationFrame(frameId);
+        frameId = 0;
+        setOffset(0);
+      } else {
+        handleScroll();
+      }
+    }
 
-    return () => window.removeEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    compactViewport.addEventListener("change", handleViewportChange);
+    handleViewportChange();
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      compactViewport.removeEventListener("change", handleViewportChange);
+      if (frameId) window.cancelAnimationFrame(frameId);
+    };
   }, []);
 
   return (
@@ -158,7 +181,7 @@ export default function Hero() {
               src={animatedLogo}
               alt="GinJay Europe logo"
               className="hero-showcase-logo"
-              loading="eager"
+              loading="lazy"
               decoding="async"
             />
           </div>

@@ -91,7 +91,8 @@ export default function SignatureVeil() {
     const reducedMotion = window.matchMedia(
       "(prefers-reduced-motion: reduce)",
     );
-    let motionAllowed = !reducedMotion.matches;
+    const compactViewport = window.matchMedia("(max-width: 860px)");
+    let motionAllowed = !reducedMotion.matches && !compactViewport.matches;
     let pointerFrameId = 0;
     let scrollFrameId = 0;
     let currentX = 0;
@@ -195,8 +196,18 @@ export default function SignatureVeil() {
     }
 
     function handleMotionPreferenceChange(event) {
-      motionAllowed = !event.matches;
+      motionAllowed = !event.matches && !compactViewport.matches;
 
+      resetMotionWhenDisabled();
+    }
+
+    function handleViewportChange() {
+      motionAllowed = !reducedMotion.matches && !compactViewport.matches;
+
+      resetMotionWhenDisabled();
+    }
+
+    function resetMotionWhenDisabled() {
       if (!motionAllowed) {
         targetX = 0;
         targetY = 0;
@@ -223,6 +234,7 @@ export default function SignatureVeil() {
     window.addEventListener("scroll", requestScrollUpdate, { passive: true });
     window.addEventListener("resize", requestScrollUpdate);
     reducedMotion.addEventListener("change", handleMotionPreferenceChange);
+    compactViewport.addEventListener("change", handleViewportChange);
     updateScrollAtmosphere();
 
     return () => {
@@ -230,6 +242,7 @@ export default function SignatureVeil() {
       window.removeEventListener("scroll", requestScrollUpdate);
       window.removeEventListener("resize", requestScrollUpdate);
       reducedMotion.removeEventListener("change", handleMotionPreferenceChange);
+      compactViewport.removeEventListener("change", handleViewportChange);
       if (pointerFrameId) window.cancelAnimationFrame(pointerFrameId);
       if (scrollFrameId) window.cancelAnimationFrame(scrollFrameId);
     };

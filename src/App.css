@@ -6845,10 +6845,17 @@ html.dark-mode body {
 }
 
 @media (max-width: 860px) {
+  .header,
+  .header.scrolled,
+  .app.dark .header,
+  .app.dark .header.scrolled {
+    backdrop-filter: none;
+  }
+
   .app::before,
   .app::after {
     inset: 0;
-    background-size: 100% 100%;
+    background-size: cover;
     animation: none;
   }
 
@@ -9691,29 +9698,22 @@ html.dark-mode body {
 @media (max-width: 860px) {
   .app::before,
   .app::after {
-    transform: translate3d(0, var(--veil-scroll-y), 0);
+    inset: 0;
+    animation: none !important;
+    transform: translateZ(0) !important;
+    backface-visibility: hidden;
+    will-change: opacity;
   }
 
-  .signature-motion__depth,
-  .signature-motion__accent {
-    transform: translate3d(0, var(--veil-scroll-y), 0) scale(1.04);
+  .signature-motion {
+    display: none;
   }
 
-  .signature-motion__frame::before,
-  .signature-motion__frame::after {
+  .reveal,
+  .reveal.visible {
+    opacity: 1;
     transform: none;
-  }
-
-  .signature-motion__dust span:nth-child(n + 15) {
-    display: none;
-  }
-
-  .signature-motion__particles span:nth-child(n + 9) {
-    display: none;
-  }
-
-  .signature-motion__sparks {
-    display: none;
+    transition: none;
   }
 }
 

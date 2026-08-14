@@ -13,6 +13,30 @@
     <meta name="googlebot" content="index, follow, max-image-preview:large" />
     <meta name="theme-color" content="#241b30" />
 
+    <script>
+      (() => {
+        try {
+          const savedTheme = localStorage.getItem("ginjay-theme");
+          const prefersDark = window.matchMedia(
+            "(prefers-color-scheme: dark)",
+          ).matches;
+          const useDarkTheme = savedTheme
+            ? savedTheme === "dark"
+            : prefersDark;
+
+          document.documentElement.classList.toggle(
+            "dark-mode",
+            useDarkTheme,
+          );
+        } catch {
+          document.documentElement.classList.toggle(
+            "dark-mode",
+            window.matchMedia("(prefers-color-scheme: dark)").matches,
+          );
+        }
+      })();
+    </script>
+
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="GinJay Europe" />
     <meta property="og:locale" content="en_GB" />

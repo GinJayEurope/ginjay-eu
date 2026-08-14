@@ -17,24 +17,32 @@ import SignatureVeil from "./components/SignatureVeil";
 
 export default function App() {
   const [darkMode, setDarkMode] = useState(() => {
-    const savedTheme = localStorage.getItem("ginjay-theme");
+    try {
+      const savedTheme = localStorage.getItem("ginjay-theme");
 
-    if (savedTheme) {
-      return savedTheme === "dark";
+      if (savedTheme) {
+        return savedTheme === "dark";
+      }
+
+      return (
+        window.matchMedia?.("(prefers-color-scheme: dark)").matches ?? false
+      );
+    } catch {
+      return document.documentElement.classList.contains("dark-mode");
     }
-
-    return (
-      window.matchMedia?.("(prefers-color-scheme: dark)").matches ?? false
-    );
   });
 
   useEffect(() => {
     document.documentElement.classList.toggle("dark-mode", darkMode);
 
-    localStorage.setItem(
-      "ginjay-theme",
-      darkMode ? "dark" : "light"
-    );
+    try {
+      localStorage.setItem(
+        "ginjay-theme",
+        darkMode ? "dark" : "light"
+      );
+    } catch {
+      // Keep the selected theme for this visit when storage is unavailable.
+    }
   }, [darkMode]);
 
   return (

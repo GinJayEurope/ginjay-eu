@@ -4,6 +4,34 @@ import { gallery } from "../data/gallery";
 const CATEGORIES = ["All", "Poster", "Artworks", "Fanedits", "Gifs"];
 const FEATURED_ARTWORK_ID = 95;
 
+const galleryFullImages = import.meta.glob(
+  "../assets/gallery/optimized/**/*.webp",
+  { eager: true, import: "default" },
+);
+const galleryPreviews = import.meta.glob(
+  "../assets/gallery/previews/**/*.webp",
+  { eager: true, import: "default" },
+);
+
+const previewByOriginalUrl = new Map();
+
+Object.entries(galleryFullImages).forEach(
+  ([path, originalUrl]) => {
+    const relativePath = path
+      .replace("../assets/gallery/", "")
+      .replace("optimized/", "")
+      .replace(/\.(?:jpg|jpeg|png|gif)$/i, ".webp");
+    const previewPath = `../assets/gallery/previews/${relativePath}`;
+    const previewUrl = galleryPreviews[previewPath];
+
+    if (previewUrl) previewByOriginalUrl.set(originalUrl, previewUrl);
+  },
+);
+
+function getGalleryPreview(item) {
+  return previewByOriginalUrl.get(item.image) || item.image;
+}
+
 function getGalleryCardClassName(item, index) {
   const classes = ["card", "gallery-card"];
 
@@ -143,9 +171,10 @@ export default function Gallery() {
           >
             <div className="gallery-feature-image-wrap">
               <img
-                src={featuredArtwork.image}
+                src={getGalleryPreview(featuredArtwork)}
                 alt={featuredArtwork.title}
                 className="gallery-feature-image"
+                loading="lazy"
                 decoding="async"
               />
             </div>
@@ -245,7 +274,7 @@ export default function Gallery() {
               >
                 <div className="gallery-image-wrap">
                   <img
-                    src={item.image}
+                    src={getGalleryPreview(item)}
                     alt={item.title}
                     className="gallery-image"
                     loading="lazy"

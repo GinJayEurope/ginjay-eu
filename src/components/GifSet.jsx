@@ -1,39 +1,39 @@
 export default function GifSet() {
   const gifs = [
     {
-      src: "/gifs/racer3.gif",
+      src: "/gifs/previews/racer3.webp",
       alt: "Ginny and Jayna racing together",
     },
     {
-      src: "/gifs/racer4.gif",
+      src: "/gifs/previews/racer4.webp",
       alt: "Ginny racing on the go-kart track",
     },
     {
-      src: "/gifs/racer5.gif",
+      src: "/gifs/previews/racer5.webp",
       alt: "Ginny driving past the track barriers",
     },
     {
-      src: "/gifs/racer6.gif",
+      src: "/gifs/previews/racer6.webp",
       alt: "Go-kart racing moment",
     },
     {
-      src: "/gifs/racer7.gif",
+      src: "/gifs/previews/racer7.webp",
       alt: "Jayna driving a go-kart",
     },
     {
-      src: "/gifs/racer8.gif",
+      src: "/gifs/previews/racer8.webp",
       alt: "Jayna smiling while racing",
     },
     {
-      src: "/gifs/racer9.gif",
+      src: "/gifs/previews/racer9.webp",
       alt: "Jayna turning on the go-kart track",
     },
     {
-      src: "/gifs/racing1.gif",
+      src: "/gifs/previews/racing1.webp",
       alt: "Jayna racing on the track",
     },
     {
-      src: "/gifs/racing2.gif",
+      src: "/gifs/previews/racing2.webp",
       alt: "Jayna driving through a turn",
     },
   ];

@@ -1,4 +1,4 @@
-import animatedLogo from "../assets/brand/ginjay-europe-logo.gif";
+import animatedLogo from "../assets/brand/ginjay-europe-logo.webp";
 
 export default function Footer() {
   return (

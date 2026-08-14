@@ -1,53 +1,53 @@
-import lunar from "../assets/gallery/Lunar_era.png";
-import pool from "../assets/gallery/Pool.png";
-import power from "../assets/gallery/Power.PNG";
-import smile from "../assets/gallery/smilee_happy.png";
+import lunar from "../assets/gallery/optimized/Lunar_era.webp";
+import pool from "../assets/gallery/optimized/Pool.webp";
+import power from "../assets/gallery/optimized/Power.webp";
+import smile from "../assets/gallery/optimized/smilee_happy.webp";
 
-import againstTheWall from "../assets/gallery/against-the-wall.jpg";
-import beach from "../assets/gallery/beach.jpg";
-import boss1 from "../assets/gallery/boss-1.png";
-import ginnyTheGoddess from "../assets/gallery/ginny-the-goddess.jpg";
-import happyGirls from "../assets/gallery/happy-girls.png";
-import yeah2 from "../assets/gallery/yeah-2.png";
-import raiseYourGlass from "../assets/gallery/raise-your-glass.jpg";
-import stareToHeaven from "../assets/gallery/stare-to-heaven.png";
-import pilotWallpaper from "../assets/gallery/pilot-wallpaper.png";
-import loveYou from "../assets/gallery/love-you.jpg";
-import kiss from "../assets/gallery/kiss.jpg";
-import jayAgainSig from "../assets/gallery/jay-again-sig.png";
-import poooOwer from "../assets/gallery/poooower.png";
-import oceanEyes from "../assets/gallery/ocean-eyes.jpg";
-import hollywoodJay from "../assets/gallery/hollywood-jay.jpg";
-import finalTalk from "../assets/gallery/final-talk.jpg";
-import dreamy from "../assets/gallery/dreamy.jpg";
-import dressShowOff from "../assets/gallery/dress-show-off.jpg";
+import againstTheWall from "../assets/gallery/optimized/against-the-wall.webp";
+import beach from "../assets/gallery/optimized/beach.webp";
+import boss1 from "../assets/gallery/optimized/boss-1.webp";
+import ginnyTheGoddess from "../assets/gallery/optimized/ginny-the-goddess.webp";
+import happyGirls from "../assets/gallery/optimized/happy-girls.webp";
+import yeah2 from "../assets/gallery/optimized/yeah-2.webp";
+import raiseYourGlass from "../assets/gallery/optimized/raise-your-glass.webp";
+import stareToHeaven from "../assets/gallery/optimized/stare-to-heaven.webp";
+import pilotWallpaper from "../assets/gallery/optimized/pilot-wallpaper.webp";
+import loveYou from "../assets/gallery/optimized/love-you.webp";
+import kiss from "../assets/gallery/optimized/kiss.webp";
+import jayAgainSig from "../assets/gallery/optimized/jay-again-sig.webp";
+import poooOwer from "../assets/gallery/optimized/poooower.webp";
+import oceanEyes from "../assets/gallery/optimized/ocean-eyes.webp";
+import hollywoodJay from "../assets/gallery/optimized/hollywood-jay.webp";
+import finalTalk from "../assets/gallery/optimized/final-talk.webp";
+import dreamy from "../assets/gallery/optimized/dreamy.webp";
+import dressShowOff from "../assets/gallery/optimized/dress-show-off.webp";
 
-import kloseyJayna from "../assets/gallery/poster/klosey-jayna.jpg";
-import kazzMagazine from "../assets/gallery/poster/kazz-magazine.jpg";
-import kclAward from "../assets/gallery/poster/kcl-award-2026.png";
-import jaynaAward from "../assets/gallery/poster/jayna-award-2026.jpg";
-import loveGalaxy from "../assets/gallery/poster/love-galaxy.jpg";
-import fragrantDate from "../assets/gallery/poster/fragrant-date.jpg";
-import kazzAwardJayna from "../assets/gallery/poster/kazz-award-jayna.jpg";
-import kazzAwardGinny from "../assets/gallery/poster/kazz-award-ginny.jpg";
-import prideMonthIconsiam from "../assets/gallery/poster/pride-month-iconsiam.jpg";
-import dinnerDateGinny from "../assets/gallery/poster/dinner-date-ginny.jpg";
-import teayiiTalk from "../assets/gallery/poster/teayii-talk.jpg";
-import freshMomentsJayna from "../assets/gallery/poster/fresh-moments-jayna.jpg";
-import ginny500kFollowers from "../assets/gallery/poster/ginny-500k-followers.jpg";
-import starfocusSupport from "../assets/gallery/poster/starfocus-support.jpg";
-import lunarSecret1Million from "../assets/gallery/poster/lunar-secret-1million.jpg";
-import chasingCoffeeGinny from "../assets/gallery/poster/chasing-coffee-ginny.jpg";
-import ginnyChloe from "../assets/gallery/poster/ginny-chloe.jpg";
-import heartFluttering521 from "../assets/gallery/poster/heart-fluttering-521.jpg";
-import happyDayJayna from "../assets/gallery/poster/happy-day-jayna.jpg";
-import lunarWhisperDiscount from "../assets/gallery/poster/lunar-whisper-discount.jpg";
-import ginnyRoadTo500k from "../assets/gallery/poster/ginny-road-to-500k.jpg";
-import jaynaRoadTo400k from "../assets/gallery/poster/jayna-road-to-400k.jpg";
-import starfocusFollow from "../assets/gallery/poster/starfocus-support-follow.jpg";
-import ginjayYawards from "../assets/gallery/poster/ginjay-yawards.jpg";
-import ginnySummerCoffee from "../assets/gallery/poster/ginny-summer-coffee.jpg";
-import jaynaIcecream from "../assets/gallery/poster/jayna-icecream.jpg";
+import kloseyJayna from "../assets/gallery/optimized/poster/klosey-jayna.webp";
+import kazzMagazine from "../assets/gallery/optimized/poster/kazz-magazine.webp";
+import kclAward from "../assets/gallery/optimized/poster/kcl-award-2026.webp";
+import jaynaAward from "../assets/gallery/optimized/poster/jayna-award-2026.webp";
+import loveGalaxy from "../assets/gallery/optimized/poster/love-galaxy.webp";
+import fragrantDate from "../assets/gallery/optimized/poster/fragrant-date.webp";
+import kazzAwardJayna from "../assets/gallery/optimized/poster/kazz-award-jayna.webp";
+import kazzAwardGinny from "../assets/gallery/optimized/poster/kazz-award-ginny.webp";
+import prideMonthIconsiam from "../assets/gallery/optimized/poster/pride-month-iconsiam.webp";
+import dinnerDateGinny from "../assets/gallery/optimized/poster/dinner-date-ginny.webp";
+import teayiiTalk from "../assets/gallery/optimized/poster/teayii-talk.webp";
+import freshMomentsJayna from "../assets/gallery/optimized/poster/fresh-moments-jayna.webp";
+import ginny500kFollowers from "../assets/gallery/optimized/poster/ginny-500k-followers.webp";
+import starfocusSupport from "../assets/gallery/optimized/poster/starfocus-support.webp";
+import lunarSecret1Million from "../assets/gallery/optimized/poster/lunar-secret-1million.webp";
+import chasingCoffeeGinny from "../assets/gallery/optimized/poster/chasing-coffee-ginny.webp";
+import ginnyChloe from "../assets/gallery/optimized/poster/ginny-chloe.webp";
+import heartFluttering521 from "../assets/gallery/optimized/poster/heart-fluttering-521.webp";
+import happyDayJayna from "../assets/gallery/optimized/poster/happy-day-jayna.webp";
+import lunarWhisperDiscount from "../assets/gallery/optimized/poster/lunar-whisper-discount.webp";
+import ginnyRoadTo500k from "../assets/gallery/optimized/poster/ginny-road-to-500k.webp";
+import jaynaRoadTo400k from "../assets/gallery/optimized/poster/jayna-road-to-400k.webp";
+import starfocusFollow from "../assets/gallery/optimized/poster/starfocus-support-follow.webp";
+import ginjayYawards from "../assets/gallery/optimized/poster/ginjay-yawards.webp";
+import ginnySummerCoffee from "../assets/gallery/optimized/poster/ginny-summer-coffee.webp";
+import jaynaIcecream from "../assets/gallery/optimized/poster/jayna-icecream.webp";
 
 import gif1 from "../assets/gallery/gifs/1.gif";
 import gif2 from "../assets/gallery/gifs/2.gif";
@@ -69,35 +69,55 @@ import gifUntitled71 from "../assets/gallery/gifs/Untitled-71.gif";
 import gifUntitled72 from "../assets/gallery/gifs/Untitled-72.gif";
 import gifUntitled92 from "../assets/gallery/gifs/Untitled-92.gif";
 import gifUntitled93 from "../assets/gallery/gifs/Untitled-93.gif";
+import gif1Preview from "../assets/gallery/previews/gifs/1.webp";
+import gif2Preview from "../assets/gallery/previews/gifs/2.webp";
+import gif4Preview from "../assets/gallery/previews/gifs/4.webp";
+import gif5Preview from "../assets/gallery/previews/gifs/5.webp";
+import gif6Preview from "../assets/gallery/previews/gifs/6.webp";
+import gif7Preview from "../assets/gallery/previews/gifs/7.webp";
+import gif9Preview from "../assets/gallery/previews/gifs/9.webp";
+import gif10Preview from "../assets/gallery/previews/gifs/10.webp";
+import gif14Preview from "../assets/gallery/previews/gifs/14.webp";
+import gif15Preview from "../assets/gallery/previews/gifs/15.webp";
+import gif16Preview from "../assets/gallery/previews/gifs/16.webp";
+import gif17Preview from "../assets/gallery/previews/gifs/17.webp";
+import gif21Preview from "../assets/gallery/previews/gifs/21.webp";
+import gifUntitled1Preview from "../assets/gallery/previews/gifs/Untitled-1.webp";
+import gifUntitled3Preview from "../assets/gallery/previews/gifs/Untitled-3.webp";
+import gifUntitled11Preview from "../assets/gallery/previews/gifs/Untitled-11.webp";
+import gifUntitled71Preview from "../assets/gallery/previews/gifs/Untitled-71.webp";
+import gifUntitled72Preview from "../assets/gallery/previews/gifs/Untitled-72.webp";
+import gifUntitled92Preview from "../assets/gallery/previews/gifs/Untitled-92.webp";
+import gifUntitled93Preview from "../assets/gallery/previews/gifs/Untitled-93.webp";
 
-import breeMinions from "../assets/gallery/bree/Picsart_26-04-21_08-09-29-095.png";
-import breeCubeGinny from "../assets/gallery/bree/Picsart_26-05-06_18-29-54-513.jpg";
-import breeCubeJayna from "../assets/gallery/bree/Picsart_26-05-07_09-16-45-647.jpg";
-import breeCityJayna from "../assets/gallery/bree/Picsart_26-05-11_06-10-25-327.jpg";
-import breePurpleGinny from "../assets/gallery/bree/Picsart_26-05-25_12-19-00-465.png";
-import breeGinJayPolaroid from "../assets/gallery/bree/Picsart_26-06-12_07-57-55-734.jpg";
-import breeUrbanGinny from "../assets/gallery/bree/Picsart_26-06-13_14-28-00-037.jpg";
-import breeOrangeJayna from "../assets/gallery/bree/Picsart_26-06-13_14-30-28-431.jpg";
-import breeHighNote from "../assets/gallery/bree/Picsart_26-06-13_14-44-29-451.jpg";
-import breeThePassJayna from "../assets/gallery/bree/Picsart_26-06-20_00-21-19-195.png";
-import breeHeartRainySeason from "../assets/gallery/bree/heart-in-rainy-season.jpg";
-import breeGinnyQueen from "../assets/gallery/bree/ginny-queen.jpg";
-import daniGinnyIdol3 from "../assets/gallery/ginny-idol-3.png";
-import daniLookAtGinny from "../assets/gallery/look-at-ginny.png";
-import daniPoisonousLoveKiss from "../assets/gallery/poisonous-love-kiss.png";
-import daniPoisonousLovePool from "../assets/gallery/poisonous-love-pool.png";
-import daniPoisonousLoveSit from "../assets/gallery/poisonous-love-sit.png";
-import daniJaynaLookOver from "../assets/gallery/jayna-look-over.jpg";
-import daniLoveShouldBeFun from "../assets/gallery/love-should-be-fun.png";
-import daniLunarKissEnd from "../assets/gallery/lunar-kiss-end.png";
-import daniPawida from "../assets/gallery/pawida.png";
-import daniRachel from "../assets/gallery/rachel.png";
-import daniStare from "../assets/gallery/stare.png";
-import daniStunning from "../assets/gallery/stunning.jpg";
-import daniTheDress from "../assets/gallery/the-dress.jpg";
-import daniGinnyIdol1 from "../assets/gallery/ginny-idol-1.png";
-import breeJaynaQueen from "../assets/gallery/bree/jayna-queen.jpg";
-import july2026Schedule from "../assets/gallery/poster/juli-2026.jpg";
+import breeMinions from "../assets/gallery/optimized/bree/Picsart_26-04-21_08-09-29-095.webp";
+import breeCubeGinny from "../assets/gallery/optimized/bree/Picsart_26-05-06_18-29-54-513.webp";
+import breeCubeJayna from "../assets/gallery/optimized/bree/Picsart_26-05-07_09-16-45-647.webp";
+import breeCityJayna from "../assets/gallery/optimized/bree/Picsart_26-05-11_06-10-25-327.webp";
+import breePurpleGinny from "../assets/gallery/optimized/bree/Picsart_26-05-25_12-19-00-465.webp";
+import breeGinJayPolaroid from "../assets/gallery/optimized/bree/Picsart_26-06-12_07-57-55-734.webp";
+import breeUrbanGinny from "../assets/gallery/optimized/bree/Picsart_26-06-13_14-28-00-037.webp";
+import breeOrangeJayna from "../assets/gallery/optimized/bree/Picsart_26-06-13_14-30-28-431.webp";
+import breeHighNote from "../assets/gallery/optimized/bree/Picsart_26-06-13_14-44-29-451.webp";
+import breeThePassJayna from "../assets/gallery/optimized/bree/Picsart_26-06-20_00-21-19-195.webp";
+import breeHeartRainySeason from "../assets/gallery/optimized/bree/heart-in-rainy-season.webp";
+import breeGinnyQueen from "../assets/gallery/optimized/bree/ginny-queen.webp";
+import daniGinnyIdol3 from "../assets/gallery/optimized/ginny-idol-3.webp";
+import daniLookAtGinny from "../assets/gallery/optimized/look-at-ginny.webp";
+import daniPoisonousLoveKiss from "../assets/gallery/optimized/poisonous-love-kiss.webp";
+import daniPoisonousLovePool from "../assets/gallery/optimized/poisonous-love-pool.webp";
+import daniPoisonousLoveSit from "../assets/gallery/optimized/poisonous-love-sit.webp";
+import daniJaynaLookOver from "../assets/gallery/optimized/jayna-look-over.webp";
+import daniLoveShouldBeFun from "../assets/gallery/optimized/love-should-be-fun.webp";
+import daniLunarKissEnd from "../assets/gallery/optimized/lunar-kiss-end.webp";
+import daniPawida from "../assets/gallery/optimized/pawida.webp";
+import daniRachel from "../assets/gallery/optimized/rachel.webp";
+import daniStare from "../assets/gallery/optimized/stare.webp";
+import daniStunning from "../assets/gallery/optimized/stunning.webp";
+import daniTheDress from "../assets/gallery/optimized/the-dress.webp";
+import daniGinnyIdol1 from "../assets/gallery/optimized/ginny-idol-1.webp";
+import breeJaynaQueen from "../assets/gallery/optimized/bree/jayna-queen.webp";
+import july2026Schedule from "../assets/gallery/optimized/poster/juli-2026.webp";
 import oneMillionViewsVideo from "../assets/news/lunar-secret-1m-views.mp4";
 import oneMillionViewsPoster from "../assets/news/lunar-secret-1m-views-poster.jpg";
 import ginJayMomentsVideo from "../assets/gallery/fanedits/gin-jay-moments-bree.mp4";
@@ -574,7 +594,7 @@ export const gallery = [
     title: "Haunted House",
     category: "Gifs",
     mediaType: "gif",
-    image: gif10,
+    image: gif10Preview,
     download: gif10,
     text: "I don't wanna look gif.",
     date: "2026",
@@ -586,7 +606,7 @@ export const gallery = [
     title: "Jayna's soul left the body",
     category: "Gifs",
     mediaType: "gif",
-    image: gif14,
+    image: gif14Preview,
     download: gif14,
     text: "Soul left the body after haunted house.",
     date: "2026",
@@ -598,7 +618,7 @@ export const gallery = [
     title: "Candy Kiss",
     category: "Gifs",
     mediaType: "gif",
-    image: gif15,
+    image: gif15Preview,
     download: gif15,
     text: "Wanna taste my sweets?",
     date: "2026",
@@ -610,7 +630,7 @@ export const gallery = [
     title: "Happy Walk",
     category: "Gifs",
     mediaType: "gif",
-    image: gif16,
+    image: gif16Preview,
     download: gif16,
     text: "fun with you :)",
     date: "2026",
@@ -622,7 +642,7 @@ export const gallery = [
     title: "love should be fun",
     category: "Gifs",
     mediaType: "gif",
-    image: gif17,
+    image: gif17Preview,
     download: gif17,
     text: "Always laughing together.",
     date: "2026",
@@ -634,7 +654,7 @@ export const gallery = [
     title: "Night Ride",
     category: "Gifs",
     mediaType: "gif",
-    image: gif21,
+    image: gif21Preview,
     download: gif21,
     text: "A fun night ride reaction gif.",
     date: "2026",
@@ -646,7 +666,7 @@ export const gallery = [
     title: "Camera Moment",
     category: "Gifs",
     mediaType: "gif",
-    image: gifUntitled1,
+    image: gifUntitled1Preview,
     download: gifUntitled1,
     text: "Let's flirt with the camera.",
     date: "2026",
@@ -658,7 +678,7 @@ export const gallery = [
     title: "Beauty Wink",
     category: "Gifs",
     mediaType: "gif",
-    image: gifUntitled3,
+    image: gifUntitled3Preview,
     download: gifUntitled3,
     text: "Playful monkey.",
     date: "2026",
@@ -670,7 +690,7 @@ export const gallery = [
     title: "Soft Smile",
     category: "Gifs",
     mediaType: "gif",
-    image: gifUntitled11,
+    image: gifUntitled11Preview,
     download: gifUntitled11,
     text: "Help, Ginny does it again!?",
     date: "2026",
@@ -682,7 +702,7 @@ export const gallery = [
     title: "Interview Moment",
     category: "Gifs",
     mediaType: "gif",
-    image: gifUntitled71,
+    image: gifUntitled71Preview,
     download: gifUntitled71,
     text: "Side eye and smirk.",
     date: "2026",
@@ -694,7 +714,7 @@ export const gallery = [
     title: "Shy Laugh",
     category: "Gifs",
     mediaType: "gif",
-    image: gifUntitled72,
+    image: gifUntitled72Preview,
     download: gifUntitled72,
     text: "A sweet and shy reaction gif.",
     date: "2026",
@@ -706,7 +726,7 @@ export const gallery = [
     title: "That's my girl!",
     category: "Gifs",
     mediaType: "gif",
-    image: gifUntitled92,
+    image: gifUntitled92Preview,
     download: gifUntitled92,
     text: "Jayna proud as always when Ginny is talking.",
     date: "2026",
@@ -718,7 +738,7 @@ export const gallery = [
     title: "always in their own world",
     category: "Gifs",
     mediaType: "gif",
-    image: gifUntitled93,
+    image: gifUntitled93Preview,
     download: gifUntitled93,
     text: "just laugh a lot, na kha?",
     date: "2026",
@@ -730,7 +750,7 @@ export const gallery = [
     title: "Poisonous Look",
     category: "Gifs",
     mediaType: "gif",
-    image: gif1,
+    image: gif1Preview,
     download: gif1,
     text: "Pat the danger herself.",
     date: "2026",
@@ -742,7 +762,7 @@ export const gallery = [
     title: "Poisonous Kiss",
     category: "Gifs",
     mediaType: "gif",
-    image: gif2,
+    image: gif2Preview,
     download: gif2,
     text: "the spark is there.",
     date: "2026",
@@ -754,7 +774,7 @@ export const gallery = [
     title: "Hold my hand",
     category: "Gifs",
     mediaType: "gif",
-    image: gif4,
+    image: gif4Preview,
     download: gif4,
     text: "Pat the great protector!",
     date: "2026",
@@ -766,7 +786,7 @@ export const gallery = [
     title: "hands that fit together",
     category: "Gifs",
     mediaType: "gif",
-    image: gif5,
+    image: gif5Preview,
     download: gif5,
     text: "even hands can have chemistry.",
     date: "2026",
@@ -778,7 +798,7 @@ export const gallery = [
     title: "Close Kiss",
     category: "Gifs",
     mediaType: "gif",
-    image: gif6,
+    image: gif6Preview,
     download: gif6,
     text: "the wall kiss.",
     date: "2026",
@@ -790,7 +810,7 @@ export const gallery = [
     title: "Only I...",
     category: "Gifs",
     mediaType: "gif",
-    image: gif7,
+    image: gif7Preview,
     download: gif7,
     text: "... can make you mine.",
     date: "2026",
@@ -802,7 +822,7 @@ export const gallery = [
     title: "Soft Kiss Scene",
     category: "Gifs",
     mediaType: "gif",
-    image: gif9,
+    image: gif9Preview,
     download: gif9,
     text: "Prem finally knows her heart.",
     date: "2026",

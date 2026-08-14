@@ -17,37 +17,45 @@ export default function Header({ darkMode, setDarkMode }) {
   const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
+    let frameId = 0;
+
     function onScroll() {
-      setScrolled(window.scrollY > 40);
+      if (frameId) return;
 
-      const sections = navItems
-        .map((item) => {
-          const element = document.getElementById(item.id);
-          if (!element) return null;
+      frameId = window.requestAnimationFrame(() => {
+        frameId = 0;
+        setScrolled(window.scrollY > 40);
 
-          const rect = element.getBoundingClientRect();
+        const sections = navItems
+          .map((item) => {
+            const element = document.getElementById(item.id);
+            if (!element) return null;
 
-          return {
-            id: item.id,
-            visible: rect.top <= 180 && rect.bottom >= 180,
-          };
-        })
-        .filter(Boolean);
+            const rect = element.getBoundingClientRect();
 
-      const visibleSection = sections.find((section) => section.visible);
+            return {
+              id: item.id,
+              visible: rect.top <= 180 && rect.bottom >= 180,
+            };
+          })
+          .filter(Boolean);
 
-      if (visibleSection) {
-        setActiveSection(visibleSection.id);
-      }
+        const visibleSection = sections.find((section) => section.visible);
+
+        if (visibleSection) {
+          setActiveSection(visibleSection.id);
+        }
+      });
     }
 
-    window.addEventListener("scroll", onScroll);
+    window.addEventListener("scroll", onScroll, { passive: true });
     window.addEventListener("resize", onScroll);
     onScroll();
 
     return () => {
       window.removeEventListener("scroll", onScroll);
       window.removeEventListener("resize", onScroll);
+      if (frameId) window.cancelAnimationFrame(frameId);
     };
   }, []);
 
