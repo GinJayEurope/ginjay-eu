@@ -2,7 +2,7 @@ import animatedLogo from "../assets/brand/ginjay-europe-logo.gif";
 
 export default function Footer() {
   return (
-    <footer className="footer">
+    <footer className="footer" id="footer">
       <div className="footer-grid">
         <div className="footer-column footer-brand">
           <h2>GinJay Europe</h2>

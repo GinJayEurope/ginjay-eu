@@ -1,17 +1,111 @@
 import { useEffect, useState } from "react";
 import { news } from "../data/news";
 
-function NewsCard({ item }) {
+function NewsEditorialMeta({ item }) {
+  return (
+    <div className="news-editorial-meta">
+      <span>{item.issue}</span>
+    </div>
+  );
+}
+
+function NewsCategory({ item }) {
+  const showNew =
+    Boolean(item.newUntil) && Date.now() <= Date.parse(item.newUntil);
+
+  return (
+    <div className="news-editorial-category-row">
+      <span className="news-editorial-category">{item.type}</span>
+
+      {showNew && (
+        <span className="news-new-indicator">
+          <span aria-hidden="true" /> NEW
+        </span>
+      )}
+    </div>
+  );
+}
+
+function ButtonIcon({ icon }) {
+  if (icon === "calendar") {
+    return (
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <rect x="3.5" y="5" width="17" height="15.5" rx="3" />
+        <path d="M7.5 3v4M16.5 3v4M3.5 9.5h17" />
+      </svg>
+    );
+  }
+
+  if (icon === "youtube") {
+    return (
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M21.4 7.2a3 3 0 0 0-2.1-2.1C17.45 4.6 12 4.6 12 4.6s-5.45 0-7.3.5a3 3 0 0 0-2.1 2.1A31 31 0 0 0 2.1 12a31 31 0 0 0 .5 4.8 3 3 0 0 0 2.1 2.1c1.85.5 7.3.5 7.3.5s5.45 0 7.3-.5a3 3 0 0 0 2.1-2.1 31 31 0 0 0 .5-4.8 31 31 0 0 0-.5-4.8Z" />
+        <path className="news-button-play" d="m10 9 5 3-5 3V9Z" />
+      </svg>
+    );
+  }
+
+  return (
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M12 2.75c.45 5.2 3.05 7.8 8.25 8.25-5.2.45-7.8 3.05-8.25 8.25-.45-5.2-3.05-7.8-8.25-8.25 5.2-.45 7.8-3.05 8.25-8.25Z" />
+    </svg>
+  );
+}
+
+function EditorialButton({ item, onClick }) {
+  const content = (
+    <>
+      <span className="news-premium-button-icon">
+        <ButtonIcon icon={item.buttonIcon} />
+      </span>
+      <span>{item.button}</span>
+      {item.link || onClick ? (
+        <span className="news-premium-button-arrow" aria-hidden="true">
+          →
+        </span>
+      ) : null}
+    </>
+  );
+
+  if (item.link) {
+    return (
+      <a
+        href={item.link}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="news-premium-button"
+        aria-label={`${item.button}: ${item.title} (opens YouTube in a new tab)`}
+      >
+        {content}
+      </a>
+    );
+  }
+
+  return (
+    <button
+      type="button"
+      className="news-premium-button"
+      onClick={onClick}
+      disabled={!onClick}
+    >
+      {content}
+    </button>
+  );
+}
+
+function NewsCard({ item, layoutClass }) {
   const hasArtwork = Boolean(item.image);
   const hasVideo = Boolean(item.video);
   const typeClass = item.type.toLowerCase();
 
   return (
     <article
-      className={`news-premium-card news-premium-card--${typeClass}${
+      className={`news-premium-card news-editorial-card news-premium-card--${typeClass} ${layoutClass}${
         hasArtwork ? " news-premium-card--artwork" : ""
       }${hasVideo ? " news-premium-card--video" : ""}`}
     >
+      <NewsEditorialMeta item={item} />
+
       {hasVideo && (
         <div className="news-premium-card-video-wrap">
           <video
@@ -41,26 +135,13 @@ function NewsCard({ item }) {
       )}
 
       <div className="news-premium-card-content">
-        <span className="news-badge">{item.type}</span>
+        <NewsCategory item={item} />
 
         <h3>{item.title}</h3>
 
         <p>{item.text}</p>
 
-        {item.link ? (
-          <a
-            href={item.link}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="news-premium-button"
-          >
-            {item.button} <span>→</span>
-          </a>
-        ) : item.button ? (
-          <button type="button" className="news-premium-button" disabled>
-            {item.button}
-          </button>
-        ) : null}
+        {item.button ? <EditorialButton item={item} /> : null}
       </div>
     </article>
   );
@@ -71,9 +152,8 @@ export default function NewsSection() {
 
   const scheduleItem = news.find((item) => item.type === "Schedule");
   const communityItem = news.find((item) => item.type === "Community");
-  const rightColumnNews = news.filter(
-    (item) => item.type === "Milestone" || item.type === "Spotlight",
-  );
+  const milestoneItem = news.find((item) => item.type === "Milestone");
+  const spotlightItem = news.find((item) => item.type === "Spotlight");
 
   useEffect(() => {
     if (!selectedSchedule) return;
@@ -110,45 +190,46 @@ export default function NewsSection() {
         </div>
 
         <div className="news-showcase">
-          <div className="news-column news-column--left">
-            {scheduleItem && (
-              <article className="schedule-feature-card">
-                <div className="schedule-feature-image-wrap">
-                  <img
-                    src={scheduleItem.image}
-                    alt={scheduleItem.title}
-                    className="schedule-feature-image"
-                    loading="lazy"
-                    decoding="async"
-                  />
-                </div>
+          {scheduleItem && (
+            <article className="schedule-feature-card news-editorial-card news-layout-schedule">
+              <NewsEditorialMeta item={scheduleItem} />
 
-                <div className="schedule-feature-content">
-                  <span className="news-badge">{scheduleItem.type}</span>
+              <div className="schedule-feature-image-wrap">
+                <img
+                  src={scheduleItem.image}
+                  alt={scheduleItem.title}
+                  className="schedule-feature-image"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </div>
 
-                  <h3>{scheduleItem.title}</h3>
+              <div className="schedule-feature-content">
+                <NewsCategory item={scheduleItem} />
 
-                  <p>{scheduleItem.text}</p>
+                <h3>{scheduleItem.title}</h3>
 
-                  <button
-                    type="button"
-                    className="news-premium-button"
-                    onClick={() => setSelectedSchedule(scheduleItem)}
-                  >
-                    {scheduleItem.button} <span>→</span>
-                  </button>
-                </div>
-              </article>
-            )}
+                <p>{scheduleItem.text}</p>
 
-            {communityItem && <NewsCard item={communityItem} />}
-          </div>
+                <EditorialButton
+                  item={scheduleItem}
+                  onClick={() => setSelectedSchedule(scheduleItem)}
+                />
+              </div>
+            </article>
+          )}
 
-          <div className="news-column news-column--right">
-            {rightColumnNews.map((item) => (
-              <NewsCard item={item} key={item.id} />
-            ))}
-          </div>
+          {milestoneItem && (
+            <NewsCard item={milestoneItem} layoutClass="news-layout-milestone" />
+          )}
+
+          {communityItem && (
+            <NewsCard item={communityItem} layoutClass="news-layout-community" />
+          )}
+
+          {spotlightItem && (
+            <NewsCard item={spotlightItem} layoutClass="news-layout-spotlight" />
+          )}
         </div>
       </section>
 
