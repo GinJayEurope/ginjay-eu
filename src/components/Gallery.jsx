@@ -4,6 +4,29 @@ import { gallery } from "../data/gallery";
 const CATEGORIES = ["All", "Poster", "Artworks", "Fanedits", "Gifs"];
 const FEATURED_ARTWORK_ID = 95;
 
+function getGalleryCardClassName(item, index) {
+  const classes = ["card", "gallery-card"];
+
+  if (item.category === "Poster") classes.push("gallery-card--poster");
+  if (item.mediaType === "video") classes.push("gallery-card--fanedit");
+  if (item.mediaType === "gif") classes.push("gif-card", "gallery-card--memory");
+
+  if (item.category !== "Poster" && item.mediaType === "image") {
+    const exhibitionSizes = ["tall", "wide", "standard", "standard", "wide", "tall"];
+    classes.push(`gallery-card--${exhibitionSizes[index % exhibitionSizes.length]}`);
+  }
+
+  return classes.join(" ");
+}
+
+function PlayIcon() {
+  return (
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <path d="m9.2 7.1 7.2 4.9-7.2 4.9V7.1Z" fill="currentColor" />
+    </svg>
+  );
+}
+
 export default function Gallery() {
   const [selectedImage, setSelectedImage] = useState(null);
   const [activeCategory, setActiveCategory] = useState("All");
@@ -104,6 +127,7 @@ export default function Gallery() {
             A collection of illustrations, fanart, posters, edits and gifs
             created by the GinJay Europe community.
           </p>
+
         </div>
 
         {featuredArtwork && (
@@ -147,22 +171,35 @@ export default function Gallery() {
                   </span>
                 ))}
               </div>
+
+              <span className="gallery-feature-button" aria-hidden="true">
+                <span>View artwork</span>
+                <span>→</span>
+              </span>
             </div>
           </div>
         )}
 
         <div className="gallery-tools">
-          <input
-            type="text"
-            className="gallery-search"
-            placeholder="Search gallery..."
-            aria-label="Search gallery"
-            value={searchTerm}
-            onChange={(event) => {
-              setSearchTerm(event.target.value);
-              setVisibleCount(6);
-            }}
-          />
+          <label className="gallery-search-wrap">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <circle cx="10.75" cy="10.75" r="6.25" />
+              <path d="m15.5 15.5 4 4" />
+            </svg>
+
+            <span className="sr-only">Search gallery</span>
+
+            <input
+              type="text"
+              className="gallery-search"
+              placeholder="Search gallery..."
+              value={searchTerm}
+              onChange={(event) => {
+                setSearchTerm(event.target.value);
+                setVisibleCount(6);
+              }}
+            />
+          </label>
 
           <p className="gif-collection-notice">
             You can find and download our complete GIF collection{" "}
@@ -195,12 +232,10 @@ export default function Gallery() {
         </div>
 
         {visibleGallery.length > 0 ? (
-          <div className="cards">
-            {visibleGallery.map((item) => (
+          <div className="cards gallery-exhibition-grid">
+            {visibleGallery.map((item, index) => (
               <article
-                className={`card gallery-card ${
-                  item.mediaType === "gif" ? "gif-card" : ""
-                }`}
+                className={getGalleryCardClassName(item, index)}
                 key={item.id}
                 role="button"
                 tabIndex={0}
@@ -218,7 +253,17 @@ export default function Gallery() {
                   />
 
                   {item.mediaType === "gif" && (
-                    <span className="gif-badge">GIF</span>
+                    <span className="gif-badge gallery-memory-badge">
+                      <span aria-hidden="true" />
+                      GIF
+                    </span>
+                  )}
+
+                  {item.mediaType === "video" && (
+                    <span className="gallery-play-badge">
+                      <PlayIcon />
+                      <span className="sr-only">Play fanedit</span>
+                    </span>
                   )}
 
                   <div className="gallery-overlay">
@@ -228,31 +273,18 @@ export default function Gallery() {
                       </span>
 
                       <h4>{item.title}</h4>
+
+                      <div className="gallery-overlay-meta">
+                        <span>{item.artist}</span>
+                        <span aria-hidden="true">•</span>
+                        <span>{item.date}</span>
+                      </div>
                     </div>
 
-                    <span className="gallery-overlay-button">
-                      {getViewLabel(item)}
+                    <span className="gallery-overlay-button" aria-hidden="true">
+                      →
                     </span>
                   </div>
-                </div>
-
-                <div className="gallery-card-body">
-                  <span>{item.category}</span>
-
-                  <h3>{item.title}</h3>
-
-                  <p>{item.text}</p>
-
-                  {item.mediaType === "gif" && (
-                    <a
-                      href={item.download || item.image}
-                      download
-                      className="gif-download-button"
-                      onClick={(event) => event.stopPropagation()}
-                    >
-                      Download Gif
-                    </a>
-                  )}
                 </div>
               </article>
             ))}
@@ -279,71 +311,89 @@ export default function Gallery() {
 
       {selectedImage && (
         <div
-          className="lightbox"
+          className="lightbox lightbox--gallery-exhibition"
           role="dialog"
           aria-modal="true"
           aria-labelledby="gallery-lightbox-title"
           onClick={closeArtwork}
         >
           <div
-            className="lightbox-card"
+            className="gallery-lightbox-backdrop"
+            style={{ backgroundImage: `url("${selectedImage.image}")` }}
+            aria-hidden="true"
+          />
+
+          <button
+            type="button"
+            className="lightbox-close"
+            aria-label="Close artwork"
+            onClick={closeArtwork}
+          >
+            ×
+          </button>
+
+          <div className="lightbox-counter">
+            <strong>{String(selectedIndex + 1).padStart(2, "0")}</strong>
+            <span>/ {String(filteredGallery.length).padStart(2, "0")}</span>
+          </div>
+
+          {filteredGallery.length > 1 && (
+            <>
+              <button
+                type="button"
+                className="lightbox-nav lightbox-prev"
+                aria-label="Previous artwork"
+                onClick={(event) => {
+                  event.stopPropagation();
+                  showPrevious();
+                }}
+              >
+                ‹
+              </button>
+
+              <button
+                type="button"
+                className="lightbox-nav lightbox-next"
+                aria-label="Next artwork"
+                onClick={(event) => {
+                  event.stopPropagation();
+                  showNext();
+                }}
+              >
+                ›
+              </button>
+            </>
+          )}
+
+          <div
+            className="lightbox-card gallery-exhibition-lightbox"
             onClick={(event) => event.stopPropagation()}
           >
-            <button
-              type="button"
-              className="lightbox-close"
-              aria-label="Close artwork"
-              onClick={closeArtwork}
-            >
-              ×
-            </button>
-
-            <div className="lightbox-counter">
-              {selectedIndex + 1} / {filteredGallery.length}
+            <div className="gallery-lightbox-media-stage">
+              {selectedImage.mediaType === "video" ? (
+                <video
+                  key={selectedImage.id}
+                  src={selectedImage.video}
+                  poster={selectedImage.image}
+                  className="lightbox-image gallery-lightbox-artwork"
+                  controls
+                  autoPlay
+                  muted
+                  playsInline
+                />
+              ) : (
+                <img
+                  src={selectedImage.image}
+                  alt={selectedImage.title}
+                  className="lightbox-image gallery-lightbox-artwork"
+                />
+              )}
             </div>
 
-            {filteredGallery.length > 1 && (
-              <>
-                <button
-                  type="button"
-                  className="lightbox-nav lightbox-prev"
-                  aria-label="Previous artwork"
-                  onClick={showPrevious}
-                >
-                  ‹
-                </button>
-
-                <button
-                  type="button"
-                  className="lightbox-nav lightbox-next"
-                  aria-label="Next artwork"
-                  onClick={showNext}
-                >
-                  ›
-                </button>
-              </>
-            )}
-
-            {selectedImage.mediaType === "video" ? (
-              <video
-                key={selectedImage.id}
-                src={selectedImage.video}
-                poster={selectedImage.image}
-                className="lightbox-image"
-                controls
-                autoPlay
-                playsInline
-              />
-            ) : (
-              <img
-                src={selectedImage.image}
-                alt={selectedImage.title}
-                className="lightbox-image"
-              />
-            )}
-
             <div className="lightbox-info">
-              <span>{selectedImage.category}</span>
+              <span className="gallery-lightbox-category">
+                {selectedImage.category}
+              </span>
 
               <h3 id="gallery-lightbox-title">{selectedImage.title}</h3>
 
@@ -378,6 +428,7 @@ export default function Gallery() {
                   </span>
                 ))}
               </div>
+
             </div>
           </div>
         </div>
