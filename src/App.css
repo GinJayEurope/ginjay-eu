@@ -6029,6 +6029,9 @@ html.dark-mode body {
   -webkit-mask:
     linear-gradient(#000 0 0) content-box,
     linear-gradient(#000 0 0);
+    mask:
+  linear-gradient(#000 0 0) content-box,
+  linear-gradient(#000 0 0);
   -webkit-mask-composite: xor;
   mask-composite: exclude;
   animation: newsEdgeReflection 11s ease-in-out infinite;
