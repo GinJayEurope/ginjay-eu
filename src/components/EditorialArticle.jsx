@@ -1,11 +1,13 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const illustratedEdition =
   "/editorial/GinJay-Europe-From-an-Idea-to-a-Home.pdf";
 
 export default function EditorialArticle({ article, onClose }) {
+  const articleRef = useRef(null);
   const closeButtonRef = useRef(null);
   const onCloseRef = useRef(onClose);
+  const [readingProgress, setReadingProgress] = useState(0);
 
   useEffect(() => {
     onCloseRef.current = onClose;
@@ -53,6 +55,46 @@ export default function EditorialArticle({ article, onClose }) {
     };
   }, []);
 
+  useEffect(() => {
+    const articleElement = articleRef.current;
+    if (!articleElement) return undefined;
+
+    let animationFrame = 0;
+
+    function updateReadingProgress() {
+      const scrollableDistance =
+        articleElement.scrollHeight - articleElement.clientHeight;
+      const nextProgress =
+        scrollableDistance > 0
+          ? Math.min(
+              100,
+              Math.max(
+                0,
+                (articleElement.scrollTop / scrollableDistance) * 100,
+              ),
+            )
+          : 100;
+
+      setReadingProgress(nextProgress);
+      animationFrame = 0;
+    }
+
+    function handleScroll() {
+      if (animationFrame) return;
+      animationFrame = window.requestAnimationFrame(updateReadingProgress);
+    }
+
+    updateReadingProgress();
+    articleElement.addEventListener("scroll", handleScroll, { passive: true });
+    window.addEventListener("resize", handleScroll);
+
+    return () => {
+      articleElement.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("resize", handleScroll);
+      if (animationFrame) window.cancelAnimationFrame(animationFrame);
+    };
+  }, []);
+
   return (
     <div
       className="editorial-article-overlay"
@@ -64,7 +106,12 @@ export default function EditorialArticle({ article, onClose }) {
       <article
         className="editorial-article"
         onClick={(event) => event.stopPropagation()}
+        ref={articleRef}
       >
+        <div className="editorial-reading-progress" aria-hidden="true">
+          <span style={{ width: `${readingProgress}%` }} />
+        </div>
+
         <button
           type="button"
           className="editorial-article-close"
@@ -76,10 +123,6 @@ export default function EditorialArticle({ article, onClose }) {
         </button>
 
         <header className="editorial-article-header">
-          <div className="editorial-article-cover">
-            <img src={article.image} alt="" aria-hidden="true" />
-          </div>
-
           <div className="editorial-article-intro">
             <span className="subtitle">GINJAY EUROPE · OUR STORY</span>
             <h2 id="editorial-article-title">{article.title}</h2>
@@ -100,10 +143,17 @@ export default function EditorialArticle({ article, onClose }) {
               Open illustrated edition <span aria-hidden="true">↗</span>
             </a>
           </div>
+
+          <div className="editorial-article-cover">
+            <img
+              src={article.image}
+              alt="Illustrated cover of From an Idea to a Home"
+            />
+          </div>
         </header>
 
         <div className="editorial-article-body">
-          <section>
+          <section data-editorial-label="Our beginning">
             <h3>Where It All Began</h3>
 
             <p className="editorial-dropcap">
@@ -139,7 +189,7 @@ export default function EditorialArticle({ article, onClose }) {
             </p>
           </section>
 
-          <section>
+          <section data-editorial-label="Shared vision">
             <h3>Two Founders, One Shared Vision</h3>
 
             <p>
@@ -172,7 +222,7 @@ export default function EditorialArticle({ article, onClose }) {
             </p>
           </section>
 
-          <section>
+          <section data-editorial-label="Our team">
             <h3>When Two Became Four</h3>
 
             <p>As the project grew, so did the team.</p>
@@ -211,7 +261,7 @@ export default function EditorialArticle({ article, onClose }) {
             </p>
           </section>
 
-          <section>
+          <section data-editorial-label="Our memories">
             <h3>The Moments That Shaped Us</h3>
 
             <p>
@@ -257,7 +307,7 @@ export default function EditorialArticle({ article, onClose }) {
             </p>
           </section>
 
-          <section>
+          <section data-editorial-label="A digital home">
             <h3>Building More Than a Timeline</h3>
 
             <p>
@@ -289,7 +339,7 @@ export default function EditorialArticle({ article, onClose }) {
             </p>
           </section>
 
-          <section>
+          <section data-editorial-label="Friendship">
             <h3>From a Team to a Friendship</h3>
 
             <p>
@@ -353,6 +403,23 @@ export default function EditorialArticle({ article, onClose }) {
               <p>And this is only the beginning.</p>
             </div>
           </section>
+
+          <footer className="editorial-community-signoff">
+            <div>
+              <span className="editorial-community-signature">
+                GinJay Europe
+              </span>
+              <p>With love, from our community to yours.</p>
+            </div>
+
+            <button
+              type="button"
+              className="editorial-back-button"
+              onClick={onClose}
+            >
+              Back to Editorial <span aria-hidden="true">→</span>
+            </button>
+          </footer>
         </div>
       </article>
     </div>

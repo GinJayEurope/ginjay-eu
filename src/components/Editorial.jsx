@@ -21,6 +21,7 @@ const editorialItems = [
     date: "13 August 2026",
     status: "Published",
     author: "GinJay Europe",
+    readTime: "6 min read",
     image: storyCover,
     article: true,
   },
@@ -42,6 +43,9 @@ export default function Editorial() {
     activeCategory === "All"
       ? editorialItems
       : editorialItems.filter((item) => item.category === activeCategory);
+  const singlePublishedArticle = Boolean(
+    filteredItems.length === 1 && filteredItems[0].article,
+  );
 
   return (
     <>
@@ -73,12 +77,16 @@ export default function Editorial() {
         <div
           className={`editorial-grid${
             filteredItems.length === 1 ? " editorial-grid--single" : ""
+          }${
+            singlePublishedArticle ? " editorial-grid--single-published" : ""
           }`}
         >
           {filteredItems.map((item) => (
             <article
               className={`editorial-card${
                 item.article ? " editorial-card--published" : ""
+              }${
+                !item.article ? " editorial-card--quiet" : ""
               }`}
               key={item.id}
             >
@@ -92,6 +100,10 @@ export default function Editorial() {
                   />
 
                   <span className="editorial-card-cover-label">Our Story</span>
+
+                  <span className="editorial-card-read-time">
+                    {item.readTime}
+                  </span>
                 </div>
               )}
 
