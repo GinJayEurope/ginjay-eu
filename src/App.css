@@ -11628,4 +11628,15 @@ html.dark-mode body {
   .gj-footer-new__socials a:hover {
     transform: none;
   }
+}/* =========================================================
+   FOOTER — REDUCE SPACE BETWEEN CLAIM AND MAIN FOOTER
+========================================================= */
+
+.gj-footer-new__statement {
+  min-height: clamp(460px, 58svh, 540px);
+
+  padding:
+    clamp(4.5rem, 8vh, 6rem)
+    6vw
+    clamp(2.5rem, 4vh, 3.5rem);
 }
