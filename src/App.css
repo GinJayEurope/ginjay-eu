@@ -11639,4 +11639,160 @@ html.dark-mode body {
     clamp(4.5rem, 8vh, 6rem)
     6vw
     clamp(2.5rem, 4vh, 3.5rem);
+}/* =========================================================
+   ARTISTS — FIX HOVER / GPU FLICKERING
+========================================================= */
+
+/*
+  Avoid Chromium / Opera compositor glitches caused by
+  backdrop blur + card transforms + filters.
+*/
+
+.artists-stage .artist-card {
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+
+  transform: none !important;
+  filter: none !important;
+
+  transition:
+    border-color 0.35s ease,
+    box-shadow 0.35s ease,
+    background 0.35s ease !important;
+}
+
+
+/* Remove the oversized moving shine layer that was
+   rendered incorrectly during hover. */
+
+.artists-stage .artist-card::before {
+  display: none !important;
+}
+
+
+/* Keep a subtle premium hover without moving
+   or filtering the whole card. */
+
+.artists-stage .artist-card:hover {
+  transform: none !important;
+  filter: none !important;
+
+  border-color: rgba(239, 201, 126, 0.66) !important;
+
+  box-shadow:
+    0 40px 95px rgba(2, 1, 5, 0.5),
+    0 0 34px rgba(220, 174, 91, 0.09),
+    0 1px 0 rgba(255, 255, 255, 0.09) inset !important;
+}
+
+
+/* Do not dim / transform the opposite artist card
+   when one card is hovered. */
+
+.artists-grid:has(.artist-card:hover)
+.artist-card:not(:hover) {
+  opacity: 1 !important;
+  filter: none !important;
+  transform: none !important;
+}
+
+
+/* Keep portraits perfectly stable as well. */
+
+.artist-card:hover .artist-image {
+  transform: scale(1.002) !important;
+  filter:
+    saturate(0.96)
+    contrast(1.015) !important;
+}/* =========================================================
+   ARTISTS — STABLE HOVER, KEEP PREMIUM EFFECT
+========================================================= */
+
+/*
+  Keep the animated lift and glow,
+  but avoid GPU-heavy filtering of the whole card.
+*/
+
+.artists-stage .artist-card {
+  filter: none !important;
+
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+
+  contain: paint;
+
+  transform: translate3d(0, 0, 0);
+
+  transition:
+    transform 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 0.45s ease,
+    border-color 0.55s ease,
+    box-shadow 0.55s ease !important;
+}
+
+
+/* Keep the beautiful lift + golden glow */
+
+.artists-stage .artist-card:hover {
+  transform: translate3d(0, -8px, 0) scale(1.008) !important;
+
+  filter: none !important;
+
+  border-color: rgba(224, 181, 101, 0.62);
+
+  box-shadow:
+    0 38px 92px rgba(58, 35, 73, 0.25),
+    0 0 36px rgba(211, 168, 91, 0.12),
+    0 1px 0 rgba(255, 255, 255, 0.9) inset;
+}
+
+
+/* Dark mode keeps its stronger glow */
+
+.app.dark .artists-stage .artist-card:hover {
+  border-color: rgba(239, 201, 126, 0.66);
+
+  box-shadow:
+    0 42px 100px rgba(2, 1, 5, 0.55),
+    0 0 42px rgba(220, 174, 91, 0.12),
+    0 1px 0 rgba(255, 255, 255, 0.1) inset;
+}
+
+
+/*
+  Keep the second card fading gently,
+  but DON'T apply brightness/saturation filters to it.
+*/
+
+.artists-grid:has(.artist-card:hover)
+.artist-card:not(:hover) {
+  opacity: 0.88 !important;
+
+  filter: none !important;
+
+  transform: translate3d(0, 0, 0) scale(0.992) !important;
+}
+
+
+/* Keep portrait zoom, remove filter recalculation */
+
+.artist-card:hover .artist-image {
+  transform: scale(1.025) !important;
+
+  filter:
+    saturate(0.96)
+    contrast(1.015) !important;
+}
+
+
+/*
+  Keep the moving light sweep.
+  Force it onto a stable compositing layer.
+*/
+
+.artists-stage .artist-card::before {
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+
+  will-change: transform;
 }
