@@ -12147,4 +12147,89 @@ html.dark-mode body {
   .gj-about-premium__card:hover {
     transform: none;
   }
+}/* =========================================================
+   ABOUT ICON POLISH
+========================================================= */
+
+.gj-about-premium__icon-svg {
+  width: 46px;
+  height: 46px;
+  filter:
+    drop-shadow(0 0 8px rgba(230, 180, 255, 0.16))
+    drop-shadow(0 0 16px rgba(236, 193, 112, 0.08));
+}
+
+.gj-about-premium__card--mission .gj-about-premium__icon-svg,
+.gj-about-premium__card--community .gj-about-premium__icon-svg,
+.gj-about-premium__card--creativity .gj-about-premium__icon-svg,
+.gj-about-premium__card--team .gj-about-premium__icon-svg {
+  stroke-width: 1.4;
+}/* =========================================================
+   ABOUT — EMBLEM IMAGE ICONS
+========================================================= */
+
+.gj-about-premium__card-icon {
+  position: relative;
+  flex: 0 0 auto;
+
+  width: clamp(104px, 8.4vw, 124px);
+  height: clamp(104px, 8.4vw, 124px);
+
+  display: grid;
+  place-items: center;
+
+  border-radius: 50%;
+  border: 1px solid rgba(240, 198, 112, 0.75);
+
+  background:
+    radial-gradient(circle at 50% 45%, rgba(110, 70, 146, 0.28), rgba(32, 20, 45, 0.38)),
+    radial-gradient(circle at 50% 50%, rgba(255, 210, 126, 0.04), transparent 62%);
+
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.04) inset,
+    0 0 26px rgba(228, 178, 88, 0.08),
+    0 0 18px rgba(179, 116, 218, 0.08);
+}
+
+.gj-about-premium__card-icon::before {
+  content: "";
+  position: absolute;
+  inset: 8px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 224, 168, 0.08);
+  pointer-events: none;
+}
+
+.gj-about-premium__card-icon::after {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: 50%;
+  pointer-events: none;
+  box-shadow:
+    0 0 14px rgba(242, 199, 110, 0.14),
+    0 0 22px rgba(203, 137, 237, 0.12);
+}
+
+.gj-about-premium__icon-image {
+  display: block;
+  width: 84%;
+  height: 84%;
+  object-fit: contain;
+  object-position: center;
+  filter:
+    drop-shadow(0 0 8px rgba(236, 189, 109, 0.08))
+    drop-shadow(0 0 16px rgba(201, 136, 235, 0.08));
+}
+
+@media (max-width: 760px) {
+  .gj-about-premium__card-icon {
+    width: 92px;
+    height: 92px;
+  }
+
+  .gj-about-premium__icon-image {
+    width: 82%;
+    height: 82%;
+  }
 }
