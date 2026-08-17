@@ -1,208 +1,213 @@
-import { useEffect, useState } from "react";
-import { currentSchedule } from "../data/schedule";
-import eventsCardArtwork from "../assets/events/jump.png";
+import memoryPink from "../assets/events/past-event-01.jpg";
+import memoryBlackWhite from "../assets/events/past-event-02.jpg";
+import memoryPolka from "../assets/events/past-event-03.jpg";
+import memoryBlackGown from "../assets/events/past-event-04.jpg";
+import memoryGoldGown from "../assets/events/past-event-05.jpg";
 
-const EVENT_ARCHIVE_INVITE = "https://discord.gg/ZcddvCNctn";
+function CameraIcon() {
+  return (
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M7.1 7.8h2.1l1-1.8h3.6l1 1.8h2.1a2.7 2.7 0 0 1 2.7 2.7v5.7a2.7 2.7 0 0 1-2.7 2.7H7.1a2.7 2.7 0 0 1-2.7-2.7v-5.7a2.7 2.7 0 0 1 2.7-2.7Z" />
+      <circle cx="12" cy="13.3" r="3.1" />
+    </svg>
+  );
+}
+
+function VideoIcon() {
+  return (
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <rect x="4.5" y="5.5" width="15" height="13" rx="2.4" />
+      <path d="m10 9 5 3-5 3Z" />
+    </svg>
+  );
+}
+
+function SparkleIcon() {
+  return (
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M12 3.7 13.5 8l4.3 1.5-4.3 1.5-1.5 4.3-1.5-4.3-4.3-1.5L10.5 8 12 3.7Z" />
+      <path d="M18.3 14.2 19 16l1.8.7-1.8.7-.7 1.8-.7-1.8-1.8-.7 1.8-.7.7-1.8Z" />
+    </svg>
+  );
+}
+
+function DiscordIcon() {
+  return (
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M7.35 7.2c3.15-1.48 6.15-1.48 9.3 0 1.42 2 2.22 4.24 2.4 6.72-1.18 1.36-2.62 2.34-4.35 2.97l-1.02-1.42c.68-.28 1.34-.66 1.92-1.12-2.3 1.02-4.88 1.02-7.2 0 .58.46 1.24.84 1.92 1.12l-1.02 1.42c-1.73-.63-3.17-1.61-4.35-2.97.18-2.48.98-4.72 2.4-6.72Z" />
+      <circle cx="9.45" cy="12.1" r="1.02" />
+      <circle cx="14.55" cy="12.1" r="1.02" />
+    </svg>
+  );
+}
 
 export default function Events() {
-  const [selectedPoster, setSelectedPoster] = useState(null);
+  const memories = [
+    {
+      id: "left-far",
+      image: memoryBlackGown,
+      alt: "GinJay event archive memory",
+      variant: "left-far",
+    },
+    {
+      id: "left-mid",
+      image: memoryPink,
+      alt: "GinJay event archive memory",
+      variant: "left-mid",
+    },
+    {
+      id: "center",
+      image: memoryBlackWhite,
+      alt: "GinJay event archive memory",
+      variant: "center",
+    },
+    {
+      id: "right-mid",
+      image: memoryPolka,
+      alt: "GinJay event archive memory",
+      variant: "right-mid",
+    },
+    {
+      id: "right-far",
+      image: memoryGoldGown,
+      alt: "GinJay event archive memory",
+      variant: "right-far",
+    },
+  ];
 
-  useEffect(() => {
-    if (!selectedPoster) return;
-
-    const previousOverflow = document.body.style.overflow;
-
-    function handleKeyDown(event) {
-      if (event.key === "Escape") {
-        setSelectedPoster(null);
-      }
-    }
-
-    document.addEventListener("keydown", handleKeyDown);
-    document.body.style.overflow = "hidden";
-
-    return () => {
-      document.removeEventListener("keydown", handleKeyDown);
-      document.body.style.overflow = previousOverflow;
-    };
-  }, [selectedPoster]);
+  const features = [
+    {
+      title: "Event photos",
+      text: "Curated moments from unforgettable events.",
+      icon: <CameraIcon />,
+    },
+    {
+      title: "Video clips",
+      text: "Short & full clips capturing the magic.",
+      icon: <VideoIcon />,
+    },
+    {
+      title: "Regular updates",
+      text: "Fresh memories added after each event.",
+      icon: <SparkleIcon />,
+    },
+  ];
 
   return (
-    <>
-      <section className="section events-section" id="events">
-        <div className="section-heading">
-          <span className="subtitle">EVENTS</span>
+    <section className="section gj-events-premium" id="events">
+      <div className="gj-events-premium__header">
+        <span className="gj-events-premium__eyebrow">ARCHIVE</span>
 
-          <h2>Events & Activities</h2>
+        <h2>Past Events</h2>
 
-          <p>
-            Monthly GinJay events, public appearances, livestreams and
-            community activities will be listed here once confirmed.
-          </p>
-        </div>
+        <p>
+          Relive GinJay events through our growing community collection.
+        </p>
+      </div>
+
+      <div className="gj-events-premium__panel">
+        <div
+          className="gj-events-premium__aurora gj-events-premium__aurora--left"
+          aria-hidden="true"
+        />
 
         <div
-          className="events-month-card events-month-card--artwork"
-          style={{
-            "--events-card-artwork": `url("${eventsCardArtwork}")`,
-          }}
-        >
-          <div className="events-month-card-header">
-            <div>
-              <span className="event-status upcoming">
-                {currentSchedule.month}
-              </span>
+          className="gj-events-premium__aurora gj-events-premium__aurora--right"
+          aria-hidden="true"
+        />
 
-              <h3>Monthly Schedule</h3>
-
-              <p>
-                All confirmed GinJay activities for this month in one place.
-              </p>
-            </div>
-
-            <button
-              type="button"
-              className="button primary"
-              onClick={() => setSelectedPoster(currentSchedule.poster)}
-            >
-              View full schedule
-            </button>
+        <div className="gj-events-premium__panel-inner">
+          <div className="gj-events-premium__badge">
+            COMMUNITY EVENT ARCHIVE
           </div>
 
-          <div className="events-month-list">
-            {currentSchedule.events.map((event) => (
-              <article className="events-month-item" key={event.id}>
-                <div className="events-month-date">{event.date}</div>
+          <h3 className="gj-events-premium__title">
+            Every GinJay memory
+            <br />
+            <span>in one place</span>
+          </h3>
 
-                <div className="events-month-content">
-                  <div className="events-month-topline">
-                    <span className="event-status">{event.type}</span>
-                    <span className="events-month-time">{event.time}</span>
-                  </div>
+          <p className="gj-events-premium__lead">
+            Explore thousands of photos and clips from GinJay events shared by
+            fans around the world. New memories are usually added as early as
+            the day after each event.
+          </p>
 
-                  <h4>{event.title}</h4>
+          <div className="gj-events-premium__memory-stage">
+            <div
+              className="gj-events-premium__memory-line"
+              aria-hidden="true"
+            />
 
-                  <p className="events-month-artist">{event.artist}</p>
+            {memories.map((memory) => (
+              <article
+                key={memory.id}
+                className={`gj-events-premium__memory gj-events-premium__memory--${memory.variant}`}
+              >
+                {memory.variant === "center" && (
+                  <span
+                    className="gj-events-premium__memory-pin"
+                    aria-hidden="true"
+                  />
+                )}
 
-                  {event.location && (
-                    <p className="events-month-location">{event.location}</p>
-                  )}
-
-                  {event.details?.length > 0 && (
-                    <ul className="events-month-details">
-                      {event.details.map((detail) => (
-                        <li key={detail}>{detail}</li>
-                      ))}
-                    </ul>
-                  )}
+                <div className="gj-events-premium__memory-image-wrap">
+                  <img
+                    src={memory.image}
+                    alt={memory.alt}
+                    loading="lazy"
+                    decoding="async"
+                  />
                 </div>
               </article>
             ))}
           </div>
 
-          <p className="monthly-events-note">{currentSchedule.note}</p>
-        </div>
+          <div className="gj-events-premium__feature-grid">
+            {features.map((feature) => (
+              <div key={feature.title} className="gj-events-premium__feature">
+                <div className="gj-events-premium__feature-icon">
+                  {feature.icon}
+                </div>
 
-        <div className="events-archive">
-          <div className="section-heading archive-heading">
-            <span className="subtitle">ARCHIVE</span>
-
-            <h2>Past Events</h2>
-
-            <p>
-              Relive GinJay events through our growing community collection.
-            </p>
-          </div>
-
-          <div className="discord-archive-card">
-            <div
-              className="discord-archive-glow discord-archive-glow-one"
-              aria-hidden="true"
-            ></div>
-
-            <div
-              className="discord-archive-glow discord-archive-glow-two"
-              aria-hidden="true"
-            ></div>
-
-            <div className="discord-archive-content">
-              <span className="discord-archive-label">
-                COMMUNITY EVENT ARCHIVE
-              </span>
-
-              <h3>Every GinJay memory in one place</h3>
-
-              <p className="discord-archive-description">
-                Join our Discord event archive and explore a large, growing
-                collection of GinJay event photos and clips shared by our
-                community. New memories are usually added as early as the day
-                after each event.
-              </p>
-
-              <div className="discord-channel-preview">
-                <span className="discord-channel-symbol" aria-hidden="true">
-                  #
-                </span>
-
-                <div>
-                  <span>Our dedicated Discord channel</span>
-                  <strong>ginjay-events📸</strong>
+                <div className="gj-events-premium__feature-copy">
+                  <h4>{feature.title}</h4>
+                  <p>{feature.text}</p>
                 </div>
               </div>
+            ))}
+          </div>
 
-              <div className="discord-archive-features">
-                <span>Event photos</span>
-                <span>Video clips</span>
-                <span>Regular updates</span>
-              </div>
+          <div className="gj-events-premium__discord">
+            <div className="gj-events-premium__discord-icon">
+              <DiscordIcon />
+            </div>
 
-              <a
-                href={EVENT_ARCHIVE_INVITE}
-                target="_blank"
-                rel="noreferrer"
-                className="button primary discord-archive-button"
-              >
-                Explore our Event Archive
-                <span aria-hidden="true">→</span>
-              </a>
-
-              <p className="discord-archive-note">
-                The invitation opens our GinJay Europe community on Discord.
-              </p>
+            <div className="gj-events-premium__discord-copy">
+              <span>Our dedicated Discord channel</span>
+              <strong>ginjay-events 🗂️</strong>
             </div>
           </div>
-        </div>
-      </section>
 
-      {selectedPoster && (
-        <div
-          className="schedule-lightbox"
-          role="dialog"
-          aria-modal="true"
-          aria-label="Monthly schedule"
-          onClick={() => setSelectedPoster(null)}
-        >
-          <div
-            className="schedule-lightbox-card"
-            onClick={(event) => event.stopPropagation()}
+          <a
+            className="gj-events-premium__cta"
+            href="https://discord.com/invite/Y9H2NX7QGA"
+            target="_blank"
+            rel="noreferrer"
           >
-            <button
-              type="button"
-              className="schedule-lightbox-close"
-              aria-label="Close schedule"
-              onClick={() => setSelectedPoster(null)}
-            >
-              ×
-            </button>
+            <span>Explore the Event Archive</span>
 
-            <img
-              src={selectedPoster}
-              alt="Full monthly schedule"
-              className="schedule-lightbox-image"
-            />
-          </div>
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M5 12h13" />
+              <path d="m13 6 6 6-6 6" />
+            </svg>
+          </a>
+
+          <p className="gj-events-premium__footnote">
+            The invitation opens our GinJay Europe community on Discord.
+          </p>
         </div>
-      )}
-    </>
+      </div>
+    </section>
   );
 }
