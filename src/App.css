@@ -13919,7 +13919,7 @@ html.dark-mode body {
     margin-top: 1.2rem;
   }
 }/* =========================================================
-   NEWS & HIGHLIGHTS — LOVE ON HIRE UPDATE
+   NEWS & HIGHLIGHTS — REFINED LAYOUT
 ========================================================= */
 
 .gj-news-section {
@@ -13965,7 +13965,11 @@ html.dark-mode body {
 
 .gj-news-grid {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas:
+    "schedule teaser"
+    "trailer trailer"
+    "series series";
   gap: 1.8rem;
   align-items: stretch;
 }
@@ -13975,8 +13979,11 @@ html.dark-mode body {
   overflow: hidden;
   border-radius: 2rem;
   border: 1px solid rgba(229, 199, 126, 0.08);
-  background:
-    linear-gradient(180deg, rgba(48, 33, 71, 0.94), rgba(19, 12, 33, 0.96));
+  background: linear-gradient(
+    180deg,
+    rgba(48, 33, 71, 0.94),
+    rgba(19, 12, 33, 0.96)
+  );
   box-shadow:
     0 24px 60px rgba(7, 4, 14, 0.26),
     inset 0 0 0 1px rgba(255, 255, 255, 0.025);
@@ -13984,6 +13991,8 @@ html.dark-mode body {
 
 .gj-news-card-top {
   padding: 1.35rem 1.5rem 1rem;
+  position: relative;
+  z-index: 3;
 }
 
 .gj-news-card-top span {
@@ -14000,6 +14009,22 @@ html.dark-mode body {
   margin-top: 1rem;
   height: 1px;
   background: rgba(255, 255, 255, 0.08);
+}
+
+.gj-news-card--schedule-main {
+  grid-area: schedule;
+}
+
+.gj-news-card--teaser {
+  grid-area: teaser;
+}
+
+.gj-news-card--existing-trailer {
+  grid-area: trailer;
+}
+
+.gj-news-card--series-schedule {
+  grid-area: series;
 }
 
 .gj-news-poster-frame {
@@ -14026,14 +14051,6 @@ html.dark-mode body {
   text-align: center;
 }
 
-.gj-news-card-content--airy {
-  display: flex;
-  min-height: 330px;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-
 .gj-news-card-kicker {
   display: inline-block;
   margin-bottom: 0.95rem;
@@ -14045,7 +14062,8 @@ html.dark-mode body {
 }
 
 .gj-news-card-content h3,
-.gj-news-feature-content h3 {
+.gj-news-feature-content h3,
+.gj-news-wide-content h3 {
   margin: 0 0 1rem;
   color: #f8f4ff;
   font-size: clamp(2rem, 3vw, 3.3rem);
@@ -14053,7 +14071,8 @@ html.dark-mode body {
 }
 
 .gj-news-card-content p,
-.gj-news-feature-content p {
+.gj-news-feature-content p,
+.gj-news-wide-content p {
   margin: 0 auto;
   max-width: 680px;
   color: rgba(238, 231, 246, 0.84);
@@ -14095,11 +14114,6 @@ html.dark-mode body {
     0 14px 28px rgba(12, 7, 21, 0.28);
 }
 
-.gj-news-button--static {
-  cursor: default;
-  pointer-events: none;
-}
-
 .gj-news-button__icon,
 .gj-news-button__arrow {
   display: inline-flex;
@@ -14119,11 +14133,19 @@ html.dark-mode body {
   background-position: center;
 }
 
+.gj-news-card--existing-trailer {
+  min-height: 520px;
+}
+
 .gj-news-feature-overlay {
   position: absolute;
   inset: 0;
-  background:
-    linear-gradient(to top, rgba(13, 7, 24, 0.88) 15%, rgba(13, 7, 24, 0.32) 55%, rgba(13, 7, 24, 0.18) 100%);
+  background: linear-gradient(
+    to top,
+    rgba(13, 7, 24, 0.88) 16%,
+    rgba(13, 7, 24, 0.46) 55%,
+    rgba(13, 7, 24, 0.24) 100%
+  );
 }
 
 .gj-news-feature-content {
@@ -14139,13 +14161,61 @@ html.dark-mode body {
   background: rgba(86, 58, 121, 0.42);
 }
 
+.gj-news-wide-layout {
+  display: grid;
+  grid-template-columns: minmax(300px, 440px) 1fr;
+  gap: 2rem;
+  align-items: center;
+  padding: 0 1.5rem 1.7rem;
+}
+
+.gj-news-wide-poster-frame {
+  padding: 0.9rem;
+  border-radius: 1.65rem;
+  background: rgba(255, 255, 255, 0.05);
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.06),
+    0 12px 28px rgba(7, 4, 14, 0.2);
+}
+
+.gj-news-wide-poster-frame img {
+  display: block;
+  width: 100%;
+  border-radius: 1.25rem;
+}
+
+.gj-news-wide-content {
+  text-align: left;
+  padding-right: 1rem;
+}
+
+.gj-news-wide-content .gj-news-button {
+  margin-top: 1.5rem;
+}
+
 @media (max-width: 1100px) {
   .gj-news-grid {
     grid-template-columns: 1fr;
+    grid-template-areas:
+      "schedule"
+      "teaser"
+      "trailer"
+      "series";
   }
 
-  .gj-news-card--feature {
-    min-height: 620px;
+  .gj-news-card--feature,
+  .gj-news-card--existing-trailer {
+    min-height: 560px;
+  }
+
+  .gj-news-wide-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .gj-news-wide-content {
+    text-align: center;
+    padding-right: 0;
+    padding-bottom: 0.6rem;
   }
 }
 
@@ -14175,12 +14245,14 @@ html.dark-mode body {
   }
 
   .gj-news-card-content h3,
-  .gj-news-feature-content h3 {
+  .gj-news-feature-content h3,
+  .gj-news-wide-content h3 {
     font-size: 2.2rem;
   }
 
-  .gj-news-card--feature {
-    min-height: 540px;
+  .gj-news-card--feature,
+  .gj-news-card--existing-trailer {
+    min-height: 500px;
   }
 
   .gj-news-feature-content {
@@ -14189,7 +14261,283 @@ html.dark-mode body {
     bottom: 1.25rem;
   }
 
+  .gj-news-wide-layout {
+    gap: 1.2rem;
+    padding: 0 1.1rem 1.2rem;
+  }
+
+  .gj-news-wide-poster-frame {
+    padding: 0.65rem;
+  }
+
   .gj-news-button {
     width: 100%;
+  }
+}/* =========================================================
+   NEWS — TRUE TWO COLUMN FLOW
+   Removes the huge empty gap
+========================================================= */
+
+.gj-news-grid {
+  display: grid !important;
+  grid-template-columns:
+    minmax(0, 1fr)
+    minmax(0, 1fr) !important;
+
+  grid-template-areas: none !important;
+
+  align-items: start !important;
+  gap: 1.8rem !important;
+}
+
+
+/* Each side now flows independently */
+
+.gj-news-column {
+  display: flex;
+  flex-direction: column;
+  gap: 1.8rem;
+  min-width: 0;
+}
+
+
+/* Reveal wrapper must not create unwanted spacing */
+
+.gj-news-column > .reveal {
+  width: 100%;
+  margin: 0;
+}
+
+
+/* Remove old grid-area assignments */
+
+.gj-news-card--schedule-main,
+.gj-news-card--teaser,
+.gj-news-card--existing-trailer,
+.gj-news-card--series-schedule {
+  grid-area: auto !important;
+}
+
+
+/* =========================================================
+   LOVE ON HIRE SCHEDULE
+   Larger and more prominent
+========================================================= */
+
+.gj-news-card--series-schedule {
+  overflow: hidden;
+
+  background:
+    radial-gradient(
+      circle at 75% 18%,
+      rgba(189, 117, 74, 0.10),
+      transparent 38%
+    ),
+    linear-gradient(
+      180deg,
+      rgba(52, 36, 74, 0.96),
+      rgba(22, 14, 35, 0.98)
+    );
+}
+
+
+/* poster uses almost full card width */
+
+.gj-news-series-schedule-layout {
+  padding:
+    0
+    1.25rem
+    1.8rem;
+
+  display: flex;
+  flex-direction: column;
+  gap: 1.7rem;
+}
+
+
+.gj-news-series-schedule-poster {
+  position: relative;
+
+  width: 100%;
+
+  padding: 0.8rem;
+
+  border-radius: 1.6rem;
+
+  background:
+    rgba(255, 255, 255, 0.055);
+
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.055),
+    0 18px 36px rgba(5, 3, 10, 0.24);
+}
+
+
+.gj-news-series-schedule-poster img {
+  display: block;
+
+  width: 100%;
+  height: auto;
+
+  border-radius: 1.25rem;
+
+  object-fit: contain;
+}
+
+
+/* Text beneath image */
+
+.gj-news-series-schedule-content {
+  padding:
+    0
+    1.2rem
+    0.4rem;
+
+  text-align: center;
+}
+
+
+.gj-news-series-schedule-content h3 {
+  margin:
+    0
+    0
+    1rem;
+
+  color: #f8f4ff;
+
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+
+  font-size:
+    clamp(2.4rem, 3.3vw, 3.7rem);
+
+  line-height: 1.02;
+}
+
+
+.gj-news-series-schedule-content p {
+  max-width: 560px;
+
+  margin:
+    0
+    auto;
+
+  color:
+    rgba(238, 231, 246, 0.82);
+
+  font-size:
+    1rem;
+
+  line-height:
+    1.7;
+}
+
+
+/* =========================================================
+   BALANCE SECONDARY TRAILER
+========================================================= */
+
+.gj-news-card--existing-trailer {
+  min-height: 540px;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 1100px) {
+
+  .gj-news-grid {
+    grid-template-columns:
+      1fr !important;
+  }
+
+  .gj-news-column {
+    gap:
+      1.5rem;
+  }
+}/* =========================================================
+   NEWS — MATCH LUNAR SECRET CARD TO RIGHT COLUMN HEIGHT
+========================================================= */
+
+/* Both news columns receive the same total height */
+.gj-news-grid {
+  align-items: stretch !important;
+}
+
+.gj-news-column {
+  height: 100%;
+}
+
+
+/* Let the lower Lunar Secret Reveal fill the remaining space */
+.gj-news-column:first-child > .reveal:last-child {
+  flex: 1;
+  display: flex;
+}
+
+
+/* Make the Lunar Secret card use all remaining height */
+.gj-news-column:first-child
+  > .reveal:last-child
+  .gj-news-card--existing-trailer {
+  flex: 1;
+  width: 100%;
+  min-height: 720px;
+}
+
+
+/* Give the artwork more room */
+.gj-news-card--existing-trailer {
+  background-size: cover;
+  background-position: center center;
+}
+
+
+/* Keep the content nicely positioned inside the larger card */
+.gj-news-card--existing-trailer
+  .gj-news-feature-content {
+  left: 3rem;
+  right: 3rem;
+  bottom: 3rem;
+}
+
+
+/* Tablet / mobile: return to normal card sizing */
+@media (max-width: 1100px) {
+  .gj-news-column:first-child > .reveal:last-child {
+    flex: initial;
+    display: block;
+  }
+
+  .gj-news-column:first-child
+    > .reveal:last-child
+    .gj-news-card--existing-trailer {
+    min-height: 560px;
+  }
+
+  .gj-news-card--existing-trailer
+    .gj-news-feature-content {
+    left: 2rem;
+    right: 2rem;
+    bottom: 2rem;
+  }
+}
+
+@media (max-width: 760px) {
+  .gj-news-column:first-child
+    > .reveal:last-child
+    .gj-news-card--existing-trailer {
+    min-height: 500px;
+  }
+
+  .gj-news-card--existing-trailer
+    .gj-news-feature-content {
+    left: 1.1rem;
+    right: 1.1rem;
+    bottom: 1.25rem;
   }
 }
