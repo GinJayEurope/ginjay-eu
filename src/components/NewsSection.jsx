@@ -1,275 +1,157 @@
-import { useEffect, useState } from "react";
-import { news } from "../data/news";
+import React from "react";
+import Reveal from "./Reveal";
+import { currentSchedule } from "../data/schedule";
 
-function NewsEditorialMeta({ item }) {
-  return (
-    <div className="news-editorial-meta">
-      <span>{item.issue}</span>
-    </div>
-  );
-}
-
-function NewsCategory({ item }) {
-  const showNew =
-    Boolean(item.newUntil) && Date.now() <= Date.parse(item.newUntil);
-
-  return (
-    <div className="news-editorial-category-row">
-      <span className="news-editorial-category">{item.type}</span>
-
-      {showNew && (
-        <span className="news-new-indicator">
-          <span aria-hidden="true" /> NEW
-        </span>
-      )}
-    </div>
-  );
-}
-
-function ButtonIcon({ icon }) {
-  if (icon === "calendar") {
-    return (
-      <svg viewBox="0 0 24 24" aria-hidden="true">
-        <rect x="3.5" y="5" width="17" height="15.5" rx="3" />
-        <path d="M7.5 3v4M16.5 3v4M3.5 9.5h17" />
-      </svg>
-    );
-  }
-
-  if (icon === "youtube") {
-    return (
-      <svg viewBox="0 0 24 24" aria-hidden="true">
-        <path d="M21.4 7.2a3 3 0 0 0-2.1-2.1C17.45 4.6 12 4.6 12 4.6s-5.45 0-7.3.5a3 3 0 0 0-2.1 2.1A31 31 0 0 0 2.1 12a31 31 0 0 0 .5 4.8 3 3 0 0 0 2.1 2.1c1.85.5 7.3.5 7.3.5s5.45 0 7.3-.5a3 3 0 0 0 2.1-2.1 31 31 0 0 0 .5-4.8 31 31 0 0 0-.5-4.8Z" />
-        <path className="news-button-play" d="m10 9 5 3-5 3V9Z" />
-      </svg>
-    );
-  }
-
-  return (
-    <svg viewBox="0 0 24 24" aria-hidden="true">
-      <path d="M12 2.75c.45 5.2 3.05 7.8 8.25 8.25-5.2.45-7.8 3.05-8.25 8.25-.45-5.2-3.05-7.8-8.25-8.25 5.2-.45 7.8-3.05 8.25-8.25Z" />
-    </svg>
-  );
-}
-
-function EditorialButton({ item, onClick }) {
-  const content = (
-    <>
-      <span className="news-premium-button-icon">
-        <ButtonIcon icon={item.buttonIcon} />
-      </span>
-      <span>{item.button}</span>
-      {item.link || onClick ? (
-        <span className="news-premium-button-arrow" aria-hidden="true">
-          →
-        </span>
-      ) : null}
-    </>
-  );
-
-  if (item.link) {
-    return (
-      <a
-        href={item.link}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="news-premium-button"
-        aria-label={`${item.button}: ${item.title} (opens YouTube in a new tab)`}
-      >
-        {content}
-      </a>
-    );
-  }
-
-  return (
-    <button
-      type="button"
-      className="news-premium-button"
-      onClick={onClick}
-      disabled={!onClick}
-    >
-      {content}
-    </button>
-  );
-}
-
-function NewsCard({ item, layoutClass }) {
-  const hasArtwork = Boolean(item.image);
-  const hasVideo = Boolean(item.video);
-  const typeClass = item.type.toLowerCase();
-
-  return (
-    <article
-      className={`news-premium-card news-editorial-card news-premium-card--${typeClass} ${layoutClass}${
-        hasArtwork ? " news-premium-card--artwork" : ""
-      }${hasVideo ? " news-premium-card--video" : ""}`}
-    >
-      <NewsEditorialMeta item={item} />
-
-      {hasVideo && (
-        <div className="news-premium-card-video-wrap">
-          <video
-            className="news-premium-card-video"
-            controls
-            muted
-            playsInline
-            preload="metadata"
-            poster={item.poster}
-            aria-label={`${item.title} — GinJay Europe celebration edit`}
-          >
-            <source src={item.video} type="video/mp4" />
-            Your browser does not support embedded videos.
-          </video>
-        </div>
-      )}
-
-      {hasArtwork && (
-        <img
-          src={item.image}
-          alt=""
-          className="news-premium-card-image"
-          loading="lazy"
-          decoding="async"
-          aria-hidden="true"
-        />
-      )}
-
-      <div className="news-premium-card-content">
-        <NewsCategory item={item} />
-
-        <h3>{item.title}</h3>
-
-        <p>{item.text}</p>
-
-        {item.button ? <EditorialButton item={item} /> : null}
-      </div>
-    </article>
-  );
-}
+import loveOnHireTeaser from "../assets/news/love-on-hire-teaser.png";
+import loveOnHireSchedule from "../assets/news/love-on-hire-schedule.png";
 
 export default function NewsSection() {
-  const [selectedSchedule, setSelectedSchedule] = useState(null);
-
-  const scheduleItem = news.find((item) => item.type === "Schedule");
-  const communityItem = news.find((item) => item.type === "Community");
-  const milestoneItem = news.find((item) => item.type === "Milestone");
-  const spotlightItem = news.find((item) => item.type === "Spotlight");
-
-  useEffect(() => {
-    if (!selectedSchedule) return;
-
-    const previousOverflow = document.body.style.overflow;
-
-    function handleKeyDown(event) {
-      if (event.key === "Escape") setSelectedSchedule(null);
-    }
-
-    document.addEventListener("keydown", handleKeyDown);
-    document.body.style.overflow = "hidden";
-
-    return () => {
-      document.removeEventListener("keydown", handleKeyDown);
-      document.body.style.overflow = previousOverflow;
-    };
-  }, [selectedSchedule]);
-
   return (
-    <>
-      <section className="section" id="news">
-        <div className="section-heading">
-          <span className="subtitle">LATEST</span>
+    <section id="news" className="gj-news-section">
+      <Reveal>
+        <div className="gj-news-shell">
+          <div className="gj-news-header">
+            <span className="gj-news-kicker">LATEST</span>
+            <h2>News & Highlights</h2>
+            <p>
+              For the latest news, updates, and GinJay moments, our social media
+              channels remain the main place to stay up to date. This website is
+              still growing and will be expanded step by step with more content,
+              projects, and community highlights.
+            </p>
+          </div>
 
-          <h2>News & Highlights</h2>
+          <div className="gj-news-grid">
+            {/* Highlight 01 */}
+            <Reveal>
+              <article className="gj-news-card gj-news-card--poster">
+                <div className="gj-news-card-top">
+                  <span>HIGHLIGHT N° 01</span>
+                </div>
 
-          <p>
-            For the latest news, updates, and GinJay moments, our social media
-            channels remain the main place to stay up to date. This website is
-            still growing and will be expanded step by step with more content,
-            projects, and community highlights.
-          </p>
-        </div>
+                <div className="gj-news-poster-frame">
+                  <img
+                    src={currentSchedule.poster}
+                    alt={`${currentSchedule.month} schedule poster`}
+                  />
+                </div>
 
-        <div className="news-showcase">
-          {scheduleItem && (
-            <article className="schedule-feature-card news-editorial-card news-layout-schedule">
-              <NewsEditorialMeta item={scheduleItem} />
+                <div className="gj-news-card-content gj-news-card-content--center">
+                  <span className="gj-news-card-kicker">SCHEDULE</span>
+                  <h3>Monthly Schedule</h3>
+                  <p>
+                    Find the latest GinJay schedule poster created by our
+                    fanbase.
+                  </p>
 
-              <div className="schedule-feature-image-wrap">
-                <img
-                  src={scheduleItem.image}
-                  alt={scheduleItem.title}
-                  className="schedule-feature-image"
-                  loading="lazy"
-                  decoding="async"
-                />
-              </div>
+                  <a
+                    className="gj-news-button"
+                    href={currentSchedule.poster}
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    <span className="gj-news-button__icon">◌</span>
+                    <span>View full schedule</span>
+                    <span className="gj-news-button__arrow">→</span>
+                  </a>
+                </div>
+              </article>
+            </Reveal>
 
-              <div className="schedule-feature-content">
-                <NewsCategory item={scheduleItem} />
+            {/* Highlight 02 */}
+            <Reveal>
+              <article
+                className="gj-news-card gj-news-card--feature"
+                style={{ backgroundImage: `url(${loveOnHireTeaser})` }}
+              >
+                <div className="gj-news-card-top">
+                  <span>HIGHLIGHT N° 02</span>
+                </div>
 
-                <h3>{scheduleItem.title}</h3>
+                <div className="gj-news-feature-overlay" />
 
-                <p>{scheduleItem.text}</p>
+                <div className="gj-news-feature-content">
+                  <span className="gj-news-card-kicker">NEW SERIES</span>
+                  <h3>Love on Hire Teaser</h3>
+                  <p>
+                    Watch the official teaser for <strong>Love on Hire</strong>{" "}
+                    and support the new series directly on YouTube.
+                  </p>
 
-                <EditorialButton
-                  item={scheduleItem}
-                  onClick={() => setSelectedSchedule(scheduleItem)}
-                />
-              </div>
-            </article>
-          )}
+                  <a
+                    className="gj-news-button"
+                    href="https://www.youtube.com/watch?v=F1l1mAvSmZo"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    <span className="gj-news-button__icon">▶</span>
+                    <span>Watch on YouTube</span>
+                    <span className="gj-news-button__arrow">→</span>
+                  </a>
+                </div>
+              </article>
+            </Reveal>
 
-          {milestoneItem && (
-            <NewsCard item={milestoneItem} layoutClass="news-layout-milestone" />
-          )}
+            {/* Highlight 03 */}
+            <Reveal>
+              <article className="gj-news-card gj-news-card--text">
+                <div className="gj-news-card-top">
+                  <span>HIGHLIGHT N° 03</span>
+                </div>
 
-          {communityItem && (
-            <NewsCard item={communityItem} layoutClass="news-layout-community" />
-          )}
+                <div className="gj-news-card-content gj-news-card-content--center gj-news-card-content--airy">
+                  <span className="gj-news-card-kicker">COMMUNITY</span>
+                  <h3>Fan Projects</h3>
+                  <p>
+                    Stay tuned — our very first fan project is getting ready to
+                    launch soon. We’re excited to share more with you very soon,
+                    so keep an eye on our channels for updates.
+                  </p>
 
-          {spotlightItem && (
-            <NewsCard item={spotlightItem} layoutClass="news-layout-spotlight" />
-          )}
-        </div>
-      </section>
+                  <span className="gj-news-button gj-news-button--static">
+                    <span className="gj-news-button__icon">✦</span>
+                    <span>Coming soon</span>
+                  </span>
+                </div>
+              </article>
+            </Reveal>
 
-      {selectedSchedule && (
-        <div
-          className="schedule-lightbox"
-          role="dialog"
-          aria-modal="true"
-          aria-labelledby="schedule-lightbox-title"
-          onClick={() => setSelectedSchedule(null)}
-        >
-          <div
-            className="schedule-lightbox-card"
-            onClick={(event) => event.stopPropagation()}
-          >
-            <button
-              type="button"
-              className="schedule-lightbox-close"
-              aria-label="Close schedule"
-              onClick={() => setSelectedSchedule(null)}
-            >
-              ×
-            </button>
+            {/* Highlight 04 */}
+            <Reveal>
+              <article
+                className="gj-news-card gj-news-card--feature"
+                style={{ backgroundImage: `url(${loveOnHireSchedule})` }}
+              >
+                <div className="gj-news-card-top">
+                  <span>HIGHLIGHT N° 04</span>
+                </div>
 
-            <img
-              src={selectedSchedule.image}
-              alt={selectedSchedule.title}
-              className="schedule-lightbox-image"
-            />
+                <div className="gj-news-feature-overlay" />
 
-            <div className="schedule-lightbox-info">
-              <span className="news-badge">{selectedSchedule.type}</span>
+                <div className="gj-news-feature-content">
+                  <span className="gj-news-card-kicker">ON-AIR</span>
+                  <h3>Love on Hire Schedule</h3>
+                  <p>
+                    See the current release dates for the series, including the
+                    airing plan and uncut VIP schedule.
+                  </p>
 
-              <h3 id="schedule-lightbox-title">{selectedSchedule.title}</h3>
-
-              <p>{selectedSchedule.text}</p>
-            </div>
+                  <a
+                    className="gj-news-button"
+                    href={loveOnHireSchedule}
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    <span className="gj-news-button__icon">◌</span>
+                    <span>Open full schedule</span>
+                    <span className="gj-news-button__arrow">→</span>
+                  </a>
+                </div>
+              </article>
+            </Reveal>
           </div>
         </div>
-      )}
-    </>
+      </Reveal>
+    </section>
   );
 }
