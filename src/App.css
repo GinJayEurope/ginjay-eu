@@ -14540,4 +14540,186 @@ html.dark-mode body {
     right: 1.1rem;
     bottom: 1.25rem;
   }
+}/* =========================================================
+   NEWS SECTION – SCHEDULE BUTTON POLISH
+========================================================= */
+
+.gj-news-button--schedule {
+  width: min(100%, 23rem);
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.72rem 0.9rem 0.72rem 0.9rem;
+  border-radius: 999px;
+  text-decoration: none;
+  color: #f5efff;
+  font-weight: 800;
+  font-size: 1rem;
+  letter-spacing: 0.01em;
+  background:
+    linear-gradient(180deg, rgba(108, 82, 141, 0.92) 0%, rgba(81, 59, 112, 0.95) 100%);
+  border: 1px solid rgba(213, 183, 255, 0.14);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.08),
+    inset 0 -1px 0 rgba(255, 255, 255, 0.03),
+    0 10px 30px rgba(12, 8, 30, 0.24);
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease,
+    border-color 0.25s ease,
+    background 0.25s ease;
+}
+
+.gj-news-button--schedule:hover {
+  transform: translateY(-2px);
+  border-color: rgba(235, 210, 255, 0.24);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.1),
+    inset 0 -1px 0 rgba(255, 255, 255, 0.04),
+    0 14px 36px rgba(12, 8, 30, 0.32);
+}
+
+.gj-news-button--schedule > span:nth-child(2) {
+  flex: 1;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.gj-news-button--schedule .gj-news-button__icon,
+.gj-news-button--schedule .gj-news-button__arrow {
+  width: 3.15rem;
+  height: 3.15rem;
+  min-width: 3.15rem;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.gj-news-button--schedule .gj-news-button__icon {
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.07) 0%, rgba(255, 255, 255, 0.02) 100%);
+  border: 1px solid rgba(231, 216, 255, 0.08);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.06),
+    0 6px 14px rgba(10, 7, 24, 0.16);
+  color: #f5efff;
+}
+
+.gj-news-button--schedule .gj-news-button__arrow {
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.09) 0%, rgba(255, 255, 255, 0.03) 100%);
+  border: 1px solid rgba(231, 216, 255, 0.09);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.06),
+    0 6px 14px rgba(10, 7, 24, 0.16);
+  color: #f5efff;
+  transition: transform 0.25s ease, background 0.25s ease;
+}
+
+.gj-news-button--schedule:hover .gj-news-button__arrow {
+  transform: translateX(2px);
+}
+
+.gj-news-button--schedule svg {
+  width: 1.22rem;
+  height: 1.22rem;
+  display: block;
+  stroke: currentColor;
+  stroke-width: 1.9;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+
+/* =========================================================
+   NEWS HIGHLIGHT CARDS – GOLDEN GLOW LINES
+========================================================= */
+
+.gj-news-card {
+  position: relative;
+  overflow: hidden;
+}
+
+/* top glow line */
+.gj-news-card::before,
+.gj-news-card::after {
+  content: "";
+  position: absolute;
+  pointer-events: none;
+  z-index: 6;
+  height: 2px;
+  width: 32%;
+  border-radius: 999px;
+  opacity: 0;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 212, 130, 0) 0%,
+    rgba(255, 212, 130, 0.18) 15%,
+    rgba(255, 228, 168, 1) 50%,
+    rgba(255, 212, 130, 0.18) 85%,
+    rgba(255, 212, 130, 0) 100%
+  );
+  box-shadow:
+    0 0 8px rgba(255, 214, 132, 0.35),
+    0 0 18px rgba(255, 214, 132, 0.18);
+}
+
+/* obere Linie */
+.gj-news-card::before {
+  top: 0;
+  left: 0;
+  animation: gjHighlightLineTop 6.8s ease-in-out infinite;
+}
+
+/* untere Linie – zeitversetzt */
+.gj-news-card::after {
+  bottom: 0;
+  left: 0;
+  animation: gjHighlightLineBottom 6.8s ease-in-out infinite 2.9s;
+}
+
+@keyframes gjHighlightLineTop {
+  0%, 10% {
+    opacity: 0;
+    transform: translateX(-130%);
+  }
+  16% {
+    opacity: 1;
+  }
+  28% {
+    opacity: 1;
+    transform: translateX(255%);
+  }
+  34%, 100% {
+    opacity: 0;
+    transform: translateX(255%);
+  }
+}
+
+@keyframes gjHighlightLineBottom {
+  0%, 10% {
+    opacity: 0;
+    transform: translateX(255%);
+  }
+  16% {
+    opacity: 1;
+  }
+  28% {
+    opacity: 1;
+    transform: translateX(-130%);
+  }
+  34%, 100% {
+    opacity: 0;
+    transform: translateX(-130%);
+  }
+}
+
+/* optional etwas eleganterer Goldrand */
+.gj-news-card {
+  border-color: rgba(214, 180, 120, 0.18);
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.025),
+    0 18px 42px rgba(8, 6, 20, 0.18);
 }
