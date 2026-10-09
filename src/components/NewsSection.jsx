@@ -6,8 +6,8 @@ import loveOnHireTeaser from "../assets/news/love-on-hire-teaser.png";
 import loveOnHireSchedule from "../assets/news/love-on-hire-schedule.png";
 import newSeriesTrailerBg from "../assets/news/new-series-trailer.PNG";
 
-const LOVE_ON_HIRE_TEASER_URL =
-  "https://www.youtube.com/watch?v=F1l1mAvSmZo";
+const LOVE_ON_HIRE_TRAILER_URL =
+  "https://www.youtube.com/watch?v=M_ReeGehUP8";
 
 const LUNAR_SECRET_TRAILER_URL =
   "https://www.youtube.com/watch?v=TDY-ZwAtCPI";
@@ -337,44 +337,43 @@ export default function NewsSection() {
                     <div className="gj-news-feature-content">
 
                       <span className="gj-news-card-kicker">
-                        NEW SERIES
-                      </span>
+  NEW SERIES
+</span>
 
-                      <h3>
-                        Love on Hire Teaser
-                      </h3>
+<h3>
+  Love on Hire Trailer
+</h3>
 
-                      <p>
-                        Watch the official teaser for{" "}
-                        <strong>Love on Hire</strong>{" "}
-                        and support the new series directly on YouTube.
-                      </p>
+<p>
+  Watch the official Trailer for{" "}
+  <strong>Love on Hire</strong>{" "}
+  and support the new series directly on YouTube.
+</p>
 
+<a
+  className="gj-news-button"
+  href={LOVE_ON_HIRE_TRAILER_URL}
+  target="_blank"
+  rel="noreferrer"
+>
+  <span
+    className="gj-news-button__icon"
+    aria-hidden="true"
+  >
+    <PlayIcon />
+  </span>
 
-                      <a
-                        className="gj-news-button"
-                        href={LOVE_ON_HIRE_TEASER_URL}
-                        target="_blank"
-                        rel="noreferrer"
-                      >
-                        <span
-                          className="gj-news-button__icon"
-                          aria-hidden="true"
-                        >
-                          <PlayIcon />
-                        </span>
+  <span>
+    Watch on YouTube
+  </span>
 
-                        <span>
-                          Watch on YouTube
-                        </span>
-
-                        <span
-                          className="gj-news-button__arrow"
-                          aria-hidden="true"
-                        >
-                          <ArrowIcon />
-                        </span>
-                      </a>
+  <span
+    className="gj-news-button__arrow"
+    aria-hidden="true"
+  >
+    <ArrowIcon />
+  </span>
+</a>
 
                     </div>
                   </article>
